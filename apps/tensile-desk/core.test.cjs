@@ -1,0 +1,5 @@
+const {test}=require('node:test');const a=require('node:assert/strict');const {analyse}=require('./core.js');
+test('known force and extension produce MPa and engineering strain',()=>{const r=analyse('force_N,extension_mm\n0,0\n1000,0.5',10,50);a.equal(r[1].stress,100);a.equal(r[1].strain,0.01)});
+test('accepts CRLF and decimal values',()=>a.equal(analyse('force_N,extension_mm\r\n25.5,0.1\r\n',5,10)[0].stress,5.1));
+for(const [label,csv,area,length] of [['zero area','force_N,extension_mm\n1,1',0,50],['missing cell','force_N,extension_mm\n1,',10,50],['negative force','force_N,extension_mm\n-1,1',10,50],['wrong header','load,extension\n1,1',10,50],['nonfinite','force_N,extension_mm\nInfinity,1',10,50],['extra cell','force_N,extension_mm\n1,1,1',10,50],['overflow','force_N,extension_mm\n1e308,1',1e-308,50]])test('rejects '+label,()=>a.throws(()=>analyse(csv,area,length)));
+test('retains unloading and acquisition order',()=>a.deepEqual(analyse('force_N,extension_mm\n100,1\n50,0.5',10,50).map(x=>x.stress),[10,5]));

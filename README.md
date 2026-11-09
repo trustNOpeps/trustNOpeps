@@ -10,7 +10,17 @@ I'm Hamka, a mechanical engineering undergraduate at Universitas Udayana, based 
 
 My current work connects company websites, product catalogues, and visual communication. I use AI-assisted tools to develop and revise prototypes, with attention to content, navigation, and layouts across screen sizes.
 
-### Selected project notes
+### Built projects
+
+Two runnable, AI-assisted learning applications. Each includes source code, setup instructions, limitations, and automated tests.
+
+**01 / [Tensile Desk](apps/tensile-desk)** — Engineering stress–strain calculator with an SVG plot, input validation, and CSV export. Sample data are explicitly synthetic.
+
+**02 / [Request Desk](apps/request-desk)** — Procurement request builder with add/edit/delete, supplier summary, CSV/JSON export, and print support.
+
+Download the repository and open either app's `index.html` to run locally. These applications have no backend or runtime dependencies.
+
+### Earlier concept & pitch notes
 
 These are self-directed prototypes and pitch work, not claims of launched client products. Each note explains the brief, my contribution, design decisions, and what still needs verification. Prospective-client names are omitted.
 

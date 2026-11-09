@@ -1,3 +1,7 @@
+![pixel-desk original project cover](../../assets/pixel-desk-cover.svg)
+
+[Try live demo](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site/apps/pixel-desk/)
+
 # Pixel Desk
 
 A small, colorful browser experiment by **trustNOpeps**. Retro desktop-inspired windows contain a searchable project gallery and a 16 × 16 pixel drawing pad.

@@ -12,13 +12,13 @@ My current work connects company websites, product catalogues, and visual commun
 
 ### Built projects
 
-Two runnable, AI-assisted learning applications. Each includes source code, setup instructions, limitations, and automated tests.
+Two runnable, AI-assisted learning applications with automated tests, plus a playful, browser-only visual experiment.
 
 **01 / [Tensile Desk](apps/tensile-desk)** — Engineering stress–strain calculator with an SVG plot, input validation, and CSV export. Sample data are explicitly synthetic.
 
 **02 / [Request Desk](apps/request-desk)** — Procurement request builder with add/edit/delete, supplier summary, CSV/JSON export, and print support.
 
-Download the repository and open either app's `index.html` to run locally. These applications have no backend or runtime dependencies.
+**03 / [Pixel Desk](apps/pixel-desk)** — Retro-window project explorer with live filtering and a pixel drawing pad, Undo, and PNG export. An original frontend experiment.\n\nDownload the repository and open an app's `index.html` to run locally. These applications have no backend or runtime dependencies.
 
 ### Earlier concept & pitch notes
 

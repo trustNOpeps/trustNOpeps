@@ -1,3 +1,7 @@
+![request-desk original project cover](../../assets/request-desk-cover.svg)
+
+[Try live demo](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site/apps/request-desk/)
+
 # Request Desk
 
 A browser workspace for turning a list of procurement needs into a structured request for quotation.

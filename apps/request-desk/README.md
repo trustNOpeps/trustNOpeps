@@ -1,6 +1,6 @@
 ![request-desk original project cover](../../assets/request-desk-cover.svg)
 
-[Try live demo](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site/apps/request-desk/)
+[Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/)
 
 # Request Desk
 

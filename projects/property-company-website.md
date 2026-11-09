@@ -21,4 +21,4 @@ The work is a prototype under revision. This note documents the brief and design
 
 Prospective-client names and project identifiers are omitted. This portfolio makes no claims about property availability, legal status, sales, or completed client delivery.
 
-[Back to profile](https://github.com/trustNOpeps/trustNOpeps/blob/main/README.md)
+[Back to profile](https://github.com/trustNOpeps)

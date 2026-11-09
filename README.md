@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://www.gitskins.com/api/section/wordmark?username=trustNOpeps&amp;theme=aurora" alt="trustNOpeps — animated Aurora wordmark by GitSkins" width="100%" />
+</p>
+
 # trustNOpeps
 
 **Engineering × Technology × Product × Creative**

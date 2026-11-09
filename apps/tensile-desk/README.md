@@ -1,6 +1,6 @@
 ![tensile-desk original project cover](../../assets/tensile-desk-cover.svg)
 
-[Try live demo](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site/apps/tensile-desk/)
+[Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)
 
 # Tensile Desk
 

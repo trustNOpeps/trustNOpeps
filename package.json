@@ -1,8 +1,0 @@
-{
-  "name": "trustnopeps-portfolio-labs",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Independent learning projects: engineering analysis and procurement drafting",
-  "scripts": {"test": "node --test apps/*/core.test.cjs"},
-  "engines": {"node": ">=20"}
-}

@@ -21,4 +21,4 @@ This is a pitch prototype, not a claim of a commissioned or launched client webs
 
 The venue name, unverified reviews, operating details, and third-party imagery are not reproduced here. No booking or business outcomes are claimed.
 
-[Back to profile](https://github.com/trustNOpeps/trustNOpeps/blob/main/README.md)
+[Back to profile](https://github.com/trustNOpeps)

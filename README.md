@@ -4,7 +4,7 @@
 
 # trustNOpeps
 
-**Engineering × Technology × Product × Creative**
+**Engineering × Technology × Product × Creative**\n\n**[Explore the interactive portfolio and live demos ↗](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site)**
 
 I'm Hamka, a mechanical engineering undergraduate at Universitas Udayana, based in Bali, Indonesia. I'm learning to build digital products while working on the questions around them: what people need, how an interface should work, and how to explain it clearly.
 
@@ -14,11 +14,11 @@ My current work connects company websites, product catalogues, and visual commun
 
 Two runnable, AI-assisted learning applications with automated tests, plus a playful, browser-only visual experiment.
 
-**01 / [Tensile Desk](apps/tensile-desk)** — Engineering stress–strain calculator with an SVG plot, input validation, and CSV export. Sample data are explicitly synthetic.
+**01 / [Tensile Desk](apps/tensile-desk)** ([Live demo](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site/apps/tensile-desk/)) — Engineering stress–strain calculator with an SVG plot, input validation, and CSV export. Sample data are explicitly synthetic.
 
-**02 / [Request Desk](apps/request-desk)** — Procurement request builder with add/edit/delete, supplier summary, CSV/JSON export, and print support.
+**02 / [Request Desk](apps/request-desk)** ([Live demo](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site/apps/request-desk/)) — Procurement request builder with add/edit/delete, supplier summary, CSV/JSON export, and print support.
 
-**03 / [Pixel Desk](apps/pixel-desk)** — Retro-window project explorer with live filtering and a pixel drawing pad, Undo, and PNG export. An original frontend experiment.\n\nDownload the repository and open an app's `index.html` to run locally. These applications have no backend or runtime dependencies.
+**03 / [Pixel Desk](apps/pixel-desk)** ([Live demo](https://trustnopeps-portfolio-2026.glvcmpny.chatgpt.site/apps/pixel-desk/)) — Retro-window project explorer with live filtering and a pixel drawing pad, Undo, and PNG export. An original frontend experiment.\n\nDownload the repository and open an app's `index.html` to run locally. These applications have no backend or runtime dependencies.
 
 ### Earlier concept & pitch notes
 

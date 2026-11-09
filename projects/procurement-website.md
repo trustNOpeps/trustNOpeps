@@ -21,4 +21,4 @@ This is a prototype project note, not a released software repository. The public
 
 No customer results, sales figures, or commercial engagement are claimed.
 
-[Back to profile](https://github.com/trustNOpeps/trustNOpeps/blob/main/README.md)
+[Back to profile](https://github.com/trustNOpeps)

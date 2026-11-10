@@ -30,7 +30,7 @@ The built-in sample curve is expressly **synthetic**. Values are not measured sp
 
 Industrial-editorial UI using ink, bone, cyan and amber, IBM Plex typography, accessible controls and responsive layouts. The app was generated through an AI-assisted Lovable workflow under an explicit engineering brief. Core logic was written as deterministic functions with test files; automated test/build execution had **not yet been independently confirmed** at the time this note was prepared.
 
-**Repository status:** The application currently lives in the linked Lovable project. A full GitHub source sync is not yet connected. This document is a transparent portfolio case study, **not** a claim that all application source files already live in this repository.
+**Repository status:** A [one-time source snapshot](../apps/mechlabs) of the Lovable application, including the engineering tests and dependency lockfile, has been mirrored into this repository. It is **not** a live two-way sync; edits made in Lovable later will require another update here. [GitHub Actions CI](https://github.com/trustNOpeps/trustNOpeps/actions/workflows/mechlabs-ci.yml) runs build/tests independently.
 
 ## Limits
 

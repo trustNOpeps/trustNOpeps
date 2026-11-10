@@ -1,60 +1,40 @@
 <p align="center">
-  <img src="https://www.gitskins.com/api/section/wordmark?username=trustNOpeps&amp;theme=aurora" alt="trustNOpeps — animated Aurora wordmark by GitSkins" width="100%" />
+  <img src="https://www.gitskins.com/api/section/wordmark?username=trustNOpeps&amp;theme=aurora" alt="trustNOpeps Aurora wordmark" width="100%" />
 </p>
 
-# trustNOpeps
+# Hamka / trustNOpeps
 
-**Engineering × Technology × Product × Creative**
+**Mechanical Engineering × Technology × Product × Creative**
 
-**[Portfolio & interactive demos ↗](https://trustnopeps.github.io/trustNOpeps/)**
+Mechanical engineering undergraduate at Universitas Udayana, based in Bali. I enjoy turning an idea into something people can explore: a small engineering tool, a useful product workflow, or an unexpectedly playful website.
 
-> GitHub Pages migration staged on [`gh-pages`](https://github.com/trustNOpeps/trustNOpeps/tree/gh-pages). Live URL becomes available after Pages source is enabled in repository settings.
+**[Explore the portfolio →](https://trustnopeps.github.io/trustNOpeps/)** · [View source projects](apps) · [Read selected case studies](projects)
 
-I'm Hamka, a mechanical engineering undergraduate at Universitas Udayana, based in Bali, Indonesia. I'm learning to build digital products while working on the questions around them: what people need, how an interface should work, and how to explain it clearly.
+## Selected work
 
-My current work connects company websites, product catalogues, and visual communication. I use AI-assisted tools to develop and revise prototypes, with attention to content, navigation, and layouts across screen sizes.
+| Project | What it explores | Demo |
+|---|---|---|
+| **[Little World](apps/little-world)** | Isometric creative internet café with interactive project desks and scripted coworker routines | [Explore world](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) |
+| **[Pixel Desk](apps/pixel-desk)** | A colorful retro project explorer with a pixel pad and PNG export | [Open app](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/) |
+| **[Tensile Desk](apps/tensile-desk)** | Engineering stress–strain calculations, validation, plotting and CSV export | [Open app](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) |
+| **[Request Desk](apps/request-desk)** | Local-first procurement request drafting, item editing and structured export | [Open app](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/) |
 
-### Built projects
+These are independent, AI-assisted learning projects. Little World's coworkers are **simulated**, not autonomous AI agents; Tensile Desk's example measurements are synthetic. Each project README describes its behavior, setup and limitations.
 
-Four independent browser experiments spanning engineering, product workflows, creative coding, and an isometric portfolio world.
+## Design and product explorations
 
-**01 / [Tensile Desk](apps/tensile-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)) — Engineering stress–strain calculator with an SVG plot, input validation, and CSV export. Sample data are explicitly synthetic.
+I also document earlier concepts and pitch work. Prospective-client identities are intentionally withheld, and I distinguish concepts from launched work.
 
-**02 / [Request Desk](apps/request-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/)) — Procurement request builder with add/edit/delete, supplier summary, CSV/JSON export, and print support.
+- [Procurement website](projects/procurement-website.md) — a specification-led catalogue and request-for-quotation flow.
+- [Property company website](projects/property-company-website.md) — a company-first structure with developments organized as a project catalogue.
+- [Hospitality website](projects/hospitality-website.md) — a bilingual venue pitch focused on story, menus and visiting information.
 
-**03 / [Pixel Desk](apps/pixel-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)) — Retro-window project explorer with live filtering and a pixel drawing pad, Undo, and PNG export. An original frontend experiment.
+## How I work
 
-**04 / [Little World](apps/little-world)** ([Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)) — Original isometric creative internet café with project desks, simulated coworkers, routines, local tasks and save state. The coworkers are scripted, not autonomous AI agents.
+**Understand the need → structure the experience → prototype → test → revise.**
 
-Download the repository; the original static tools open directly, while Little World should be served from a local HTTP server for ES module loading. These applications have no backend or runtime dependencies.
-
-### Earlier concept & pitch notes
-
-These are self-directed prototypes and pitch work, not claims of launched client products. Each note explains the brief, my contribution, design decisions, and what still needs verification. Prospective-client names are omitted.
-
-**01 / Procurement website**  
-A catalogue built around specifications and quotation requests, where price depends on the buyer's requirements.  
-[Read the project note →](https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/procurement-website.md)
-
-**02 / Property company website**  
-A company-first structure with housing developments organised as a project catalogue.  
-[Read the project note →](https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/property-company-website.md)
-
-**03 / Hospitality website**  
-A bilingual pitch prototype exploring menu presentation, venue character, and visit information.  
-[Read the project note →](https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/hospitality-website.md)
-
-### What connects the work
-
-- **Engineering:** my academic foundation in mechanical engineering.
-- **Technology:** learning web development, Git/GitHub, and AI-assisted workflows through practical projects.
-- **Product:** turning a broad business brief into pages, content, and a usable visitor journey.
-- **Creative:** shaping visual direction, typography, imagery, and written presentation.
-
-### Currently learning
-
-HTML/CSS, editing React and Next.js projects, and using Supabase. I'm developing these skills through hands-on work; the project notes describe my contribution rather than implying advanced software-engineering experience.
+My foundation is mechanical engineering. Alongside it, I'm exploring web development, UI/UX, product thinking, Git/GitHub and AI-assisted development through hands-on projects. I'm interested in the decisions behind an interface as much as its visual treatment.
 
 ---
 
-Based in Bali · Building and learning as **trustNOpeps**
+Bali, Indonesia · Building and learning as **trustNOpeps**

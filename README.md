@@ -4,7 +4,11 @@
 
 # trustNOpeps
 
-**Engineering × Technology × Product × Creative**\n\n**[Portfolio & interactive demos ↗](https://trustnopeps.github.io/trustNOpeps/)**\n\n> GitHub Pages migration staged on [`gh-pages`](https://github.com/trustNOpeps/trustNOpeps/tree/gh-pages). Live URL becomes available after Pages source is enabled in repository settings.
+**Engineering × Technology × Product × Creative**
+
+**[Portfolio & interactive demos ↗](https://trustnopeps.github.io/trustNOpeps/)**
+
+> GitHub Pages migration staged on [`gh-pages`](https://github.com/trustNOpeps/trustNOpeps/tree/gh-pages). Live URL becomes available after Pages source is enabled in repository settings.
 
 I'm Hamka, a mechanical engineering undergraduate at Universitas Udayana, based in Bali, Indonesia. I'm learning to build digital products while working on the questions around them: what people need, how an interface should work, and how to explain it clearly.
 
@@ -12,13 +16,15 @@ My current work connects company websites, product catalogues, and visual commun
 
 ### Built projects
 
-Two runnable, AI-assisted learning applications with automated tests, plus a playful, browser-only visual experiment.
+Four independent browser experiments spanning engineering, product workflows, creative coding, and an isometric portfolio world.
 
 **01 / [Tensile Desk](apps/tensile-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)) — Engineering stress–strain calculator with an SVG plot, input validation, and CSV export. Sample data are explicitly synthetic.
 
 **02 / [Request Desk](apps/request-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/)) — Procurement request builder with add/edit/delete, supplier summary, CSV/JSON export, and print support.
 
-**03 / [Pixel Desk](apps/pixel-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)) — Retro-window project explorer with live filtering and a pixel drawing pad, Undo, and PNG export. An original frontend experiment.\n\nDownload the repository and open an app's `index.html` to run locally. These applications have no backend or runtime dependencies.
+**03 / [Pixel Desk](apps/pixel-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)) — Retro-window project explorer with live filtering and a pixel drawing pad, Undo, and PNG export. An original frontend experiment.
+
+**04 / [Little World](apps/little-world)** ([Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)) — Original isometric creative internet café with project desks, simulated coworkers, routines, local tasks and save state. The coworkers are scripted, not autonomous AI agents.\n\nDownload the repository; the original static tools open directly, while Little World should be served from a local HTTP server for ES module loading. These applications have no backend or runtime dependencies.
 
 ### Earlier concept & pitch notes
 

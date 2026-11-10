@@ -1,0 +1,22 @@
+name: MechLabs checks
+on:
+  push:
+    paths:
+      - 'apps/mechlabs/**'
+      - '.github/workflows/mechlabs-ci.yml'
+  pull_request:
+    paths:
+      - 'apps/mechlabs/**'
+      - '.github/workflows/mechlabs-ci.yml'
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mechlabs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run test
+      - run: bun run build

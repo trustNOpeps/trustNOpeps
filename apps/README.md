@@ -1,11 +1,11 @@
 # Portfolio Labs
 
-Two independent applications for the trustNOpeps portfolio. These are runnable code projects, separate from the earlier concept notes in `/projects`.
+Four independent applications for the trustNOpeps portfolio. These are runnable code projects, separate from the earlier concept notes in `/projects`.
 
 | Project | Focus | Start |
 |---|---|---|
 | [Tensile Desk](tensile-desk) | Mechanical engineering calculations, input validation, SVG chart | Open `tensile-desk/index.html` |
-| [Request Desk](request-desk) | Procurement workflow, safe text handling, structured export | Open `request-desk/index.html` |
+| [Request Desk](request-desk) | Procurement workflow, safe text handling, structured export | Open `request-desk/index.html` |\n| [Pixel Desk](pixel-desk) | Colorful project explorer, pixel pad and PNG export | Open `pixel-desk/index.html` |\n| [Little World](little-world) | Isometric creative office, simulated coworker tasks and local progress | Run a local static server, then open `little-world/` |
 
 Use `npm test` at the repository root for the dependency-free calculation and export tests. No npm installation is needed. Each folder is self-contained and can be extracted into its own repository later.
 
@@ -17,7 +17,7 @@ Use `npm test` at the repository root for the dependency-free calculation and ex
 
 ## Design
 
-An off-white work surface, forest-green actions, clear units, keyboard focus outlines, and a single-column layout below 760 px. Both apps keep processing local and require explicit exports rather than saving personal data silently.
+An off-white work surface, forest-green actions, clear units, keyboard focus outlines, and a single-column layout below 760 px. These apps keep processing local and require explicit exports rather than saving personal data silently.
 
 ## Development attribution
 

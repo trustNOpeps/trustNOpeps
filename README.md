@@ -24,7 +24,9 @@ Four independent browser experiments spanning engineering, product workflows, cr
 
 **03 / [Pixel Desk](apps/pixel-desk)** ([Live demo](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)) — Retro-window project explorer with live filtering and a pixel drawing pad, Undo, and PNG export. An original frontend experiment.
 
-**04 / [Little World](apps/little-world)** ([Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)) — Original isometric creative internet café with project desks, simulated coworkers, routines, local tasks and save state. The coworkers are scripted, not autonomous AI agents.\n\nDownload the repository; the original static tools open directly, while Little World should be served from a local HTTP server for ES module loading. These applications have no backend or runtime dependencies.
+**04 / [Little World](apps/little-world)** ([Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)) — Original isometric creative internet café with project desks, simulated coworkers, routines, local tasks and save state. The coworkers are scripted, not autonomous AI agents.
+
+Download the repository; the original static tools open directly, while Little World should be served from a local HTTP server for ES module loading. These applications have no backend or runtime dependencies.
 
 ### Earlier concept & pitch notes
 

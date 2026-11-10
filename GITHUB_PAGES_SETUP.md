@@ -1,22 +1,34 @@
-# GitHub Pages activation (one-time)
+# Portfolio hosting — GitHub Pages
 
-The static portfolio and all three demos are ready in the [gh-pages branch](https://github.com/trustNOpeps/trustNOpeps/tree/gh-pages). No build, payments, secrets, or third-party services are needed.
+The portfolio is published from the [`gh-pages` branch](https://github.com/trustNOpeps/trustNOpeps/tree/gh-pages), separately from the development files in `main`.
 
-1. Sign in as **trustNOpeps** and open [Repository Settings → Pages](https://github.com/trustNOpeps/trustNOpeps/settings/pages).
-2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-3. Choose branch **gh-pages** and folder **/(root)**, then click **Save**.
-4. Wait for the Pages deployment workflow to complete. The intended site URL is **https://trustnopeps.github.io/trustNOpeps/**.
-5. Check all three demo links from the home page. If a 404 remains, inspect Settings → Pages and Actions for deployment status.
+**Portfolio:** https://trustnopeps.github.io/trustNOpeps/
 
-## Why this cannot be activated automatically in this session
+## Current deployment
 
-The connected GitHub integration supports source-file operations but does not expose the Pages configuration mutation. GitHub Pages source selection is an account-level repository setting requiring owner access. No personal access tokens should be shared or pasted into source code.
+The Pages workflow completed successfully on 10 November 2026 for commit `08afa516662f11fd42ad84380ef7971752ea3026`.
 
-## Source layout
+[View successful GitHub Actions run](https://github.com/trustNOpeps/trustNOpeps/actions/runs/42748609246)
 
-- `gh-pages/index.html` — portfolio landing page
-- `gh-pages/apps/pixel-desk/` — retro creative playground
-- `gh-pages/apps/tensile-desk/` — engineering calculator
-- `gh-pages/apps/request-desk/` — procurement builder
+## How updates work
 
-Only static HTML, CSS and JavaScript are used. A `.nojekyll` marker is included. Project notes in `main/projects/` intentionally anonymize client identities.
+1. Develop and test changes in `main`.
+2. Copy only the static site files to `gh-pages`.
+3. Keep all application paths relative so they work under `/trustNOpeps/`.
+4. Push `gh-pages`. GitHub's Pages deployment workflow handles publication.
+5. Inspect the deployment run and test the portfolio and each demo URL.
+
+Pages publishes `gh-pages` at `/(root)`. The branch contains a `.nojekyll` marker. The repository is public, and the site requires no paid hosting.
+
+## Demos
+
+- [Little World](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)
+- [Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
+- [Tensile Desk](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)
+- [Request Desk](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/)
+
+The independent source folders and anonymized case studies remain in `main`.
+
+## Troubleshooting
+
+If a page returns 404, inspect [Settings → Pages](https://github.com/trustNOpeps/trustNOpeps/settings/pages) and the [Actions history](https://github.com/trustNOpeps/trustNOpeps/actions). A completed deployment does not itself prove every client-side interaction works, so perform a browser smoke test after release.

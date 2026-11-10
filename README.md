@@ -16,6 +16,7 @@ Mechanical engineering undergraduate at Universitas Udayana, based in Bali. I en
 |---|---|---|
 | **[Little World](apps/little-world)** | Isometric creative internet café with interactive project desks and scripted coworker routines | [Explore world](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) |
 | **[Pixel Desk](apps/pixel-desk)** | A colorful retro project explorer with a pixel pad and PNG export | [Open app](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/) |
+| **[MechLabs](projects/mechlabs.md)** | Engineering workbench: tensile calculations, converters, user-entered materials and local experiment records | [Launch MechLabs](https://mechlabs-engineering.lovable.app/) |
 | **[Tensile Desk](apps/tensile-desk)** | Engineering stress–strain calculations, validation, plotting and CSV export | [Open app](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) |
 | **[Request Desk](apps/request-desk)** | Local-first procurement request drafting, item editing and structured export | [Open app](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/) |
 
@@ -28,6 +29,16 @@ I also document earlier concepts and pitch work. Prospective-client identities a
 - [Procurement website](projects/procurement-website.md) — a specification-led catalogue and request-for-quotation flow.
 - [Property company website](projects/property-company-website.md) — a company-first structure with developments organized as a project catalogue.
 - [Hospitality website](projects/hospitality-website.md) — a bilingual venue pitch focused on story, menus and visiting information.
+
+
+### Creative practice & writing
+
+| Project | Status | Explore |
+| --- | --- | --- |
+| **[AFTER WANTING](projects/after-wanting.md)** | Seven original clothing concept volumes, 2026–27; not yet manufactured or on sale | [Editorial showroom](https://trustnopeps.github.io/trustNOpeps/showroom/) |
+| **[Berpikir di Era AI](projects/berpikir-di-era-ai.md)** | Nonfiction book project; commercial manuscript kept private | [Book preview](https://trustnopeps.github.io/trustNOpeps/book/) |
+
+These are independent, AI-assisted creative projects. The public book page is a teaser, **not** the full manuscript. Fashion images show concept mockups; production and rights clearance are still pending. MechLabs' complete application source is currently in Lovable and **GitHub sync is not yet connected**; its linked case study is explicit about this.
 
 ## How I work
 

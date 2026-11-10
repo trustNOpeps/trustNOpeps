@@ -1,24 +1,26 @@
 # Portfolio Labs
 
-Four independent applications for the trustNOpeps portfolio. These are runnable code projects, separate from the earlier concept notes in `/projects`.
+Four independent browser projects from **trustNOpeps**. These are personal learning experiments, not delivered client products.
 
-| Project | Focus | Start |
+| Project | Focus | Run |
 |---|---|---|
-| [Tensile Desk](tensile-desk) | Mechanical engineering calculations, input validation, SVG chart | Open `tensile-desk/index.html` |
-| [Request Desk](request-desk) | Procurement workflow, safe text handling, structured export | Open `request-desk/index.html` |\n| [Pixel Desk](pixel-desk) | Colorful project explorer, pixel pad and PNG export | Open `pixel-desk/index.html` |\n| [Little World](little-world) | Isometric creative office, simulated coworker tasks and local progress | Run a local static server, then open `little-world/` |
+| [Little World](little-world) | Isometric creative internet café, scripted coworker routines, local tasks and saved progress | Serve the repository over HTTP; open `apps/little-world/` |
+| [Pixel Desk](pixel-desk) | Retro project explorer, 16 × 16 pixel pad and PNG export | Open `apps/pixel-desk/index.html` |
+| [Tensile Desk](tensile-desk) | Stress–strain calculations, input validation, SVG graph and CSV export | Open `apps/tensile-desk/index.html` |
+| [Request Desk](request-desk) | Procurement request editing and CSV/JSON export | Open `apps/request-desk/index.html` |
 
-Use `npm test` at the repository root for the dependency-free calculation and export tests. No npm installation is needed. Each folder is self-contained and can be extracted into its own repository later.
+## Test
 
-## Validation
+From the repository root (Node.js 20+):
 
-- 19 Node tests cover numerical examples, invalid input, numeric overflow, acquisition order, CSV escaping, spreadsheet formula neutralisation, and unit-aware summaries.
-- Browser JavaScript syntax checked with `node --check`.
-- Automated local Chromium testing was attempted but could not start because the execution environment denied socket creation. Visual and browser interaction verification is therefore not claimed here.
+```bash
+npm test
+```
 
-## Design
+The test command runs the pure logic tests for Tensile Desk, Request Desk and Little World. Pixel Desk is a small UI-only experiment with no automated logic suite. Browser behavior should be checked separately.
 
-An off-white work surface, forest-green actions, clear units, keyboard focus outlines, and a single-column layout below 760 px. These apps keep processing local and require explicit exports rather than saving personal data silently.
+Little World uses JavaScript ES modules and requires an HTTP server to load reliably; the other static apps can be opened directly. No API keys or backend services are needed for these demos.
 
-## Development attribution
+## Scope and attribution
 
-Created as independent learning projects for trustNOpeps with AI-assisted implementation. There are no client-delivery, adoption, or advanced-expertise claims.
+These projects were created with AI-assisted development as part of practical learning. No fabricated customer outcomes, autonomous agent capabilities, or professional deployment claims are made. Project limitations are documented within each folder.

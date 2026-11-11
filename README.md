@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.gitskins.com/api/section/wordmark?username=trustNOpeps&amp;theme=aurora" alt="trustNOpeps Aurora wordmark" width="100%" />
+  <img src="assets/terminal-wordmark.svg" alt="trustNOpeps original retro terminal wordmark" width="100%" />
 </p>
 
 # Hamka / trustNOpeps

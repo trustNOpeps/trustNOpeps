@@ -1,6 +1,6 @@
 ![tensile-desk original project cover](../../assets/tensile-desk-cover.svg)
 
-[Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)
+[Live demo on GitHub Pages](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)
 
 # Tensile Desk
 

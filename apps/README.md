@@ -1,9 +1,10 @@
 # Portfolio Labs
 
-Four independent browser projects from **trustNOpeps**. These are personal learning experiments, not delivered client products.
+Five independent browser projects from **trustNOpeps**. These are personal learning experiments, not delivered client products.
 
 | Project | Focus | Run |
 |---|---|---|
+| [MechLabs](mechlabs) | React/TypeScript engineering workbench with unit tests and CI | [Deployed Lovable app](https://mechlabs-engineering.lovable.app/); see source README for local setup |
 | [Little World](little-world) | Isometric creative internet café, scripted coworker routines, local tasks and saved progress | Serve the repository over HTTP; open `apps/little-world/` |
 | [Pixel Desk](pixel-desk) | Retro project explorer, 16 × 16 pixel pad and PNG export | Open `apps/pixel-desk/index.html` |
 | [Tensile Desk](tensile-desk) | Stress–strain calculations, input validation, SVG graph and CSV export | Open `apps/tensile-desk/index.html` |
@@ -17,7 +18,7 @@ From the repository root (Node.js 20+):
 npm test
 ```
 
-The test command runs the pure logic tests for Tensile Desk, Request Desk and Little World. Pixel Desk is a small UI-only experiment with no automated logic suite. Browser behavior should be checked separately.
+The test command runs the pure logic tests for Tensile Desk, Request Desk and Little World. MechLabs has a separate Bun/Vitest test and build workflow. Pixel Desk is a small UI-only experiment with no automated logic suite. Browser behavior should be checked separately.
 
 Little World uses JavaScript ES modules and requires an HTTP server to load reliably; the other static apps can be opened directly. No API keys or backend services are needed for these demos.
 

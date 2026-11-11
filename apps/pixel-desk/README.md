@@ -1,6 +1,6 @@
 ![pixel-desk original project cover](../../assets/pixel-desk-cover.svg)
 
-[Live demo — pending Pages activation](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
+[Live demo on GitHub Pages](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
 
 # Pixel Desk
 

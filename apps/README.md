@@ -1,14 +1,14 @@
 # Portfolio Labs
 
-Five independent browser projects from **trustNOpeps**. These are personal learning experiments, not delivered client products.
+Five independent browser projects, also maintained as standalone repositories, from **trustNOpeps**. These are personal learning experiments, not delivered client products.
 
 | Project | Focus | Live demo |
 |---|---|---|
-| [MechLabs](mechlabs) | React/TypeScript engineering workbench with unit tests and CI | [Open MechLabs](https://mechlabs-engineering.lovable.app/) |
-| [Little World](little-world) | Isometric creative internet café, scripted coworker routines, local tasks and saved progress | [Explore Little World](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) |
-| [Pixel Desk](pixel-desk) | Retro project explorer, 16 × 16 pixel pad and PNG export | [Open Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/) |
-| [Tensile Desk](tensile-desk) | Stress–strain calculations, input validation, SVG graph and CSV export | [Open Tensile Desk](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) |
-| [Request Desk](request-desk) | Procurement request editing and CSV/JSON export | [Open Request Desk](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/) |
+| [MechLabs](https://github.com/trustNOpeps/mechlabs) | React/TypeScript engineering workbench with unit tests and CI | [Open MechLabs](https://mechlabs-engineering.lovable.app/) |
+| [Little World](https://github.com/trustNOpeps/little-world) | Isometric creative internet café, scripted coworker routines, local tasks and saved progress | [Explore Little World](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) |
+| [Pixel Desk](https://github.com/trustNOpeps/pixel-desk) | Retro project explorer, 16 × 16 pixel pad and PNG export | [Open Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/) |
+| [Tensile Desk](https://github.com/trustNOpeps/tensile-desk) | Stress–strain calculations, input validation, SVG graph and CSV export | [Open Tensile Desk](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) |
+| [Request Desk](https://github.com/trustNOpeps/request-desk) | Procurement request editing and CSV/JSON export | [Open Request Desk](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/) |
 
 ## Test
 

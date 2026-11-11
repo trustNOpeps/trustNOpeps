@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/trustnopeps-wordmark.gif" alt="trustNOpeps animated pixel wordmark" width="100%" />
+  <img src="assets/trustnopeps-ascii.gif" alt="trustNOpeps animated ASCII-art wordmark" width="100%" />
 </p>
 
 # Hamka / trustNOpeps

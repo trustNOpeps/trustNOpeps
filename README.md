@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/terminal-wordmark.svg" alt="trustNOpeps original retro terminal wordmark" width="100%" />
+  <img src="assets/trustnopeps-wordmark.gif" alt="trustNOpeps animated pixel wordmark" width="100%" />
 </p>
 
 # Hamka / trustNOpeps

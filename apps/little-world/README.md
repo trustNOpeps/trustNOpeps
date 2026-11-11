@@ -2,6 +2,8 @@
 
 An original, pixel-inspired isometric portfolio office built by **trustNOpeps** as a frontend learning experiment.
 
+[Live demo on GitHub Pages](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)
+
 ## What works
 
 - Isometric office rendered entirely with Canvas 2D; no downloaded sprites or borrowed game assets.

@@ -8,7 +8,7 @@
 
 I'm a mechanical engineering undergraduate at Universitas Udayana, based in Bali. I build small tools, explore digital products and learn through working prototypes. I care about clear interfaces, useful calculations and making ideas testable.
 
-[Portfolio](https://trustnopeps.github.io/trustNOpeps/) · [Source projects](https://github.com/trustNOpeps/trustNOpeps/tree/main/apps) · [Case studies](https://github.com/trustNOpeps/trustNOpeps/tree/main/projects)
+[Portfolio](https://trustnopeps.github.io/trustNOpeps/) · [Project repositories](https://github.com/trustNOpeps?tab=repositories) · [Case studies](https://github.com/trustNOpeps/trustNOpeps/tree/main/projects)
 
 ## Selected work
 
@@ -16,24 +16,30 @@ I'm a mechanical engineering undergraduate at Universitas Udayana, based in Bali
 
 A browser-based engineering workbench for tensile calculations, unit conversions, material comparisons, saved local records and CSV exports. Its calculations have automated tests, but the app is educational rather than certified engineering software.
 
-[Live app](https://mechlabs-engineering.lovable.app/) · [Source](apps/mechlabs) · [Engineering tests](apps/mechlabs/src/test/engineering.test.ts) · [CI workflow](.github/workflows/mechlabs-ci.yml)
+[Live app](https://mechlabs-engineering.lovable.app/) · [Source](https://github.com/trustNOpeps/mechlabs) · [Engineering tests](apps/mechlabs/src/test/engineering.test.ts) · [CI workflow](.github/workflows/mechlabs-ci.yml)
 
 ### Little World
 
 An isometric Canvas environment with scripted coworker routines, task assignment and progress saved in the browser. The characters are simulations, not autonomous agents.
 
-[Explore the world](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) · [Source](apps/little-world) · [Tests](apps/little-world/core.test.mjs)
+[Explore the world](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) · [Source](https://github.com/trustNOpeps/little-world) · [Tests](apps/little-world/core.test.mjs)
 
 ### Tensile Desk
 
 A focused experiment in force and extension data, engineering stress and strain, validation, SVG plotting and structured exports.
 
-[Try the tool](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) · [Source](apps/tensile-desk) · [Tests](apps/tensile-desk/core.test.cjs)
+[Try the tool](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) · [Source](https://github.com/trustNOpeps/tensile-desk) · [Tests](apps/tensile-desk/core.test.cjs)
+
+### Mechatronics Lab
+
+A documented Arduino Uno, HC-SR04 and SG90 virtual-simulation case study, with a reproducible example sketch, tested threshold logic and a Tinkercad MCP workflow note. The full AI-agent concept is not an implemented autonomous system.
+
+[Source and workflow](https://github.com/trustNOpeps/mechatronics-lab) · [Control tests](https://github.com/trustNOpeps/mechatronics-lab/blob/main/tests/controller.test.cpp)
 
 ### Smaller experiments
 
-- **[Request Desk](apps/request-desk):** A local-first procurement request editor with CSV and JSON export. [Demo](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/) · [Tests](apps/request-desk/core.test.cjs)
-- **[Pixel Desk](apps/pixel-desk):** A retro project explorer with a 16 × 16 pixel editor and PNG export. [Demo](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
+- **[Request Desk](https://github.com/trustNOpeps/request-desk):** A local-first procurement request editor with CSV and JSON export. [Demo](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/) · [Tests](apps/request-desk/core.test.cjs)
+- **[Pixel Desk](https://github.com/trustNOpeps/pixel-desk):** A retro project explorer with a 16 × 16 pixel editor and PNG export. [Demo](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
 
 The standalone JavaScript projects include tests that can be run with `npm test` from this repository. MechLabs has its own [test and build workflow](https://github.com/trustNOpeps/trustNOpeps/actions/workflows/mechlabs-ci.yml).
 

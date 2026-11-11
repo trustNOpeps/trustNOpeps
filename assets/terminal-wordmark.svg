@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+<title id="title">trustNOpeps terminal wordmark</title>
+<desc id="desc">Original dark retro terminal banner with trustNOpeps monospaced wordmark and green status indicators.</desc>
+<defs>
+  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1b2830" stroke-width="1" opacity=".45"/></pattern>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080c12"/><stop offset="1" stop-color="#101820"/></linearGradient>
+  <linearGradient id="accent" x1="0" x2="1"><stop stop-color="#74f0ae"/><stop offset="1" stop-color="#76c9f0"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="14"/></filter>
+</defs>
+<rect width="1200" height="340" rx="16" fill="url(#bg)"/>
+<rect width="1200" height="340" rx="16" fill="url(#grid)"/>
+<path d="M0 47H1200" stroke="#27343a"/>
+<circle cx="26" cy="24" r="6" fill="#ed6a63"/><circle cx="49" cy="24" r="6" fill="#ebc057"/><circle cx="72" cy="24" r="6" fill="#6bc995"/>
+<text x="98" y="29" fill="#9aabb5" font-family="Consolas,Monaco,monospace" font-size="14">~/portfolio/identity.sh</text>
+<text x="1164" y="29" text-anchor="end" fill="#6d8894" font-family="Consolas,Monaco,monospace" font-size="12">v1.0  •  LOCAL ASSET</text>
+<ellipse cx="620" cy="178" rx="275" ry="38" fill="#39da9c" opacity=".09" filter="url(#glow)"/>
+<text x="72" y="95" fill="#71dca7" font-family="Consolas,Monaco,monospace" font-size="17">$ ./wordmark --name trustNOpeps</text>
+<text x="66" y="192" fill="#e9f0e9" font-family="Consolas,Monaco,monospace" font-size="92" font-weight="700" letter-spacing="-4">trust<tspan fill="url(#accent)">NO</tspan>peps</text>
+<path d="M72 212H1128" stroke="#3d5859" stroke-width="1"/>
+<text x="72" y="251" fill="#9caeb2" font-family="Consolas,Monaco,monospace" font-size="16">ENGINEERING  /  TECHNOLOGY  /  PRODUCT  /  CREATIVE</text>
+<text x="72" y="293" fill="#74f0ae" font-family="Consolas,Monaco,monospace" font-size="14">● system online</text>
+<text x="275" y="293" fill="#8196a1" font-family="Consolas,Monaco,monospace" font-size="14">BALI, INDONESIA</text>
+<text x="1128" y="293" text-anchor="end" fill="#8196a1" font-family="Consolas,Monaco,monospace" font-size="14">[ BUILDING IN PUBLIC ]</text>
+<path d="M1112 82h17v17" fill="none" stroke="#74f0ae" stroke-width="2" opacity=".8"/>
+<path d="M72 315h1056" stroke="#74f0ae" opacity=".26"/>
+</svg>

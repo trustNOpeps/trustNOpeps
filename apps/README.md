@@ -2,13 +2,13 @@
 
 Five independent browser projects from **trustNOpeps**. These are personal learning experiments, not delivered client products.
 
-| Project | Focus | Run |
+| Project | Focus | Live demo |
 |---|---|---|
-| [MechLabs](mechlabs) | React/TypeScript engineering workbench with unit tests and CI | [Deployed Lovable app](https://mechlabs-engineering.lovable.app/); see source README for local setup |
-| [Little World](little-world) | Isometric creative internet café, scripted coworker routines, local tasks and saved progress | Serve the repository over HTTP; open `apps/little-world/` |
-| [Pixel Desk](pixel-desk) | Retro project explorer, 16 × 16 pixel pad and PNG export | Open `apps/pixel-desk/index.html` |
-| [Tensile Desk](tensile-desk) | Stress–strain calculations, input validation, SVG graph and CSV export | Open `apps/tensile-desk/index.html` |
-| [Request Desk](request-desk) | Procurement request editing and CSV/JSON export | Open `apps/request-desk/index.html` |
+| [MechLabs](mechlabs) | React/TypeScript engineering workbench with unit tests and CI | [Open MechLabs](https://mechlabs-engineering.lovable.app/) |
+| [Little World](little-world) | Isometric creative internet café, scripted coworker routines, local tasks and saved progress | [Explore Little World](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) |
+| [Pixel Desk](pixel-desk) | Retro project explorer, 16 × 16 pixel pad and PNG export | [Open Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/) |
+| [Tensile Desk](tensile-desk) | Stress–strain calculations, input validation, SVG graph and CSV export | [Open Tensile Desk](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) |
+| [Request Desk](request-desk) | Procurement request editing and CSV/JSON export | [Open Request Desk](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/) |
 
 ## Test
 

@@ -9,6 +9,7 @@
   const sceneCount = document.getElementById('scene-count');
   const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a')];
   const mobileMenu = document.querySelector('.mobile-navigation');
+  const siteHeader = document.querySelector('.site-header');
   const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let activeIndex = -1;
@@ -46,7 +47,56 @@
   }
   window.addEventListener('scroll',enqueueRead,{passive:true});
   window.addEventListener('resize',enqueueRead,{passive:true});
-  mobileMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.open=false;}));
+  // Desktop/tablet: align the readable chapter content below the fixed header.
+  // Phone: retain the complete scene composition at the start of each chapter.
+  function navigateToAnchor(hash, behavior = 'smooth') {
+    if (!hash || !hash.startsWith('#')) return false;
+    const target = document.getElementById(hash.slice(1));
+    if (!target) return false;
+    const phone = window.innerWidth <= 710;
+    const destination = !phone && target.classList.contains('chapter')
+      ? (target.querySelector('.content') || target)
+      : target;
+    const headerHeight = siteHeader?.getBoundingClientRect().height || (phone ? 67 : 77);
+    const gap = phone ? 12 : 36;
+    const top = hash === '#top' ? 0
+      : destination.getBoundingClientRect().top + window.scrollY - headerHeight - gap;
+    const maximum = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    window.scrollTo({
+      top: clamp(Math.round(top), 0, maximum),
+      behavior: reducedMotion ? 'instant' : behavior
+    });
+    return true;
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const hash = anchor.getAttribute('href');
+      if (!navigateToAnchor(hash)) return;
+      event.preventDefault();
+      if (location.hash !== hash) history.pushState(null, '', hash);
+      if (mobileMenu?.open) mobileMenu.open = false;
+      if (hash === '#main') document.getElementById('main')?.focus({ preventScroll: true });
+    });
+  });
+  function restoreHashPosition() {
+    if (location.hash) navigateToAnchor(location.hash, 'instant');
+  }
+  window.addEventListener('popstate', () => {
+    navigateToAnchor(location.hash || '#top', 'instant');
+  });
+  window.addEventListener('hashchange', restoreHashPosition);
+  window.addEventListener('load', restoreHashPosition, { once: true });
+  if (document.readyState === 'complete') requestAnimationFrame(restoreHashPosition);
+  mobileMenu?.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      mobileMenu.open = false;
+      mobileMenu.querySelector('summary')?.focus();
+    }
+  });
+  document.addEventListener('pointerdown', event => {
+    if (mobileMenu?.open && !mobileMenu.contains(event.target)) mobileMenu.open = false;
+  });
   enqueueRead();
 
   if (!viewportCanvas || !window.WebGLRenderingContext) return;
@@ -254,9 +304,11 @@
       }
       moving.push({mesh:middle,speed:.05},{mesh:inner,speed:-.065,axis:'y'});
     }
-    // 06: an open portal and directional arrow as the final invitation to connect.
+    // 06: an open portal, with the full artwork group balanced left of the copy.
+    let contactArtwork=null;
     {
       const g=stage(6);
+      contactArtwork=g;
       const portal=T(g,materials.steel,1.75,.15,0,.16,0);
       const inner=T(g,materials.lime,1.41,.044,0,.16,.08);
       const halo=T(g,materials.lavender,1.95,.025,0,.16,-.12);
@@ -280,6 +332,13 @@
     let renderStarted=false;
     const controller = window.matchMedia('(max-width: 710px)');
     function onResize(){
+      // Reposition the entire portal, plinth, grid and particles consistently.
+      // The phone composition was already well centered, so leave it unchanged.
+      if (contactArtwork) {
+        const phone = controller.matches;
+        contactArtwork.position.x = phone ? 0 : (window.innerWidth <= 1050 ? -.75 : -1.15);
+        contactArtwork.scale.setScalar(phone ? 1 : .91);
+      }
       camera.aspect=window.innerWidth/Math.max(1,window.innerHeight);
       camera.fov=controller.matches?44:40;
       camera.updateProjectionMatrix();

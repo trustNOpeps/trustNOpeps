@@ -167,3 +167,11 @@ body.world-ready .world-fallback{opacity:0}
 .entry-actions a:first-child{color:var(--lime)}
 .entry-actions a:hover,.entry-actions a:focus-visible{color:#fff}
 @media(max-width:480px){.entry-actions{gap:8px 13px;padding-top:8px}.entry-actions a{font-size:9px}}
+
+/* Keep progress metadata outside every chapter's interaction area. */
+.scene-caption{top:95px;bottom:auto;z-index:3;left:clamp(22px,7.5vw,145px);font-size:9px;opacity:.73}
+.scene-counter{top:95px;bottom:auto;z-index:3;right:clamp(22px,7.5vw,145px);font-size:9px;opacity:.73}
+@media(max-width:710px){
+ .scene-caption{top:79px;bottom:auto;left:21px;z-index:3;font-size:8px}
+ .scene-counter{top:79px;bottom:auto;right:21px;z-index:3;font-size:8px}
+}

@@ -284,3 +284,36 @@ body.world-ready .world-fallback{opacity:0}
 @media (max-width:390px) {
   #contact .contact-title { font-size:clamp(42px,11vw,48px); }
 }
+
+
+/* QA FIX: reserve a safe gutter beside the fixed chapter rail on desktop. */
+@media (min-width:1150px) {
+  .chapter-container.to-right {
+    padding-right:clamp(118px,9vw,150px);
+  }
+  .progress-rail a { min-height:34px; }
+}
+
+/* The tablet header menu includes every chapter; do not show tiny 1px rail links. */
+@media (min-width:711px) and (max-width:1149px) {
+  .progress-rail { display:none; }
+}
+
+/* Tap targets follow the 44px mobile touch guideline without growing the type. */
+@media (max-width:710px) {
+  .entry-actions { row-gap:0; }
+  .entry-actions a {
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+    padding:9px 5px;
+    margin-inline:-5px;
+  }
+  .footer a {
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+    padding:10px 0;
+  }
+  .hero-sub a, .outline-button { min-height:44px; }
+}

@@ -77,36 +77,36 @@
 .screen-reader-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .card-visual .card-badge,.card-visual .card-num,.card-image-shadow{display:none!important}
 .card-visual{background:#ece7de}
-.sprite-shot{
-  width:100%;height:100%;min-height:240px;
-  background-image:url("../assets/after-wanting/original-product-sprite.webp");
-  background-repeat:no-repeat;
-  background-size:300% 200%;
-  background-color:#ece7de;
+
+/* Each catalog image has its own 4:3 canvas, including its studio background. */
+.card-visual {aspect-ratio:4/3}
+.card-visual img, .lookbook .product-only-archive img {
+ width:100%;height:100%;object-fit:contain;padding:0;transform:none;
 }
-.sprite-vol08{background-position:0% 0%}
-.sprite-vol09{background-position:50% 0%}
-.sprite-vol10{background-position:100% 0%}
-.sprite-projection{background-position:0% 100%}
-.sprite-shelter{background-position:50% 100%}
-.sprite-reflector{background-position:100% 100%}
-.card-visual .sprite-shot{position:absolute;inset:0;min-height:0}
-.modal-media .sprite-shot{width:100%;height:100%;min-height:clamp(300px,48vw,640px)}
-.lookbook .product-only-archive{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.lookbook .product-only-archive figure,
-.lookbook .product-only-archive figure:last-child{
- display:block;position:relative;min-height:0;background:#ece7de;aspect-ratio:1/1
-}
-.lookbook .product-only-archive .sprite-shot{min-height:0;width:100%;height:100%}
-@media(max-width:850px){
- .lookbook .product-only-archive{grid-template-columns:repeat(2,minmax(0,1fr))}
- .lookbook .product-only-archive figure:last-child{display:block}
+.cards {column-gap:clamp(14px,1.6vw,26px);row-gap:clamp(22px,3vw,44px)}
+.card-body {padding-bottom:0}
+.card-body p {min-height:0}
+.card-foot {margin-top:auto}
+.card {display:flex;flex-direction:column}
+.card-body {flex:1}
+.lookbook .product-only-archive {grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,26px)}
+.lookbook .product-only-archive figure {display:block;aspect-ratio:4/3;min-height:0}
+.archive-heading {font:400 clamp(40px,5vw,76px)/1 var(--serif);margin:0 0 .45em}
+.modal-media {display:flex;flex-direction:column;justify-content:center;min-height:0}
+.modal-media img {width:100%;height:auto;max-height:65dvh;padding:0;object-fit:contain}
+.piece-picker {display:flex;gap:6px;flex-wrap:wrap;padding:14px}
+.piece-picker button {padding:9px 12px;min-height:44px;border:1px solid var(--line);background:var(--paper);font-size:12px}
+.piece-picker button[aria-pressed="true"] {background:var(--ink);color:white}
+section[id] {scroll-margin-top:80px}
+@media(max-width:700px){
+ .lookbook .product-only-archive {grid-template-columns:1fr}
+ .lookbook .product-only-archive figure {display:block}
 }
 @media(max-width:560px){
- .lookbook .product-only-archive{grid-template-columns:1fr;gap:12px}
- .lookbook .product-only-archive figure,.lookbook .product-only-archive figure:not(:first-child){display:block}
- .lookbook .product-only-archive figure{aspect-ratio:1.1/1}
- .lookbook .product-only-archive .sprite-shot{min-height:0}
+ .cards {grid-template-columns:1fr}
+ .card-body h3 {font-size:clamp(32px,8vw,42px)}
+ .card-foot {flex-direction:row;align-items:center}
+ .card-body p {font-size:14px}
 }
 </style>
 </head><body>
@@ -118,7 +118,7 @@
 <div class="head-right"><a class="interest-button" href="#contact">Get in touch ↗</a><details class="mobile-menu"><summary>MENU ☰</summary><nav aria-label="Mobile navigation"><a href="#editorial">Editorial</a><a href="#archive">Collections</a><a href="#lookbook">Lookbook</a><a href="#packaging">Packaging</a><a href="#studio">Studio</a><a href="#contact">Contact</a></nav></details></div>
 </div></header>
 <main id="main"><section class="hero" id="top" aria-labelledby="hero-title"><div class="hero-grid"><div class="hero-copy"><span class="micro">AFTER WANTING / EDITION 001—010</span><h1 id="hero-title" class="hero-title">AFTER <em>Wanting.</em></h1><div class="hero-details"><p>Clothing concepts exploring the space between desire, memory and the things we choose to carry.</p><a class="arrow" href="#editorial">Discover the story <span aria-hidden="true">↘</span></a></div></div>
-<div class="hero-photo hero-design"><img src="../assets/after-wanting/vol07.webp" alt="Full AFTER WANTING Volume 07 After Hours digital garment concept board" fetchpriority="high" width="680" height="680"><span class="vertical-label">ARCHIVE / VOL.07</span><span class="photo-note">AFTER HOURS / VOL.07<br>Garment concept board · not yet manufactured</span></div></div></section>
+<div class="hero-photo hero-design"><img src="../assets/after-wanting/vol07.webp" alt="Full AFTER WANTING Volume 07 After Hours digital garment concept board" fetchpriority="high" width="680" height="680"></div></div></section>
 <div class="page edition-strip"><span>Ten collections / one unfolding story</span><span>Designed for the feelings we don't name</span><span>Independent concept archive</span></div>
 <section id="editorial" class="page intro"><h2>The things<br>we <em>keep.</em></h2><div><span class="micro">01 / THE POINT OF VIEW</span><p>What remains <span class="serif">after</span> the wanting?</p><p class="small-paragraph">AFTER WANTING develops clothing as a place for questions: who chooses, what we remember, how we hold distance, and the selves we carry in public. The work currently lives as garment design studies, collection stories and packaging concepts.</p><a href="#archive" class="arrow">Explore ten volumes <span>↗</span></a></div></section>
 <section class="feature" aria-label="Featured collection"><div class="feature-image"><img src="../assets/after-wanting/vol07.webp" alt="AFTER WANTING Volume 07 — After Hours, original apparel concept board" loading="lazy"></div><div class="feature-content"><div><span class="micro">SELECTED STORY / VOL.07</span><h2>After<br><em>Hours.</em></h2></div><div><p>When the city goes quiet, the mind keeps moving. Night colours, residual light and softened shapes.</p><a class="arrow" href="#archive" data-open-vol="7">Read the collection <span>↗</span></a><p class="tag micro">Original digital garment concepts — not manufactured items</p></div></div></section>
@@ -126,11 +126,11 @@
 <div class="toolbar"><div class="filter-set" role="group" aria-label="Filter collection archive"><button type="button" data-filter="all" aria-pressed="true">All (10)</button><button type="button" data-filter="01-05" aria-pressed="false">Vol. 01—05</button><button type="button" data-filter="06-10" aria-pressed="false">Vol. 06—10</button><button type="button" data-filter="saved" aria-pressed="false">Saved</button></div><label><span class="data-ghost">Search collections</span><input type="search" id="search" class="search" placeholder="Search collections…" aria-label="Search collections"></label></div>
 <div id="cards" class="cards" aria-live="polite"></div></section>
 <section id="lookbook" class="lookbook"><div class="page">
-<h2 class="screen-reader-only">Inside the Archive — garment studies</h2>
+<h2 class="archive-heading">Inside the Archive</h2>
 <div class="lookbook-grid product-only-archive">
-<figure><div class="sprite-shot sprite-projection" role="img" aria-label="Projection jacquard sweater from AFTER WANTING Volume 02, front and back"></div></figure>
-<figure><div class="sprite-shot sprite-shelter" role="img" aria-label="Shelter Club reversible vest from AFTER WANTING Volume 03, reversible sides"></div></figure>
-<figure><div class="sprite-shot sprite-reflector" role="img" aria-label="Reflector track jacket from AFTER WANTING Volume 04, front and back"></div></figure>
+<figure><img loading="lazy" width="1080" height="810" src="../assets/after-wanting/projection.webp" alt="Projection jacquard sweater from AFTER WANTING Volume 02, front and back"></figure>
+<figure><img loading="lazy" width="1080" height="810" src="../assets/after-wanting/shelter-club.webp" alt="Shelter Club reversible vest from AFTER WANTING Volume 03, reversible sides"></figure>
+<figure><img loading="lazy" width="1080" height="810" src="../assets/after-wanting/reflector.webp" alt="Reflector track jacket from AFTER WANTING Volume 04, front and back"></figure>
 </div></div></section>
 <section id="studio" class="manifesto"><div class="page"><span class="micro">04 / THE MANIFESTO</span><h2>Wanting is a feeling.<br><em>Choosing</em> is an act.</h2><p>Some ideas arrive loudly. Others stay folded, close to the body. Ten chapters explore that difference through form, colour, graphics and the everyday rituals of clothing.</p></div></section>
 <section id="packaging" class="packaging"><div class="page packaging-grid"><div><span class="micro">05 / AN OBJECT TO KEEP</span><h2>The story<br><em>continues.</em></h2><p>Each volume also proposes a different paper band, palette and insert card. Select a chapter to explore its packaging concept.</p><div id="package-selectors" class="packaging-selector" role="group" aria-label="Choose a volume for packaging"><!-- controls --></div><p id="packaging-detail" class="packaging-detail"></p><div class="package-color" id="package-colors" aria-label="Selected collection colors"></div></div><div class="packaging-stage"><div class="package-paper"><b>AFTER WANTING</b><div class="package-band" id="package-band"><span id="package-name">Unsent</span><small style="display:block;margin-top:20px">COLLECTION / <span id="package-num">10</span></small></div><small>THE OBJECT / PAPER STUDY</small></div></div></div></section>
@@ -147,27 +147,45 @@ const V=[
 {id:5,name:'Private Boundary',theme:'Closeness has its edges.',story:'Translucent surfaces, overlapping outlines and tactile seams turn privacy into form.',pack:'Ruang di dalam lipatan / Inside the fold',packdesc:'Burgundy paper band over pink tissue, with overlapping frames.',colors:['#491522','#F88178','#F1D6D5'],pieces:[['Clear Limit','Long-sleeve T-shirt'],['Room to Breathe','Hoodie'],['Soft Barrier','Work jacket'],['Distance Map','Cargo pants']],image:'../assets/after-wanting/vol05.webp'},
 {id:6,name:'Memory Garden',theme:'What remains still grows.',story:'Botanical fragments, archive pockets and embroidery carry traces that continue after the event.',pack:'Lembar herbarium / Herbarium sheet',packdesc:'Ivory band with botanical marks and a specimen-style insert.',colors:['#19483A','#DC7938','#EEE3CA'],pieces:[['Archive Bloom','Overshirt'],['Growing Trace','T-shirt'],['Mineral Memory','Knitted sweater'],['Root Map','Trousers']],image:'../assets/after-wanting/vol06.webp'},
 {id:7,name:'After Hours',theme:'The city quiets. The mind does not.',story:'Last lights, distant windows and after-dark colours describe the moment between motion and rest.',pack:'Jendela malam / Night window',packdesc:'Midnight-blue sleeve with apricot-lit windows and a quiet inner note.',colors:['#172940','#EB965E','#D4EBE7'],pieces:[['Night Signal','T-shirt'],['Last Light','Zip hoodie'],['Quiet Frequency','Crewneck'],['Window Seat','Bowling shirt']],image:'../assets/after-wanting/vol07.webp'},
-{id:8,name:'Second Look',theme:'See it one more time.',story:'Two pears create a third shape in the negative space. Familiar objects become unstable when attention changes.',pack:'Bentuk ketiga / Third shape',packdesc:'Ecru wrapper with two plum silhouettes and a second-look card.',colors:['#442B39','#A85B43','#ECE1C7'],pieces:[['Third Pear','Ecru T-shirt'],['Out of Place','Charcoal T-shirt'],['Afterimage','Long-sleeve T-shirt']],image:'sprite:vol08'},
-{id:9,name:'Own Cadence',theme:'A pace no one else can set.',story:'Moving dots and irregular intervals follow two runners as their steps drift out of sync.',pack:'Catatan langkah / Step notes',packdesc:'Ice-blue paper band, mulberry marks and a small orange accent seal.',colors:['#67253E','#EF813A','#C9E2EE'],pieces:[['Cadence Tee','Training T-shirt'],['Interval Singlet','Singlet'],['Split Short','Running shorts']],image:'sprite:vol09'},
-{id:10,name:'Unsent',theme:'Some words remain folded.',story:'The last draft, the mark of a hand, and the crease of a letter become printed and constructed details.',pack:'Surat terlipat / Folded letter',packdesc:'Paper-coloured wrapper, folded envelope form and a terracotta seal.',colors:['#253855','#A95342','#ECDFC8'],pieces:[['Palm Proof','T-shirt'],['Last Draft','Hoodie'],['Dog Ear','Knitted sweater'],['Wet Copy','Oxford shirt'],['Envelope Pocket','Straight trousers']],image:'sprite:vol10'}
+{id:8,name:'Second Look',theme:'See it one more time.',story:'Two pears create a third shape in the negative space. Familiar objects become unstable when attention changes.',pack:'Bentuk ketiga / Third shape',packdesc:'Ecru wrapper with two plum silhouettes and a second-look card.',colors:['#442B39','#A85B43','#ECE1C7'],pieces:[['Third Pear','Ecru T-shirt'],['Out of Place','Charcoal T-shirt'],['Afterimage','Long-sleeve T-shirt']],image:'../assets/after-wanting/vol08-piece1.webp',piecePhotos:true},
+{id:9,name:'Own Cadence',theme:'A pace no one else can set.',story:'Moving dots and irregular intervals follow two runners as their steps drift out of sync.',pack:'Catatan langkah / Step notes',packdesc:'Ice-blue paper band, mulberry marks and a small orange accent seal.',colors:['#67253E','#EF813A','#C9E2EE'],pieces:[['Cadence Tee','Training T-shirt'],['Interval Singlet','Singlet'],['Split Short','Running shorts']],image:'../assets/after-wanting/vol09-piece1.webp',piecePhotos:true},
+{id:10,name:'Unsent',theme:'Some words remain folded.',story:'The last draft, the mark of a hand, and the crease of a letter become printed and constructed details.',pack:'Surat terlipat / Folded letter',packdesc:'Paper-coloured wrapper, folded envelope form and a terracotta seal.',colors:['#253855','#A95342','#ECDFC8'],pieces:[['Palm Proof','T-shirt'],['Last Draft','Hoodie'],['Dog Ear','Knitted sweater'],['Wet Copy','Oxford shirt'],['Envelope Pocket','Straight trousers']],image:'../assets/after-wanting/vol10-piece1.webp',piecePhotos:true}
 ];
 const savedKey='aw-curated-volumes-v1';let saved=new Set();try{saved=new Set(JSON.parse(localStorage.getItem(savedKey)||'[]').filter(x=>Number.isInteger(x)&&x>0&&x<=10))}catch{}
 const grid=document.querySelector('#cards'),query=document.querySelector('#search');let filter='all',previousFocus=null;
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const num=n=>String(n).padStart(2,'0');
-function poster(v){let inner='';if(v.poster==='pear')inner='<path d="M45 22c-3 20-26 22-28 48-2 28 18 41 38 36s30-23 25-46c-4-21-27-28-35-38zm98 0c-3 20-26 22-28 48-2 28 18 41 38 36s30-23 25-46c-4-21-27-28-35-38" fill="#ece1c7"/>';else if(v.poster==='dots'){for(let y=30;y<120;y+=18)for(let x=14;x<185;x+=14){inner+='<circle cx="'+x+'" cy="'+y+'" r="'+(x>148?3.4:2.2)+'" fill="'+(x>150?'#ef813a':'#c9e2ee')+'"/>'}}else inner='<path d="M22 22L100 88L178 22M22 22V122H178V22" fill="none" stroke="#ecdfc8" stroke-width="2"/><circle cx="100" cy="88" r="9" fill="#a95342"/>';return '<div class="chapter-poster" style="background:'+v.colors[0]+';color:'+v.colors[2]+'"><svg viewBox="0 0 200 150" aria-hidden="true">'+inner+'</svg><span>Original concept / '+num(v.id)+'</span></div>'}
 function visual(v){
-  if(v.image && v.image.startsWith('sprite:')){
-    const key=v.image.slice(7);
-    return '<div class="sprite-shot sprite-'+key+'" role="img" aria-label="Original product designs from '+esc(v.name)+'"></div>';
-  }
-  return v.image?'<img loading="lazy" src="'+v.image+'" alt="Digital clothing designs — '+esc(v.name)+'" width="680" height="680">':poster(v);
+  return '<img loading="lazy" src="'+v.image+'" alt="'+esc(v.piecePhotos ? v.pieces[0][0]+' — front and back' : v.name+' garment designs')+'" width="1200" height="900">';
+}
+function showDetailMedia(v){
+  const media=document.querySelector('#modal-media');
+  media.innerHTML=visual(v);
+  if(!v.piecePhotos)return;
+  const image=media.querySelector('img');
+  const picker=document.createElement('div');
+  picker.className='piece-picker';
+  picker.setAttribute('role','group');
+  picker.setAttribute('aria-label','View a garment');
+  v.pieces.forEach(([name],index)=>{
+    const button=document.createElement('button');
+    button.type='button';
+    button.textContent=name;
+    button.setAttribute('aria-pressed',String(index===0));
+    button.addEventListener('click',()=>{
+      image.src='../assets/after-wanting/vol'+num(v.id)+'-piece'+(index+1)+'.webp';
+      image.alt=name+' — front and back';
+      for(const item of picker.children)item.setAttribute('aria-pressed',String(item===button));
+    });
+    picker.append(button);
+  });
+  media.append(picker);
 }
 function render(){const q=query.value.toLowerCase().trim();const subset=V.filter(v=>((filter==='all')||(filter==='saved'&&saved.has(v.id))||(filter==='01-05'&&v.id<=5)||(filter==='06-10'&&v.id>=6))&&(!q||(v.name+' '+v.theme+' '+v.pieces.map(p=>p.join(' ')).join(' ')).toLowerCase().includes(q)));grid.innerHTML=subset.map(v=>'<article class="card fade-in"><button type="button" class="card-visual" data-detail="'+v.id+'" aria-label="View '+esc(v.name)+' collection">'+visual(v)+'</button><div class="card-body"><span class="micro">Design chapter / '+num(v.id)+'</span><h3>'+esc(v.name)+'</h3><p>'+esc(v.theme)+'</p><div class="card-foot"><button type="button" class="text-action" data-detail="'+v.id+'">Explore the chapter ↗</button><button type="button" class="bookmark" data-save="'+v.id+'" aria-pressed="'+saved.has(v.id)+'">'+(saved.has(v.id)?'✓ Saved':'+ Save')+'</button></div></div></article>').join('')||'<p class="blank">No chapters match the current selection. Try another search or filter.</p>'}
 document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));
 query.addEventListener('input',render);
 grid.addEventListener('click',e=>{const open=e.target.closest('[data-detail]'),save=e.target.closest('[data-save]');if(open)openDetail(Number(open.dataset.detail));if(save){const id=Number(save.dataset.save);saved.has(id)?saved.delete(id):saved.add(id);try{localStorage.setItem(savedKey,JSON.stringify([...saved]))}catch{}render()}});
-const modal=document.querySelector('#volume-modal');function openDetail(id){const v=V.find(x=>x.id===id);if(!v)return;previousFocus=document.activeElement;document.querySelector('#modal-media').innerHTML=visual(v);document.querySelector('#modal-num').textContent='AFTER WANTING / VOLUME '+num(id);document.querySelector('#modal-title').textContent=v.name;document.querySelector('#modal-desc').textContent=v.story;document.querySelector('#modal-pieces').innerHTML=v.pieces.map(p=>'<li><strong>'+esc(p[0])+'</strong><span>'+esc(p[1])+'</span></li>').join('');document.querySelector('#modal-package').textContent=v.pack+' — '+v.packdesc;modal.showModal()}
+const modal=document.querySelector('#volume-modal');function openDetail(id){const v=V.find(x=>x.id===id);if(!v)return;previousFocus=document.activeElement;showDetailMedia(v);document.querySelector('#modal-num').textContent='AFTER WANTING / VOLUME '+num(id);document.querySelector('#modal-title').textContent=v.name;document.querySelector('#modal-desc').textContent=v.story;document.querySelector('#modal-pieces').innerHTML=v.pieces.map(p=>'<li><strong>'+esc(p[0])+'</strong><span>'+esc(p[1])+'</span></li>').join('');document.querySelector('#modal-package').textContent=v.pack+' — '+v.packdesc;modal.showModal()}
 document.querySelector('#close-modal').addEventListener('click',()=>modal.close());modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});modal.addEventListener('close',()=>previousFocus?.focus?.());document.querySelectorAll('[data-open-vol]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDetail(Number(a.dataset.openVol))}));
 const controls=document.querySelector('#package-selectors'),detail=document.querySelector('#packaging-detail'),color=document.querySelector('#package-colors');
 controls.innerHTML=V.map(v=>'<button type="button" data-package="'+v.id+'" aria-pressed="false">'+num(v.id)+'</button>').join('');

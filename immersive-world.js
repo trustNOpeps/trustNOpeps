@@ -9,7 +9,7 @@
   const sceneCount = document.getElementById('scene-count');
   const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a')];
   const mobileMenu = document.querySelector('.mobile-navigation');
-  const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','EXPERIMENTS / 004','ABOUT / 005','CONTACT / 006'];
+  const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let activeIndex = -1;
   let goalPosition = 0;

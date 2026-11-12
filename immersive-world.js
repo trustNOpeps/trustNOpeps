@@ -356,27 +356,10 @@
       camera.updateProjectionMatrix();
       const railBounds = rail.getBoundingClientRect();
       const rightEdge = railBounds.width ? railBounds.left : window.innerWidth;
-      layouts.forEach(({ content, copyOnRight }, i) => {
-        const art = worlds[i].art;
-        art.scale.setScalar(1);
-        art.position.set(0, 0, 0);
-        if (controller.matches) return;
-        const copy = content.getBoundingClientRect();
-        const left = copyOnRight ? 0 : copy.right;
-        const right = copyOnRight ? copy.left : rightEdge;
-        const available = Math.max(1, right - left);
-        const framingCamera = camera.clone();
-        framingCamera.position.set(3.4, 3.65, 11.6);
-        framingCamera.lookAt(copyOnRight ? 1.55 : -1.55, 0, 0);
-        framingCamera.updateMatrixWorld();
-        const depth = -new THREE.Vector3().applyMatrix4(framingCamera.matrixWorldInverse).z;
-        const pixelsPerUnit = window.innerHeight / (2 * depth * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
-        const scale = Math.min(i === 6 ? .91 : 1, available * .85 / (6.4 * pixelsPerUnit));
-        art.scale.setScalar(scale);
-        const center = new THREE.Vector3(0, .16 * scale, 0).project(framingCamera);
-        const target = center.clone();
-        target.x = (left + right) / window.innerWidth - 1;
-        art.position.copy(target.unproject(framingCamera).sub(center.unproject(framingCamera)));
+      layouts.forEach(layout => {
+        const copy = layout.content.getBoundingClientRect();
+        layout.left = layout.copyOnRight ? 0 : copy.right;
+        layout.right = layout.copyOnRight ? copy.left : rightEdge;
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,controller.matches?1.15:1.6));
       renderer.setSize(window.innerWidth,window.innerHeight,false);
@@ -392,6 +375,27 @@
     sceneCallback=pos=>{goalPosition=pos};
     document.body.classList.add('world-ready');
     if (controller.matches && location.hash && chapters[activeIndex]?.id === location.hash.slice(1)) restoreHashPosition();
+
+    function renderDesktopColumn(index, fraction) {
+      const current = layouts[index];
+      const next = layouts[Math.min(index + 1, layouts.length - 1)];
+      const left = THREE.MathUtils.lerp(current.left, next.left, fraction);
+      const right = THREE.MathUtils.lerp(current.right, next.right, fraction);
+      const width = Math.max(1, right - left);
+      const height = window.innerHeight;
+      renderer.setScissorTest(false);
+      renderer.clear();
+      renderer.setViewport(left, 0, width, height);
+      renderer.setScissor(left, 0, width, height);
+      renderer.setScissorTest(true);
+      camera.aspect = width / height;
+      // A 7.6-unit frame leaves a margin around the 6.4-unit display plinth.
+      camera.zoom = Math.min(1, camera.aspect * 2 * 11 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / 7.6);
+      camera.updateProjectionMatrix();
+      renderer.render(scene, camera);
+      renderer.setScissorTest(false);
+      renderer.setViewport(0, 0, window.innerWidth, height);
+    }
 
     function renderMobileSlots() {
       renderer.setScissorTest(false);
@@ -425,12 +429,9 @@
       const idx=Math.min(worlds.length-1,Math.floor(effectivePosition));
       const frac=effectivePosition-idx;
       const interpolatedX=effectivePosition*spacing;
-      const onRight=layouts[idx].copyOnRight ? 1 : -1;
-      const otherRight=layouts[Math.min(idx+1, layouts.length-1)].copyOnRight ? 1 : -1;
-      const horizontalBias=(onRight*(1-frac)+otherRight*frac)*1.55;
       const isMobile=controller.matches;
       const desiredPosition=new THREE.Vector3(interpolatedX+3.4+pointer.x*.23, isMobile?3.7:3.65+pointer.y*.15,isMobile?15.7:11.6);
-      const desiredTarget=new THREE.Vector3(interpolatedX+ (isMobile?0:horizontalBias),isMobile?-1.25:0,0);
+      const desiredTarget=new THREE.Vector3(interpolatedX,isMobile?-1.25:-.20,0);
       cameraPos.lerp(desiredPosition,Math.min(1,dt*5.6));
       cameraTarget.lerp(desiredTarget,Math.min(1,dt*5.6));
       camera.position.copy(cameraPos);camera.lookAt(cameraTarget);
@@ -446,12 +447,11 @@
         else mesh.rotation.z+=dt*speed;
       });}
       if (isMobile) renderMobileSlots();
-      else renderer.render(scene,camera);
+      else renderDesktopColumn(idx, frac);
       renderStarted=true;
     }
     // First render before entering the animation loop to avoid an empty canvas flash.
-    cameraPos.set(3.4,3.65,11.6); cameraTarget.set(-1.55,0,0);
-    renderer.render(scene,camera);
+    cameraPos.set(3.4,3.65,11.6); cameraTarget.set(0,-.20,0);
     requestAnimationFrame(loop);
     enqueueRead();
   }).catch(error=>{

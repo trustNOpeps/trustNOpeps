@@ -105,7 +105,13 @@ section[id] {scroll-margin-top:80px}
 @media(max-width:560px){
  .cards {grid-template-columns:1fr}
  .card-body h3 {font-size:clamp(32px,8vw,42px)}
- .card-foot {flex-direction:row;align-items:center}
+ .card-foot {display:flex;align-items:center}
+ .bookmark {width:auto;margin:0;min-height:44px}
+ .modal-media,.modal-info {max-height:none}
+ .modal-info {overflow:visible}
+ .modal-media img {height:auto;max-height:48dvh}
+ .piece-picker {padding:10px;gap:4px}
+ .piece-picker button {font-size:11px}
  .card-body p {font-size:14px}
 }
 </style>

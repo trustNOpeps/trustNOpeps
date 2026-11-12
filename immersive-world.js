@@ -52,7 +52,7 @@
   if (!viewportCanvas || !window.WebGLRenderingContext) return;
 
   import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js').then(THREE => {
-    const spacing = 16;
+    const spacing = window.matchMedia('(max-width: 710px)').matches ? 8 : 12;
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog(0x0b1116,19,40);
     const camera = new THREE.PerspectiveCamera(40,1,.1,100);

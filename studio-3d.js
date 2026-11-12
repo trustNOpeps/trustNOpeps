@@ -5,6 +5,7 @@ if (chapter) {
   const canvas = chapter.querySelector('#studio-canvas');
   const mount = chapter.querySelector('.studio-render');
   const chapterNumber = chapter.querySelector('#studio-chapter');
+  const shortNumber = chapter.querySelector('#studio-current');
   const heading = chapter.querySelector('#studio-title');
   const description = chapter.querySelector('#studio-description');
   const visit = chapter.querySelector('#studio-visit');
@@ -32,6 +33,7 @@ if (chapter) {
       currentChapter = sceneIndex;
       const selected = scenes[currentChapter];
       chapterNumber.textContent = '0' + (currentChapter + 1) + ' / 03';
+      shortNumber.textContent = String(currentChapter + 1);
       heading.innerHTML = selected.html;
       description.textContent = selected.text;
       visit.textContent = selected.label + ' ↗';

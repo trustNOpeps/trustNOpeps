@@ -1,36 +1,47 @@
-# AFTER WANTING — Clothing Concept Archive
+# AFTER WANTING — Editorial Clothing Archive
 
-**Status:** Independent brand / design-study archive · 2026–2027 concepts
+**Status:** Independent fashion concept / garment and packaging studies · November 2026
 
-**[Explore the live editorial showroom](https://trustnopeps.github.io/trustNOpeps/showroom/)** · [Website source](https://github.com/trustNOpeps/trustNOpeps/blob/gh-pages/showroom/index.html)
+**[Explore the live fashion website](https://trustnopeps.github.io/trustNOpeps/showroom/)** · [Website source](https://github.com/trustNOpeps/trustNOpeps/blob/gh-pages/showroom/index.html)
 
-## The idea
+## The brand idea
 
-A series of streetwear explorations around choice, memory, pressure, privacy and changing identity. Each volume has its own color system and garment direction rather than repeating one stock template. I use the project to explore creative direction, collection coherence, garment mockups, storytelling and the gap between a visual concept and a physical product.
+AFTER WANTING explores the space between desire, memory, identity and personal agency through clothing design, illustration, material and packaging concepts. The original 53-page collection portfolio documents ten different themes and proposed batch models. This public website is a customer-facing **editorial study and archive**, not an online store with inventory or checkout.
 
-| Volume | Theme | Period |
+| Vol. | Collection | Example pieces |
 | --- | --- | --- |
-| 01 | The Right to Choose | 2026 design study |
-| 02 | False Memory | 2026 design study |
-| 03 | Social Weather | 2026 design study |
-| 04 | Fragmented Self | 2027 concept |
-| 05 | Private Boundary | 2027 concept |
-| 06 | Memory Garden | 2027 concept |
-| 07 | After Hours | 2027 concept |
+| 01 | The Right to Choose | Chosen / Not Obeyed, Room / Closeness |
+| 02 | False Memory | False Memory, Attachment Pattern |
+| 03 | Social Weather | Forecast Club, Pressure System |
+| 04 | Fragmented Self | Multiple Windows, Reflector |
+| 05 | Private Boundary | Clear Limit, Room to Breathe |
+| 06 | Memory Garden | Archive Bloom, Growing Trace |
+| 07 | After Hours | Night Signal, Last Light |
+| 08 | Second Look | Third Pear, Out of Place |
+| 09 | Own Cadence | Cadence Tee, Split Short |
+| 10 | Unsent | Palm Proof, Last Draft, Wet Copy |
 
-## The showroom
+## The public experience
 
-- A mobile-first editorial archive, not a checkout or pretend storefront.
-- Genuine, compressed **selected preview pages from original user-created lookbooks**.
-- Filterable collections, collection-detail overlays and a browser-local favourites moodboard.
-- No invented stock, sales figures, drop dates, physical production or prices.
+- An editorial campaign landing with the project's own **AI-assisted virtual model study**. The garment in the model photograph is unbranded and should **not** be represented as an actual AFTER WANTING product.
+- Ten interactive chapters and accurate concept names from the source collection PDF; filter, search, modal details and private browser-local saved list.
+- Existing compressed archival product boards for volumes 01–07; **illustrated editorial placeholders**, not invented product photography, for volumes 08–10 until appropriate optimized assets are approved and published.
+- Packaging concept explorer with palettes and graphic structures from the collection portfolio.
+- Distinct notes about mockups, uncertainty, and public-vs-private communication.
+- Responsive layout, semantically accessible controls, a functioning visual archive, local save state, and reduced-motion support.
 
-The full original lookbooks are **not** published in this repository. The /gh-pages/assets/after-wanting/ files are limited-resolution previews for the website.
+## Visual system
 
-## Commercial readiness
+Warm paper `#f4f1eb`, charcoal `#171814`, terracotta `#ad4b3b`; Instrument Serif (editorial), Space Grotesk (brand displays), DM Sans (body). Visual research referenced current official Zara, Nike and Uniqlo websites, without copying their assets or brand layouts.
 
-Design mockups are **not** print-ready production specifications. Sampling, fit and fabric testing, costing, rights clearance and any final trademark/brand-mark clearance remain open; no merchandise is represented as ready for sale. Original design concepts were developed with AI-assisted visual workflows, then curated and reviewed for conceptual safety. These limitations are disclosed in the site itself.
+## Limits and production readiness
+
+- **No inventory, sales or pre-orders have been verified.** The PDF's example prices, costs, breakeven points and forecasts are **business simulations**, not live retail prices or purchase commitments.
+- AI-assisted model imagery is a **visual look test**, not a photo shoot, licensed model contract, or proof of final garment fit/print accuracy. The public version uses a restricted-resolution visual preview.
+- Most garment images are digital design concepts, not sampled or produced stock. Accurate artwork placement, fabric fit, measurements, material tests and production methods remain to be approved.
+- The original PDF and model reference source package are kept out of the public repository. Only selected low-resolution visuals are in `gh-pages/assets/after-wanting/`.
+- The Contact CTA uses public GitHub Issues. Do not post sensitive information.
 
 ## Credits
 
-Independent project and creative direction by **haammkaki**.
+Independent brand concept and creative direction: **haammkaki**. Synthetic visual workflows assisted with exploratory mockups and editorial images.

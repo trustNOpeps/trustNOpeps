@@ -53,7 +53,7 @@ Selected work on website structure, interface decisions and client-facing propos
 
 ## Creative practice
 
-- **[AFTER WANTING](projects/after-wanting.md):** Seven clothing concept volumes. [Explore the showroom](https://trustnopeps.github.io/trustNOpeps/showroom/). Garment production and rights clearance are pending.
+- **[AFTER WANTING](projects/after-wanting.md):** Ten original clothing concept volumes. [Explore the showroom](https://trustnopeps.github.io/trustNOpeps/showroom/). Garment production and rights clearance are pending.
 - **[Berpikir di Era AI](projects/berpikir-di-era-ai.md):** An Indonesian nonfiction book project. [Read the public preview](https://trustnopeps.github.io/trustNOpeps/book/). The full commercial manuscript is private.
 
 ## Portfolio design and QA

@@ -7,7 +7,7 @@
   const progress = document.getElementById('reading-progress');
   const sceneLabel = document.getElementById('scene-label');
   const sceneCount = document.getElementById('scene-count');
-  const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a')];
+  const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a, .mobile-navigation nav a')];
   const mobileMenu = document.querySelector('.mobile-navigation');
   const siteHeader = document.querySelector('.site-header');
   const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
@@ -47,24 +47,24 @@
   }
   window.addEventListener('scroll',enqueueRead,{passive:true});
   window.addEventListener('resize',enqueueRead,{passive:true});
-  // Desktop/tablet: align the readable chapter content below the fixed header.
-  // Phone: retain the complete scene composition at the start of each chapter.
+  // Anchor jumps focus the actual reading content at every viewport size.
+  // Natural scrolling preserves the uninterrupted 3D scene composition.
   function navigateToAnchor(hash, behavior = 'smooth') {
     if (!hash || !hash.startsWith('#')) return false;
     const target = document.getElementById(hash.slice(1));
     if (!target) return false;
     const phone = window.innerWidth <= 710;
-    const destination = !phone && target.classList.contains('chapter')
+    const destination = target.classList.contains('chapter')
       ? (target.querySelector('.content') || target)
       : target;
     const headerHeight = siteHeader?.getBoundingClientRect().height || (phone ? 67 : 77);
-    const gap = phone ? 12 : 36;
+    const gap = phone ? 20 : 34;
     const top = hash === '#top' ? 0
       : destination.getBoundingClientRect().top + window.scrollY - headerHeight - gap;
     const maximum = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     window.scrollTo({
       top: clamp(Math.round(top), 0, maximum),
-      behavior: reducedMotion ? 'instant' : behavior
+      behavior: reducedMotion ? 'auto' : behavior
     });
     return true;
   }
@@ -102,7 +102,7 @@
   if (!viewportCanvas || !window.WebGLRenderingContext) return;
 
   import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js').then(THREE => {
-    const spacing = window.matchMedia('(max-width: 710px)').matches ? 8 : 12;
+    let spacing = window.matchMedia('(max-width: 710px)').matches ? 8 : 12;
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog(0x0b1116,19,40);
     const camera = new THREE.PerspectiveCamera(40,1,.1,100);
@@ -332,6 +332,12 @@
     let renderStarted=false;
     const controller = window.matchMedia('(max-width: 710px)');
     function onResize(){
+      // Maintain scene spacing when a phone rotates into landscape or a tablet resizes.
+      const responsiveSpacing = controller.matches ? 8 : 12;
+      if (spacing !== responsiveSpacing) {
+        spacing = responsiveSpacing;
+        worlds.forEach((world, index) => { world.root.position.x = index * spacing; });
+      }
       // Reposition the entire portal, plinth, grid and particles consistently.
       // The phone composition was already well centered, so leave it unchanged.
       if (contactArtwork) {

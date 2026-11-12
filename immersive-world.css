@@ -317,3 +317,27 @@ body.world-ready .world-fallback{opacity:0}
   }
   .hero-sub a, .outline-button { min-height:44px; }
 }
+
+
+/* Project previews on the studio landing page. */
+.hero .content { width: min(790px, 76vw); max-width: 100%; }
+.hero-title { margin: 16px 0 20px; }
+.hero .lead { max-width: 610px; }
+.work-shelf { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.work-shelf a { display: flex; flex-direction: column; padding: 8px 8px 15px; background: #111d23; border: 1px solid #42524e; border-radius: 4px; text-decoration: none; color: #ecf3ec; }
+.work-shelf a:hover, .work-shelf a:focus-visible { border-color: var(--lime); }
+.work-shelf img { display:block; width:100%; aspect-ratio: 1.95; object-fit: contain; background:#f6f5f1; }
+.work-shelf a:nth-child(2) img { object-fit:cover; }
+.work-shelf small, .work-shelf strong, .work-shelf span { margin-inline: 5px; }
+.work-shelf small { margin-top: 14px; color:var(--lime); text-transform: uppercase; letter-spacing: .07em; font: 10px/1.5 ui-monospace,monospace; }
+.work-shelf strong { margin-block: 4px; font-size: clamp(15px,1.4vw,21px); }
+.work-shelf span { font-size:13px; line-height:1.45; color:#cad3d0; }
+.concept-index h3 a { color: inherit; text-decoration-thickness:1px; text-underline-offset:5px; }
+@media(max-width:710px){
+ .hero .content {width:100%;}
+ .work-shelf { grid-template-columns:1fr; gap:7px; }
+ .work-shelf a { display:grid; grid-template-columns:88px 1fr; align-content:center; column-gap:9px; padding:6px; }
+ .work-shelf img { grid-row:span 3; align-self:center; aspect-ratio:1.4; }
+ .work-shelf small {margin-top:0;}
+ .work-shelf strong {margin-block:1px;}
+}

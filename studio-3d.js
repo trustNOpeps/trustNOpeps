@@ -13,9 +13,9 @@ if (chapter) {
   const figNumber = chapter.querySelector('#studio-figure');
   const copy = chapter.querySelector('.studio-copy');
   const scenes = [
-    {name:'Engineering, in motion.', html:'Engineering,<br><em>in motion.</em>', text:'From tensile calculations to circuit simulations, the work starts with understanding how things behave.', label:'OPEN ENGINEERING LAB', href:'https://github.com/trustNOpeps/mechatronics-lab', figure:'01 / ENGINEERING STUDY'},
-    {name:'A space to experiment.', html:'A space to<br><em>experiment.</em>', text:'Small interactive worlds and practical interfaces. Built to test an idea, learn from it, and keep improving.', label:'EXPLORE LITTLE WORLD', href:'./apps/little-world/', figure:'02 / DIGITAL PLAYGROUND'},
-    {name:'Ideas beyond the screen.', html:'Ideas beyond<br><em>the screen.</em>', text:'An evolving collection of clothing concepts, writing and visual studies. Ideas are labeled as concepts until they become real.', label:'VISIT THE CREATIVE ARCHIVE', href:'./showroom/', figure:'03 / CREATIVE PRACTICE'}
+    {name:'Engineering, in motion.', html:'Engineering,<br> <em>in motion.</em>', text:'From tensile calculations to circuit simulations, the work starts with understanding how things behave.', label:'OPEN ENGINEERING LAB', href:'https://github.com/trustNOpeps/mechatronics-lab', figure:'01 / ENGINEERING STUDY'},
+    {name:'A space to experiment.', html:'A space to<br> <em>experiment.</em>', text:'Small interactive worlds and practical interfaces. Built to test an idea, learn from it, and keep improving.', label:'EXPLORE LITTLE WORLD', href:'./apps/little-world/', figure:'02 / DIGITAL PLAYGROUND'},
+    {name:'Ideas beyond the screen.', html:'Ideas beyond<br> <em>the screen.</em>', text:'An evolving collection of clothing concepts, writing and visual studies. Ideas are labeled as concepts until they become real.', label:'VISIT THE CREATIVE ARCHIVE', href:'./showroom/', figure:'03 / CREATIVE PRACTICE'}
   ];
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let currentChapter = -1;

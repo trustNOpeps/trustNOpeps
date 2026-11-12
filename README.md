@@ -56,6 +56,10 @@ Selected work on website structure, interface decisions and client-facing propos
 - **[AFTER WANTING](projects/after-wanting.md):** Seven clothing concept volumes. [Explore the showroom](https://trustnopeps.github.io/trustNOpeps/showroom/). Garment production and rights clearance are pending.
 - **[Berpikir di Era AI](projects/berpikir-di-era-ai.md):** An Indonesian nonfiction book project. [Read the public preview](https://trustnopeps.github.io/trustNOpeps/book/). The full commercial manuscript is private.
 
+## Portfolio design and QA
+
+The public seven-chapter 3D portfolio has a documented [design system and QA handoff](docs/portfolio-design-qa.md). Live website files are published from the `gh-pages` branch.
+
 ## Approach
 
 I usually start by understanding the problem, building a working version, checking what it actually does and refining it. These are independent, AI-assisted learning and creative projects. I distinguish prototypes from production work and use synthetic data where examples are needed.

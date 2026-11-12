@@ -25,7 +25,7 @@ AFTER WANTING explores the space between desire, memory, identity and personal a
 
 - The editorial landing and lookbook now use **original garment concept boards**. The previous low-resolution virtual model image was removed from the public site on 2026-11-12 at the user's request because it appeared pixelated.
 - Ten interactive chapters and accurate concept names from the source collection PDF; filter, search, modal details and private browser-local saved list.
-- Existing compressed original archival boards for volumes 01–07; **illustrated editorial placeholders**, not invented product photography, for volumes 08–10 until approved assets are prepared. All published apparel boards use contained, non-cropped image presentation.
+- Original garment concept boards for volumes 01–07 and cropped, product-only source artwork from the collection PDF for volumes 08–10. The archive gallery includes Projection (Vol.02), Shelter Club (Vol.03), and Reflector (Vol.04). Product images show only garments and their original print artwork; volume labels and editorial copy appear outside the image areas.
 - Packaging concept explorer with palettes and graphic structures from the collection portfolio.
 - Distinct notes about mockups, uncertainty, and public-vs-private communication.
 - Responsive layout, semantically accessible controls, a functioning visual archive, local save state, and reduced-motion support.

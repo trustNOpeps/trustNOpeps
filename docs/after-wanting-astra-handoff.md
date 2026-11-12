@@ -14,7 +14,7 @@ Updated: 12 November 2026
 ## Current state
 
 - Brand website created with hero, featured collection, ten-volume archive, search/filter/save, detail overlays, garment study gallery, manifesto, packaging explorer and contact.
-- Source artwork boards 01–07 are public in compressed form; Vol.08–10 are intentional flat illustrations, not real product photographs.
+- Source artwork boards 01–07 remain in the repo. Vol.08–10 now use real artwork extracted from the provided collection PDF and assembled as an optimized 1440×960 WebP source image: `gh-pages/assets/after-wanting/original-product-sprite.webp`.
 - Garment boards must show in full. Latest deployed CSS sets `object-fit:contain` (instead of cropping `cover`) for hero, featured image, collection cards, lookbook and modal.
 - **All virtual model images removed at owner's request.** Do not insert photos of models or synthetic human figures unless the owner explicitly changes this direction.
 - Not a live store: do not claim stock, availability, release dates, price, payment or preorder processing.
@@ -28,7 +28,7 @@ Editorial minimalism, independent contemporary streetwear, photographed/product-
 
 1. Review all pages at 1440×900, 1024×768, 768×1024, 390×844 and 320×640. Measure clipping, scroll anchoring, readable typography and tap targets.
 2. Verify all garment images remain **fully visible**, including opening collection detail overlays. Prefer `contain` with thoughtful framing; avoid upscaled or cropped product mockups.
-3. When approved original artwork for Vol.08–10 is available, prepare compressed per-volume images and replace CSS illustration placeholders without generating fake real-world production photos.
+3. The Vol.08–10 placeholders have been replaced using the PDF's original apparel designs. Preserve product-only visuals, no overlay labels/captions within photos, and maintain true print artwork (including lettering physically printed on garments).
 4. If the owner authorizes additional design assets, create a proper item grid from exact concept drawings. Do not invent material specifications, measurements or manufacturing readiness.
 5. Polish visual hierarchy, transitions, SEO/social previews, image alt text and Lighthouse performance.
 6. Maintain `haammkaki` as public creator identity; `trustNOpeps` stays only as the GitHub account/URL.
@@ -37,7 +37,7 @@ Editorial minimalism, independent contemporary streetwear, photographed/product-
 ## Required acceptance criteria
 
 - Hero and lookbook contain **zero model/person imagery**.
-- Full garment designs are visible without cutting off sleeves or typography.
+- Full garment designs are visible without cutting off sleeves or garment print artwork; images must contain no exterior editorial typography/labels.
 - No broken image requests, JS errors or horizontal overflow on tested screen sizes.
 - Archive contains exactly ten volumes with original names and themes, faithful to PDF.
 - Claim boundaries are explicit: concept visuals are not manufactured stock.

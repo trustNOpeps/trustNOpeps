@@ -338,16 +338,30 @@
         spacing = responsiveSpacing;
         worlds.forEach((world, index) => { world.root.position.x = index * spacing; });
       }
-      // Reposition the entire portal, plinth, grid and particles consistently.
-      // The phone composition was already well centered, so leave it unchanged.
-      if (contactArtwork) {
-        const phone = controller.matches;
-        contactArtwork.position.x = phone ? 0 : (window.innerWidth <= 1050 ? -.75 : -1.15);
-        contactArtwork.scale.setScalar(phone ? 1 : .91);
-      }
       camera.aspect=window.innerWidth/Math.max(1,window.innerHeight);
       camera.fov=controller.matches?44:40;
       camera.updateProjectionMatrix();
+      if (contactArtwork) {
+        contactArtwork.position.set(0, 0, 0);
+        contactArtwork.scale.setScalar(controller.matches ? 1 : .91);
+        if (!controller.matches) {
+          // Frame the compass in the space between the viewport edge and the contact copy.
+          const copyLeft = document.querySelector('#contact .content').getBoundingClientRect().left;
+          const framingCamera = camera.clone();
+          framingCamera.position.set(3.4, 3.65, 11.6);
+          framingCamera.lookAt(1.55, 0, 0);
+          framingCamera.updateMatrixWorld();
+          const depth = -new THREE.Vector3().applyMatrix4(framingCamera.matrixWorldInverse).z;
+          const pixelsPerUnit = window.innerHeight / (2 * depth * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
+          const scale = Math.min(.91, copyLeft * .85 / (6.4 * pixelsPerUnit));
+          contactArtwork.scale.setScalar(scale);
+          const center = new THREE.Vector3(0, .16 * scale, 0).project(framingCamera);
+          const target = center.clone();
+          target.x = copyLeft / window.innerWidth - 1;
+          const offset = target.unproject(framingCamera).sub(center.unproject(framingCamera));
+          contactArtwork.position.copy(offset);
+        }
+      }
       renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,controller.matches?1.15:1.6));
       renderer.setSize(window.innerWidth,window.innerHeight,false);
     }

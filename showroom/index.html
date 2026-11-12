@@ -18,6 +18,60 @@
 @media(max-width:850px){.hero-grid,.feature,.intro,.packaging-grid,.contact-grid{grid-template-columns:1fr}.hero-grid{min-height:0}.hero-copy{padding:60px 27px;min-height:485px}.hero-title{font-size:clamp(72px,15vw,132px)}.hero-photo{min-height:550px}.intro{gap:20px;padding:85px 0}.feature-image{min-height:520px}.feature-content{min-height:490px}.lookbook-grid{grid-template-columns:1.2fr .8fr}.lookbook-grid figure:last-child{display:none}.lookbook{padding:85px 0}.contact{padding:100px 0}.contact-grid{gap:0}}
 @media(max-width:560px){:root{scroll-padding-top:72px}.page{width:calc(100% - 30px)}.notice-bar{font-size:9px}.head-grid{min-height:67px;gap:10px}.wordmark{font-size:17px}.wordmark span{font-size:6px}.head-right{gap:8px}.head-right .interest-button{display:none}.hero-copy{min-height:445px;padding:43px 16px 40px}.hero-title{font-size:clamp(65px,19.4vw,110px);margin:20px 0}.hero-details{gap:14px}.hero-details p{font-size:14px}.hero-photo{min-height:500px}.photo-note{left:17px;bottom:17px;font-size:8px;max-width:250px}.vertical-label{right:12px;font-size:9px}.edition-strip{gap:13px;justify-content:center;flex-wrap:wrap;text-align:center;padding:13px 0}.edition-strip span{font-size:9px}.intro{padding:70px 0}.intro h2{font-size:73px}.intro p{font-size:24px}.intro .small-paragraph{font-size:13px}.feature{min-height:0}.feature-image{min-height:390px}.feature-content{min-height:390px;padding:40px 22px}.feature-content h2{font-size:74px}.archive{padding:78px 0}.section-top{display:block}.section-top h2{font-size:74px}.section-top p{margin-top:22px}.toolbar{display:block;margin:30px 0 19px}.filter-set{margin-bottom:12px}.filter-set button{padding:9px 11px}.search{width:100%;max-width:none}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card-visual{aspect-ratio:4/5}.card-badge{font-size:8px;left:7px;top:8px;padding:5px}.card-num{font-size:29px;right:10px;top:8px}.card-body{padding:13px 0 17px}.card-body h3{font-size:clamp(25px,7vw,38px)}.card-body p{font-size:11px;min-height:70px}.card-foot{display:block}.text-action{display:block;min-height:44px;font-size:9px}.bookmark{width:100%;margin-top:6px;font-size:9px}.lookbook-top{display:block}.lookbook h2{font-size:82px}.lookbook-top p{margin-top:22px}.lookbook-grid{grid-template-columns:1fr}.lookbook-grid figure{min-height:420px}.lookbook-grid figure:not(:first-child){display:none}.manifesto{padding:80px 0}.manifesto h2{font-size:clamp(54px,11vw,84px);margin:40px 0}.packaging{padding:80px 0}.packaging h2{font-size:77px}.packaging-stage{min-height:370px}.package-paper{width:75%}.contact h2{font-size:85px}.contact-cta{gap:10px}.modal-wrap{grid-template-columns:1fr}.modal-media{min-height:300px;max-height:38dvh}.modal-media img{max-height:38dvh}.modal-info{max-height:55dvh;padding:30px 21px}.modal-info h2{font-size:57px;margin:23px 0}.modal{max-height:93dvh}}
 @media(max-width:360px){.wordmark{font-size:15px}.hero-title{font-size:66px}.card-body h3{font-size:25px}.intro h2{font-size:64px}.contact h2{font-size:75px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Final garment-image presentation: preserve every original design board.
+   No 'cover' crops, and no upscaled low-resolution model imagery. */
+.hero-photo.hero-design{
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+  background:#dad4c9;padding:clamp(20px,3vw,52px);
+}
+.hero-photo.hero-design img{
+  position:relative;inset:auto;width:100%;height:100%;max-height:730px;
+  object-fit:contain;object-position:center;filter:none;background:transparent;
+}
+.hero-photo.hero-design::after{display:none}
+.hero-photo.hero-design .photo-note{
+  position:static;align-self:flex-start;max-width:none;background:transparent;
+  padding:0;color:#30362e;text-shadow:none;font-size:10px;
+}
+.hero-photo.hero-design .vertical-label{background:#171814;color:#f9f7f1;padding:10px 8px;right:13px;top:13px}
+.feature-image{background:#d8d2c7}
+.feature-image img{
+  object-fit:contain;object-position:center;
+  padding:clamp(16px,2.4vw,46px);background:transparent;
+}
+.card-visual{aspect-ratio:1/1.05;background:#eae5dc}
+.card-visual img{object-fit:contain;object-position:center;padding:clamp(7px,1vw,16px)}
+.card-image-shadow{display:none}
+.lookbook-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.lookbook-grid figure{min-height:0;display:flex;flex-direction:column;background:#e7e0d5}
+.lookbook-grid img{
+  width:100%;height:clamp(330px,35vw,530px);flex:none;
+  object-fit:contain;object-position:center;padding:clamp(12px,1.6vw,26px);
+}
+.lookbook-grid figcaption{
+  position:static;left:auto;right:auto;bottom:auto;
+  background:#30322c;color:#eae5db;padding:14px 17px;margin-top:auto;
+  line-height:1.5;
+}
+.modal-media{background:#eae5dc}
+.modal-media img{object-fit:contain;object-position:center;padding:clamp(10px,2vw,24px)}
+@media(max-width:850px){
+  .lookbook-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lookbook-grid figure:last-child{display:flex}
+}
+@media(max-width:560px){
+  .hero-photo.hero-design{min-height:0;padding:20px 16px 24px;gap:15px}
+  .hero-photo.hero-design img{height:auto;max-height:520px;width:100%}
+  .hero-photo.hero-design .photo-note{font-size:9px;margin-left:4px}
+  .feature-image img{padding:14px}
+  .card-visual{aspect-ratio:1/1.16}
+  .card-visual img{padding:5px}
+  .lookbook-grid{grid-template-columns:1fr}
+  .lookbook-grid figure,.lookbook-grid figure:not(:first-child){display:flex}
+  .lookbook-grid img{height:auto;max-height:none;aspect-ratio:1.22;object-fit:contain;padding:18px}
+  .modal-media img{object-fit:contain;padding:10px}
+}
 </style>
 </head><body>
 <a class="skip" href="#main">Skip to content</a>
@@ -28,18 +82,18 @@
 <div class="head-right"><a class="interest-button" href="#contact">Get in touch ↗</a><details class="mobile-menu"><summary>MENU ☰</summary><nav aria-label="Mobile navigation"><a href="#editorial">Editorial</a><a href="#archive">Collections</a><a href="#lookbook">Lookbook</a><a href="#packaging">Packaging</a><a href="#studio">Studio</a><a href="#contact">Contact</a></nav></details></div>
 </div></header>
 <main id="main"><section class="hero" id="top" aria-labelledby="hero-title"><div class="hero-grid"><div class="hero-copy"><span class="micro">AFTER WANTING / EDITION 001—010</span><h1 id="hero-title" class="hero-title">AFTER <em>Wanting.</em></h1><div class="hero-details"><p>Clothing concepts exploring the space between desire, memory and the things we choose to carry.</p><a class="arrow" href="#editorial">Discover the story <span aria-hidden="true">↘</span></a></div></div>
-<div class="hero-photo"><img src="../assets/after-wanting/model-campaign.webp" alt="AI-assisted editorial identity study featuring the AFTER WANTING virtual model in an unbranded black T-shirt" fetchpriority="high" width="480" height="600"><span class="vertical-label">INDEPENDENT STUDY / 2026</span><span class="photo-note">MODEL STUDY 001<br>Editorial identity test · unbranded garment</span></div></div></section>
+<div class="hero-photo hero-design"><img src="../assets/after-wanting/vol07.webp" alt="Full AFTER WANTING Volume 07 After Hours digital garment concept board" fetchpriority="high" width="680" height="680"><span class="vertical-label">ARCHIVE / VOL.07</span><span class="photo-note">AFTER HOURS / VOL.07<br>Garment concept board · not yet manufactured</span></div></div></section>
 <div class="page edition-strip"><span>Ten collections / one unfolding story</span><span>Designed for the feelings we don't name</span><span>Independent concept archive</span></div>
 <section id="editorial" class="page intro"><h2>The things<br>we <em>keep.</em></h2><div><span class="micro">01 / THE POINT OF VIEW</span><p>What remains <span class="serif">after</span> the wanting?</p><p class="small-paragraph">AFTER WANTING develops clothing as a place for questions: who chooses, what we remember, how we hold distance, and the selves we carry in public. The work currently lives as garment design studies, collection stories and packaging concepts.</p><a href="#archive" class="arrow">Explore ten volumes <span>↗</span></a></div></section>
 <section class="feature" aria-label="Featured collection"><div class="feature-image"><img src="../assets/after-wanting/vol07.webp" alt="AFTER WANTING Volume 07 — After Hours, original apparel concept board" loading="lazy"></div><div class="feature-content"><div><span class="micro">SELECTED STORY / VOL.07</span><h2>After<br><em>Hours.</em></h2></div><div><p>When the city goes quiet, the mind keeps moving. Night colours, residual light and softened shapes.</p><a class="arrow" href="#archive" data-open-vol="7">Read the collection <span>↗</span></a><p class="tag micro">Original digital garment concepts — not manufactured items</p></div></div></section>
 <section id="archive" class="archive page"><div class="section-top"><div><span class="micro">02 / THE COMPLETE CHAPTERS</span><h2>Collection<br><em>Archive.</em></h2></div><p>Ten design chapters, each with its own visual system and apparel direction. Browse the original concept boards, ideas and selected garments.</p></div>
 <div class="toolbar"><div class="filter-set" role="group" aria-label="Filter collection archive"><button type="button" data-filter="all" aria-pressed="true">All (10)</button><button type="button" data-filter="01-05" aria-pressed="false">Vol. 01—05</button><button type="button" data-filter="06-10" aria-pressed="false">Vol. 06—10</button><button type="button" data-filter="saved" aria-pressed="false">Saved</button></div><label><span class="data-ghost">Search collections</span><input type="search" id="search" class="search" placeholder="Search collections…" aria-label="Search collections"></label></div>
 <div id="cards" class="cards" aria-live="polite"></div></section>
-<section id="lookbook" class="lookbook"><div class="page"><div class="lookbook-top"><div><span class="micro">03 / IMAGE &amp; GARMENT STUDIES</span><h2>Behind<br>the <em>image.</em></h2></div><p>A fashion identity study paired with garment design boards. The model image is not a photograph of manufactured AFTER WANTING merchandise.</p></div><div class="lookbook-grid">
-<figure><img src="../assets/after-wanting/model-campaign.webp" alt="Unbranded AI-assisted fashion model identity and styling study" loading="lazy"><figcaption>01 / Model identity study · unbranded</figcaption></figure>
+<section id="lookbook" class="lookbook"><div class="page"><div class="lookbook-top"><div><span class="micro">03 / ORIGINAL GARMENT STUDIES</span><h2>Inside<br>the <em>archive.</em></h2></div><p>Selected apparel concept boards from the original collection studies. Each board is shown in full to preserve artwork, silhouettes, and the intended layout.</p></div><div class="lookbook-grid">
+<figure><img src="../assets/after-wanting/vol07.webp" alt="Full original AFTER WANTING After Hours clothing design board" loading="lazy"><figcaption>01 / After Hours · design study</figcaption></figure>
 <figure><img src="../assets/after-wanting/vol03.webp" alt="Original Social Weather garment concept presentation" loading="lazy"><figcaption>02 / Garment research · Social Weather</figcaption></figure>
 <figure><img src="../assets/after-wanting/vol06.webp" alt="Original Memory Garden collection concept presentation" loading="lazy"><figcaption>03 / Garment research · Memory Garden</figcaption></figure>
-</div><div class="lookbook-note">Editorial casting/styling visual created with AI assistance. Product boards depict concepts; silhouettes, fabrication and artwork placement have not been validated through physical samples.</div></div></section>
+</div><div class="lookbook-note">These are original digital collection concept boards, not photographs of manufactured clothing. Sampling, fabric, fit and final print placement still require verification.</div></div></section>
 <section id="studio" class="manifesto"><div class="page"><span class="micro">04 / THE MANIFESTO</span><h2>Wanting is a feeling.<br><em>Choosing</em> is an act.</h2><p>Some ideas arrive loudly. Others stay folded, close to the body. Ten chapters explore that difference through form, colour, graphics and the everyday rituals of clothing.</p></div></section>
 <section id="packaging" class="packaging"><div class="page packaging-grid"><div><span class="micro">05 / AN OBJECT TO KEEP</span><h2>The story<br><em>continues.</em></h2><p>Each volume also proposes a different paper band, palette and insert card. Select a chapter to explore its packaging concept.</p><div id="package-selectors" class="packaging-selector" role="group" aria-label="Choose a volume for packaging"><!-- controls --></div><p id="packaging-detail" class="packaging-detail"></p><div class="package-color" id="package-colors" aria-label="Selected collection colors"></div></div><div class="packaging-stage"><div class="package-paper"><b>AFTER WANTING</b><div class="package-band" id="package-band"><span id="package-name">Unsent</span><small style="display:block;margin-top:20px">COLLECTION / <span id="package-num">10</span></small></div><small>THE OBJECT / PAPER STUDY</small></div></div></div></section>
 <section id="contact" class="contact"><div class="page contact-grid"><div><span class="micro">06 / CONTACT &amp; COLLABORATION</span><h2>Have an<br><em>idea?</em></h2></div><div class="contact-copy"><p>Open to conversations about collection development, production partnerships and creative direction. The designs shown are concepts, not a live shop or an active pre-order.</p><div class="contact-cta"><a class="arrow" href="https://github.com/trustNOpeps/trustNOpeps/issues/new" target="_blank" rel="noopener noreferrer">Start a public conversation <span>↗</span></a><a class="arrow" href="../#studio">Back to haammkaki <span>↗</span></a></div><p class="contact-meta">Contact via GitHub Issues requires sign-in and is public. Please do not share sensitive information. Private contact details are not published here.</p></div></div></section>

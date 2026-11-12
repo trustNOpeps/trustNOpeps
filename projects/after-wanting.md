@@ -23,9 +23,9 @@ AFTER WANTING explores the space between desire, memory, identity and personal a
 
 ## The public experience
 
-- An editorial campaign landing with the project's own **AI-assisted virtual model study**. The garment in the model photograph is unbranded and should **not** be represented as an actual AFTER WANTING product.
+- The editorial landing and lookbook now use **original garment concept boards**. The previous low-resolution virtual model image was removed from the public site on 2026-11-12 at the user's request because it appeared pixelated.
 - Ten interactive chapters and accurate concept names from the source collection PDF; filter, search, modal details and private browser-local saved list.
-- Existing compressed archival product boards for volumes 01–07; **illustrated editorial placeholders**, not invented product photography, for volumes 08–10 until appropriate optimized assets are approved and published.
+- Existing compressed original archival boards for volumes 01–07; **illustrated editorial placeholders**, not invented product photography, for volumes 08–10 until approved assets are prepared. All published apparel boards use contained, non-cropped image presentation.
 - Packaging concept explorer with palettes and graphic structures from the collection portfolio.
 - Distinct notes about mockups, uncertainty, and public-vs-private communication.
 - Responsive layout, semantically accessible controls, a functioning visual archive, local save state, and reduced-motion support.
@@ -37,7 +37,7 @@ Warm paper `#f4f1eb`, charcoal `#171814`, terracotta `#ad4b3b`; Instrument Serif
 ## Limits and production readiness
 
 - **No inventory, sales or pre-orders have been verified.** The PDF's example prices, costs, breakeven points and forecasts are **business simulations**, not live retail prices or purchase commitments.
-- AI-assisted model imagery is a **visual look test**, not a photo shoot, licensed model contract, or proof of final garment fit/print accuracy. The public version uses a restricted-resolution visual preview.
+- The virtual-model photo was removed from the public branch. Old Git commits may still contain historical copies. Do not reintroduce a model without the owner's explicit approval and adequate image quality.
 - Most garment images are digital design concepts, not sampled or produced stock. Accurate artwork placement, fabric fit, measurements, material tests and production methods remain to be approved.
 - The original PDF and model reference source package are kept out of the public repository. Only selected low-resolution visuals are in `gh-pages/assets/after-wanting/`.
 - The Contact CTA uses public GitHub Issues. Do not post sensitive information.

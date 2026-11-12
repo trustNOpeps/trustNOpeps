@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 205" role="img" aria-labelledby="title">
+  <title id="title">After Wanting — AW monogram</title>
+  <rect width="400" height="205" fill="#eee6df"/>
+  <g fill="#412334">
+    <!-- A and W share a descending stem. Fine terminals echo an editorial serif. -->
+    <path d="M83 151h6c6 0 9-4 13-13l42-91h9l43 91 24-53-11-24c-3-7-7-9-14-9h-4v-5h46v5h-8c-4 0-5 2-3 7l35 79 31-70c5-12 4-16-6-16h-5v-5h35v5h-3c-7 0-10 4-15 15l-40 90h-8l-27-61-28 61h-8l-46-101-37 82c-4 9-3 13 6 13h5v5H83z"/>
+    <path d="M113 119c12 1 21-3 30-9 6-4 13-7 20-7l3 8c-10-1-16 1-23 5-11 6-20 10-34 11z"/>
+  </g>
+</svg>

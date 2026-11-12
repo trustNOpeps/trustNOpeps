@@ -1,5 +1,5 @@
 
-/* trustNOpeps Interactive World / original procedural artwork, no borrowed 3D models. */
+/* haammkaki Interactive World / original procedural artwork, no borrowed 3D models. */
 (() => {
   'use strict';
   const chapters = [...document.querySelectorAll('[data-scene]')];

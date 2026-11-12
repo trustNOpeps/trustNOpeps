@@ -68,9 +68,17 @@ The following were checked **in the GitHub source/deployment**, not claimed as e
 | Seven anchor targets exposed the heading and first visible content at all four widths | Retained readable-content anchor behavior for every viewport |
 | No horizontal overflow or captured JS/network errors across four baseline sizes | Retained responsive, fallback and reduced-motion behavior |
 
+## Post-fix browser regression results (PASS)
+
+- **1440×900 desktop:** Concepts rail/content overlap = 0px², minimum gap 28.64px; Contact rail/content overlap = 0px², minimum gap 50.64px; contact CTAs visible, 48.4px tall.
+- **768×1024 tablet:** Menu visible, 44px tall; Concept Studies reachable in menu; unusable right rail hidden (0×0px).
+- **390×844 phone:** Engineering heading y=123–204.6px; Contact heading y=267.33–355.9px after navigation; all 11 project-action links 44px tall; footer anchor 44px tall; scrollWidth matches viewport (390px); zero captured browser-console errors.
+
+These measurements are browser test results, not a guarantee of identical geometry on all devices.
+
 ## Device / visual QA acceptance matrix
 
-**Status: baseline visual audit completed; latest correction awaiting regression results.** An automated browser review tested desktop 1440×900, tablet 768×1024, phone 390×844 and compact phone 320×640. It confirmed working navigation to all seven sections, visible headings and initial content, no horizontal overflow, and no browser errors in the tested version. Three measured issues remained and were subsequently patched in `e2d8928e`. Do not treat the new CSS as fully visually verified without testing it.
+**Status: PASS for tested browser criteria.** An automated browser review checked desktop 1440×900, tablet 768×1024, phone 390×844 and compact phone 320×640. Seven chapter anchors exposed headings and first content; no horizontal overflow or browser errors were detected. Three measured issues were patched in `e2d8928e` and targeted post-fix browser testing passed on desktop, tablet and 390px phone. Physical-device/Safari checks and Lighthouse scores are not covered by this PASS.
 
 | Viewport | Acceptance criteria |
 | --- | --- |
@@ -85,7 +93,7 @@ The following were checked **in the GitHub source/deployment**, not claimed as e
 
 ## Honest limitations / remaining decisions
 
-- Full manual visual QA on the latest CSS revision, including Safari/iOS, Android, and smaller laptops, **remains open**. Earlier automated browser checks covered 320px, but not a physical device.
+- Physical-device visual QA, especially iOS Safari, Android Chrome and smaller laptops, **remains open**. Automated browser checks did include 320px, but not a physical device.
 - Lighthouse performance, accessibility, SEO and networking scores **have not been measured**; do not invent scores.
 - 3D rendering relies on WebGL and an external Three.js CDN; Google Fonts is also externally loaded. The basic fallback is present, but bandwidth/device testing remains useful.
 - The Contact CTA uses **public GitHub Issues** (not a private inbox). If a verified business email or LinkedIn contact route is later supplied and approved, replace or complement it.

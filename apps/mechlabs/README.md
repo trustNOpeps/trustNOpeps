@@ -1,6 +1,6 @@
 # MechLabs — Engineering Workbench
 
-**Independent educational project** by Hamka / [trustNOpeps](https://github.com/trustNOpeps).
+**Independent educational project** by **[haammkaki](https://github.com/trustNOpeps)**.
 
 **[Live demo](https://mechlabs-engineering.lovable.app/)** · [Portfolio case study](../../projects/mechlabs.md)
 

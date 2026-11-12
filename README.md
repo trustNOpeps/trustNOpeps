@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/trustnopeps-wordmark.gif" alt="Animated trustNOpeps wordmark" width="100%" />
+  <img src="assets/haammkaki-wordmark.svg" alt="Animated haammkaki wordmark" width="100%" />
 </p>
 
-# Muhamad Hamka
+# haammkaki
 
 **Mechanical Engineering × Technology × Product × Creative**
 

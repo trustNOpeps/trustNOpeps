@@ -33,4 +33,4 @@ Design mockups are **not** print-ready production specifications. Sampling, fit 
 
 ## Credits
 
-Independent project and creative direction by **haammkaki / trustNOpeps**.
+Independent project and creative direction by **haammkaki**.

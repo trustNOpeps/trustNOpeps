@@ -57,7 +57,7 @@ Alternatively, clone the repository:
 
 ```sh
 git clone https://github.com/trustNOpeps/trustNOpeps.git
-cd trustNOpeps
+cd haammkaki
 ```
 
 Run all calculation and export tests with Node.js 20 or later:
@@ -76,6 +76,6 @@ npm test
 
 ## Provenance
 
-An independent learning project created for the **trustNOpeps** portfolio with AI-assisted implementation and documentation. This is not a commissioned client system, proof of professional engineering credentials, or evidence of commercial use.
+An independent learning project created for the **haammkaki** portfolio with AI-assisted implementation and documentation. This is not a commissioned client system, proof of professional engineering credentials, or evidence of commercial use.
 
 [Back to portfolio](../../README.md)

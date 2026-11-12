@@ -4,7 +4,7 @@
 
 # Pixel Desk
 
-A small, colorful browser experiment by **trustNOpeps**. Retro desktop-inspired windows contain a searchable project gallery and a 16 × 16 pixel drawing pad.
+A small, colorful browser experiment by **haammkaki**. Retro desktop-inspired windows contain a searchable project gallery and a 16 × 16 pixel drawing pad.
 
 ## Run
 

@@ -2,7 +2,7 @@
   <img src="assets/trustnopeps-wordmark.gif" alt="Animated trustNOpeps wordmark" width="100%" />
 </p>
 
-# Hamka
+# Muhamad Hamka
 
 **Mechanical Engineering × Technology × Product × Creative**
 

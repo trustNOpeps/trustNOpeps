@@ -22,11 +22,14 @@
   function readScroll() {
     scrollQueued = false;
     const mid = window.scrollY + window.innerHeight * .48;
-    const centers = chapters.map(e => e.offsetTop + e.offsetHeight * .5);
-    let i=0;
-    while(i < centers.length-2 && mid > centers[i+1]) i++;
-    const fraction = i >= centers.length-1 ? 0 : clamp((mid-centers[i])/Math.max(1,centers[i+1]-centers[i]),0,1);
-    goalPosition = Math.min(chapters.length-1,i + smooth(fraction));
+    // Keep each exhibit still while its chapter is being read.
+    const transition = window.innerHeight * .20;
+    goalPosition = 0;
+    for (let i = 1; i < chapters.length; i++) {
+      const distance = mid - chapters[i].offsetTop;
+      if (distance <= -transition) break;
+      goalPosition = i - 1 + smooth(clamp((distance + transition) / (2 * transition), 0, 1));
+    }
     const nearest=clamp(Math.round(goalPosition),0,chapters.length-1);
     if (nearest!==activeIndex) {
       activeIndex=nearest;
@@ -55,7 +58,7 @@
     if (!target) return false;
     const phone = window.innerWidth <= 710;
     const destination = target.classList.contains('chapter')
-      ? (target.querySelector('.content') || target)
+      ? ((phone && document.body.classList.contains('world-ready') && target.querySelector('.scene-slot')) || target.querySelector('.content') || target)
       : target;
     const headerHeight = siteHeader?.getBoundingClientRect().height || (phone ? 67 : 77);
     const gap = phone ? 20 : 34;
@@ -305,10 +308,10 @@
       moving.push({mesh:middle,speed:.05},{mesh:inner,speed:-.065,axis:'y'});
     }
     // 06: an open portal, with the full artwork group balanced left of the copy.
-    let contactArtwork=null;
+
     {
       const g=stage(6);
-      contactArtwork=g;
+
       const portal=T(g,materials.steel,1.75,.15,0,.16,0);
       const inner=T(g,materials.lime,1.41,.044,0,.16,.08);
       const halo=T(g,materials.lavender,1.95,.025,0,.16,-.12);
@@ -331,6 +334,16 @@
     let pointer={x:0,y:0};
     let renderStarted=false;
     const controller = window.matchMedia('(max-width: 710px)');
+    const rail = document.querySelector('.progress-rail');
+    const layouts = chapters.map(chapter => {
+      const content = chapter.querySelector('.content');
+      const slot = document.createElement('div');
+      slot.className = 'scene-slot';
+      slot.setAttribute('aria-hidden', 'true');
+      content.before(slot);
+      return { content, slot, copyOnRight: content.parentElement.classList.contains('to-right') };
+    });
+    const mobileCamera = new THREE.PerspectiveCamera(37, 1, .1, 100);
     function onResize(){
       // Maintain scene spacing when a phone rotates into landscape or a tablet resizes.
       const responsiveSpacing = controller.matches ? 8 : 12;
@@ -341,32 +354,36 @@
       camera.aspect=window.innerWidth/Math.max(1,window.innerHeight);
       camera.fov=controller.matches?44:40;
       camera.updateProjectionMatrix();
-      if (contactArtwork) {
-        contactArtwork.position.set(0, 0, 0);
-        contactArtwork.scale.setScalar(controller.matches ? 1 : .91);
-        if (!controller.matches) {
-          // Frame the compass in the space between the viewport edge and the contact copy.
-          const copyLeft = document.querySelector('#contact .content').getBoundingClientRect().left;
-          const framingCamera = camera.clone();
-          framingCamera.position.set(3.4, 3.65, 11.6);
-          framingCamera.lookAt(1.55, 0, 0);
-          framingCamera.updateMatrixWorld();
-          const depth = -new THREE.Vector3().applyMatrix4(framingCamera.matrixWorldInverse).z;
-          const pixelsPerUnit = window.innerHeight / (2 * depth * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
-          const scale = Math.min(.91, copyLeft * .85 / (6.4 * pixelsPerUnit));
-          contactArtwork.scale.setScalar(scale);
-          const center = new THREE.Vector3(0, .16 * scale, 0).project(framingCamera);
-          const target = center.clone();
-          target.x = copyLeft / window.innerWidth - 1;
-          const offset = target.unproject(framingCamera).sub(center.unproject(framingCamera));
-          contactArtwork.position.copy(offset);
-        }
-      }
+      const railBounds = rail.getBoundingClientRect();
+      const rightEdge = railBounds.width ? railBounds.left : window.innerWidth;
+      layouts.forEach(({ content, copyOnRight }, i) => {
+        const art = worlds[i].art;
+        art.scale.setScalar(1);
+        art.position.set(0, 0, 0);
+        if (controller.matches) return;
+        const copy = content.getBoundingClientRect();
+        const left = copyOnRight ? 0 : copy.right;
+        const right = copyOnRight ? copy.left : rightEdge;
+        const available = Math.max(1, right - left);
+        const framingCamera = camera.clone();
+        framingCamera.position.set(3.4, 3.65, 11.6);
+        framingCamera.lookAt(copyOnRight ? 1.55 : -1.55, 0, 0);
+        framingCamera.updateMatrixWorld();
+        const depth = -new THREE.Vector3().applyMatrix4(framingCamera.matrixWorldInverse).z;
+        const pixelsPerUnit = window.innerHeight / (2 * depth * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
+        const scale = Math.min(i === 6 ? .91 : 1, available * .85 / (6.4 * pixelsPerUnit));
+        art.scale.setScalar(scale);
+        const center = new THREE.Vector3(0, .16 * scale, 0).project(framingCamera);
+        const target = center.clone();
+        target.x = (left + right) / window.innerWidth - 1;
+        art.position.copy(target.unproject(framingCamera).sub(center.unproject(framingCamera)));
+      });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,controller.matches?1.15:1.6));
       renderer.setSize(window.innerWidth,window.innerHeight,false);
     }
     window.addEventListener('resize',onResize,{passive:true});
     onResize();
+    document.fonts?.ready.then(onResize);
     window.addEventListener('pointermove',e=>{
       if(controller.matches||reducedMotion)return;
       pointer.x=clamp(e.clientX/window.innerWidth*2-1,-1,1);
@@ -374,6 +391,30 @@
     },{passive:true});
     sceneCallback=pos=>{goalPosition=pos};
     document.body.classList.add('world-ready');
+    if (controller.matches && location.hash && chapters[activeIndex]?.id === location.hash.slice(1)) restoreHashPosition();
+
+    function renderMobileSlots() {
+      renderer.setScissorTest(false);
+      renderer.clear();
+      renderer.setScissorTest(true);
+      worlds.forEach(world => { world.root.visible = false; });
+      layouts.forEach(({ slot }, i) => {
+        const rect = slot.getBoundingClientRect();
+        if (!rect.height || rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+        const x = worlds[i].root.position.x;
+        mobileCamera.aspect = rect.width / rect.height;
+        mobileCamera.updateProjectionMatrix();
+        mobileCamera.position.set(x + 2.1, 2.8, 8.8);
+        mobileCamera.lookAt(x, -.25, 0);
+        renderer.setViewport(rect.left, window.innerHeight - rect.bottom, rect.width, rect.height);
+        renderer.setScissor(rect.left, window.innerHeight - rect.bottom, rect.width, rect.height);
+        worlds[i].root.visible = true;
+        renderer.render(scene, mobileCamera);
+        worlds[i].root.visible = false;
+      });
+      renderer.setScissorTest(false);
+      renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
+    }
 
     function loop(now){
       requestAnimationFrame(loop);
@@ -384,8 +425,8 @@
       const idx=Math.min(worlds.length-1,Math.floor(effectivePosition));
       const frac=effectivePosition-idx;
       const interpolatedX=effectivePosition*spacing;
-      const onRight=(idx===2||idx===4||idx===6)?1:-1;
-      const otherRight=(idx+1===2||idx+1===4||idx+1===6)?1:-1;
+      const onRight=layouts[idx].copyOnRight ? 1 : -1;
+      const otherRight=layouts[Math.min(idx+1, layouts.length-1)].copyOnRight ? 1 : -1;
       const horizontalBias=(onRight*(1-frac)+otherRight*frac)*1.55;
       const isMobile=controller.matches;
       const desiredPosition=new THREE.Vector3(interpolatedX+3.4+pointer.x*.23, isMobile?3.7:3.65+pointer.y*.15,isMobile?15.7:11.6);
@@ -394,7 +435,7 @@
       cameraTarget.lerp(desiredTarget,Math.min(1,dt*5.6));
       camera.position.copy(cameraPos);camera.lookAt(cameraTarget);
       for(let i=0;i<worlds.length;i++){
-        worlds[i].root.visible=Math.abs(effectivePosition-i)<2.4;
+        worlds[i].root.visible=Math.abs(effectivePosition-i)<.995;
         const distance=Math.abs(effectivePosition-i);
         const weight=Math.max(0,1-distance);
         worlds[i].art.rotation.y=(i%2?-.18:.13)+effectivePosition*.06+pointer.x*.012;
@@ -404,7 +445,8 @@
         if(axis==='y')mesh.rotation.y+=dt*speed;
         else mesh.rotation.z+=dt*speed;
       });}
-      renderer.render(scene,camera);
+      if (isMobile) renderMobileSlots();
+      else renderer.render(scene,camera);
       renderStarted=true;
     }
     // First render before entering the animation loop to avoid an empty canvas flash.
@@ -418,3 +460,4 @@
     viewportCanvas.hidden=true;
   });
 })();
+

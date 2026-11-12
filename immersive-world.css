@@ -341,3 +341,15 @@ body.world-ready .world-fallback{opacity:0}
  .work-shelf small {margin-top:0;}
  .work-shelf strong {margin-block:1px;}
 }
+
+
+.scene-slot { display:none; }
+@media (max-width:710px) {
+  .world-ready .scene-slot {
+    display:block;
+    height:clamp(145px, 25svh, 220px);
+    margin:0 auto 20px;
+    width:100%;
+  }
+  .world-ready .world-veil { opacity:.12; }
+}

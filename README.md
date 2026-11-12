@@ -2,7 +2,7 @@
   <img src="assets/haammkaki-wordmark.svg" alt="Animated haammkaki wordmark" width="100%" />
 </p>
 
-# haammkaki
+#
 
 **Mechanical Engineering × Technology × Product × Creative**
 

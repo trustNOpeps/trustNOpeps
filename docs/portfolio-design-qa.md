@@ -41,7 +41,9 @@ Two live-site commits:
 - `c4943d92`: responsive chapter-content navigation, 3D Contact composition, mobile layout refinements, fixed-header handling and URL navigation.
 - `9c82a118`: fixed favicon initial, added Concept Studies to desktop navigation, tablet menu, better mobile anchor landing, mobile active navigation, responsive scene spacing, font preconnect, and actionable public GitHub Issues contact option with privacy caveat.
 
-The `gh-pages` deployment for `9c82a118` completed successfully in GitHub Actions.
+- `e2d8928e`: addressed three measured UI issues from the four-viewport browser audit: desktop rail/content collision, tablet's nearly invisible rail, and mobile undersized link targets.
+
+The `gh-pages` deployments for `9c82a118` and `e2d8928e` completed successfully in GitHub Actions.
 
 ## Verified checks
 
@@ -56,9 +58,19 @@ The following were checked **in the GitHub source/deployment**, not claimed as e
 - [x] Hash navigation, back/forward hooks, Escape for mobile menu, responsive 3D spacing and reduced-motion scroll handling are present in source.
 - [x] GitHub Issues is enabled on the main repository; issue conversations are public and require a GitHub sign-in to submit.
 
+## Measured baseline findings and fixes
+
+| Baseline browser evidence | Corrective action |
+| --- | --- |
+| At desktop 1440×900, fixed right rail overlapped right-column content by ~101px | Added dedicated right-column rail gutter above 1150px |
+| At tablet 768×1024, rail links collapsed to ~26×1 CSS px and there was no header Concepts link | Added Concepts to the header, provided a tablet menu and hid unusably small rail |
+| At phone width 390px, card action links were ~14px tall; footer back-to-top was ~12px | Set minimum 44px tap areas at mobile sizes |
+| Seven anchor targets exposed the heading and first visible content at all four widths | Retained readable-content anchor behavior for every viewport |
+| No horizontal overflow or captured JS/network errors across four baseline sizes | Retained responsive, fallback and reduced-motion behavior |
+
 ## Device / visual QA acceptance matrix
 
-**Status: needs post-change visual verification**. A previous browser review covered desktop 1440×900, tablet 768×1024 and phone 390×844, but the current revision was published afterward. A broad automated visual re-audit was started but did not return a completed report at the time this log was authored. Do not treat code checks as a substitute for a completed visual test.
+**Status: baseline visual audit completed; latest correction awaiting regression results.** An automated browser review tested desktop 1440×900, tablet 768×1024, phone 390×844 and compact phone 320×640. It confirmed working navigation to all seven sections, visible headings and initial content, no horizontal overflow, and no browser errors in the tested version. Three measured issues remained and were subsequently patched in `e2d8928e`. Do not treat the new CSS as fully visually verified without testing it.
 
 | Viewport | Acceptance criteria |
 | --- | --- |
@@ -73,7 +85,7 @@ The following were checked **in the GitHub source/deployment**, not claimed as e
 
 ## Honest limitations / remaining decisions
 
-- Full manual visual QA on current revision, including Safari/iOS, Android, smaller laptops and the 320px edge case, **remains open**.
+- Full manual visual QA on the latest CSS revision, including Safari/iOS, Android, and smaller laptops, **remains open**. Earlier automated browser checks covered 320px, but not a physical device.
 - Lighthouse performance, accessibility, SEO and networking scores **have not been measured**; do not invent scores.
 - 3D rendering relies on WebGL and an external Three.js CDN; Google Fonts is also externally loaded. The basic fallback is present, but bandwidth/device testing remains useful.
 - The Contact CTA uses **public GitHub Issues** (not a private inbox). If a verified business email or LinkedIn contact route is later supplied and approved, replace or complement it.

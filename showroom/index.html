@@ -115,7 +115,7 @@ section[id] {scroll-margin-top:80px}
  .card-body p {font-size:14px}
 }
 </style>
-</head><body>
+<link rel="stylesheet" href="./ticket.css"></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="notice-bar">An independent design studio&nbsp; / &nbsp;Collection concepts, not yet available to buy</div>
 <header class="site-head"><div class="page head-grid">
@@ -139,7 +139,7 @@ section[id] {scroll-margin-top:80px}
 <figure><img loading="lazy" width="1080" height="810" src="../assets/after-wanting/reflector.webp" alt="Reflector track jacket from AFTER WANTING Volume 04, front and back"></figure>
 </div></div></section>
 <section id="studio" class="manifesto"><div class="page"><span class="micro">04 / THE MANIFESTO</span><h2>Wanting is a feeling.<br><em>Choosing</em> is an act.</h2><p>Some ideas arrive loudly. Others stay folded, close to the body. Ten chapters explore that difference through form, colour, graphics and the everyday rituals of clothing.</p></div></section>
-<section id="packaging" class="packaging"><div class="page packaging-grid"><div><span class="micro">05 / AN OBJECT TO KEEP</span><h2>The story<br><em>continues.</em></h2><p>Each volume also proposes a different paper band, palette and insert card. Select a chapter to explore its packaging concept.</p><div id="package-selectors" class="packaging-selector" role="group" aria-label="Choose a volume for packaging"><!-- controls --></div><p id="packaging-detail" class="packaging-detail"></p><div class="package-color" id="package-colors" aria-label="Selected collection colors"></div></div><div class="packaging-stage"><div class="package-paper"><b>AFTER WANTING</b><div class="package-band" id="package-band"><span id="package-name">Unsent</span><small style="display:block;margin-top:20px">COLLECTION / <span id="package-num">10</span></small></div><small>THE OBJECT / PAPER STUDY</small></div></div></div></section>
+<section id="packaging" class="packaging"><div class="page packaging-grid"><div><span class="micro">05 / AN OBJECT TO KEEP</span><h2>The story<br><em>continues.</em></h2><p>Each volume also proposes a different paper band, palette and insert card. Select a chapter to explore its packaging concept.</p><div id="package-selectors" class="packaging-selector" role="group" aria-label="Choose a volume for packaging"><!-- controls --></div><p id="packaging-detail" class="packaging-detail"></p><div class="package-color" id="package-colors" aria-label="Selected collection colors"></div></div><div class="packaging-stage roll-stage"><div class="ticket-roll"><div class="ticket-spool" aria-hidden="true"></div><div class="ticket-face"><div class="ticket-meta"><span>AFTER WANTING</span><span>VOL. <b id="ticket-number"></b></span></div><img id="ticket-art" alt=""><strong class="ticket-title" id="ticket-name"></strong></div></div></div></div></section>
 <section id="contact" class="contact"><div class="page contact-grid"><div><span class="micro">06 / CONTACT &amp; COLLABORATION</span><h2>Have an<br><em>idea?</em></h2></div><div class="contact-copy"><p>Open to conversations about collection development, production partnerships and creative direction. The designs shown are concepts, not a live shop or an active pre-order.</p><div class="contact-cta"><a class="arrow" href="https://github.com/trustNOpeps/trustNOpeps/issues/new" target="_blank" rel="noopener noreferrer">Start a public conversation <span>↗</span></a><a class="arrow" href="../#studio">Back to haammkaki <span>↗</span></a></div><p class="contact-meta">Contact via GitHub Issues requires sign-in and is public. Please do not share sensitive information. Private contact details are not published here.</p></div></div></section>
 </main><footer><div class="page foot"><span>© AFTER WANTING / INDEPENDENT FASHION CONCEPT, 2026</span><span>10 VOLUMES · IDEAS IN DEVELOPMENT</span><a href="#top">Back to top ↑</a></div></footer>
 <dialog class="modal" id="volume-modal" aria-labelledby="modal-title"><button type="button" class="close-modal" id="close-modal" aria-label="Close collection detail">×</button><div class="modal-wrap"><div class="modal-media" id="modal-media"></div><div class="modal-info"><div class="micro" id="modal-num"></div><h2 id="modal-title"></h2><p id="modal-desc"></p><h3>Concept pieces</h3><ul id="modal-pieces"></ul><h3>Packaging direction</h3><p id="modal-package"></p><p class="product-detail-note">Digital garment and packaging concept studies. Artwork and technical details require sampling and approval before manufacturing. No stock, purchase or delivery is offered through this site.</p></div></div></dialog>
@@ -195,7 +195,20 @@ const modal=document.querySelector('#volume-modal');function openDetail(id){cons
 document.querySelector('#close-modal').addEventListener('click',()=>modal.close());modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});modal.addEventListener('close',()=>previousFocus?.focus?.());document.querySelectorAll('[data-open-vol]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openDetail(Number(a.dataset.openVol))}));
 const controls=document.querySelector('#package-selectors'),detail=document.querySelector('#packaging-detail'),color=document.querySelector('#package-colors');
 controls.innerHTML=V.map(v=>'<button type="button" data-package="'+v.id+'" aria-pressed="false">'+num(v.id)+'</button>').join('');
-function setPackaging(id){const v=V.find(x=>x.id===id);if(!v)return;document.querySelector('#package-band').style.setProperty('--band',v.colors[0]);document.querySelector('#package-band').style.setProperty('--bandtext',v.colors[2]);document.querySelector('#package-name').textContent=v.name;document.querySelector('#package-num').textContent=num(v.id);detail.textContent=v.pack+': '+v.packdesc;color.innerHTML=v.colors.map((c,i)=>'<span title="'+c+'" aria-label="Collection colour '+(i+1)+': '+c+'" style="background:'+c+'"></span>').join('');controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.package)===id)))}
+function setPackaging(id){const v=V.find(x=>x.id===id);if(!v)return;const stage=document.querySelector('.roll-stage');
+const face=stage.querySelector('.ticket-face');
+const changed=stage.dataset.volume && stage.dataset.volume!==String(id);
+stage.dataset.volume=String(id);
+stage.style.setProperty('--ink-roll',v.colors[0]);
+stage.style.setProperty('--paper-roll',v.colors[2]);
+document.querySelector('#ticket-name').textContent=v.name;
+document.querySelector('#ticket-number').textContent=num(id);
+document.querySelector('#ticket-art').src=v.image;
+if(changed && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  face.getAnimations().forEach(animation=>animation.cancel());
+  face.animate([{transform:'rotateX(-32deg) scaleY(.72)',opacity:.55},{transform:'rotateX(5deg) scaleY(1.02)',offset:.72},{transform:'none',opacity:1}],{duration:420,easing:'ease-out'});
+}
+detail.textContent=v.pack+': '+v.packdesc;color.innerHTML=v.colors.map((c,i)=>'<span title="'+c+'" aria-label="Collection colour '+(i+1)+': '+c+'" style="background:'+c+'"></span>').join('');controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.package)===id)))}
 controls.addEventListener('click',e=>{const b=e.target.closest('[data-package]');if(b)setPackaging(Number(b.dataset.package))});setPackaging(10);render();
 document.querySelectorAll('.mobile-menu nav a').forEach(a=>a.addEventListener('click',()=>{a.closest('details').open=false}));
 document.addEventListener('click',e=>{const menu=document.querySelector('.mobile-menu');if(menu.open&&!menu.contains(e.target))menu.open=false});

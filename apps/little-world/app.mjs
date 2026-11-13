@@ -1,3 +1,4 @@
+import {activity,resetWork} from './work.mjs';
 import { AGENTS, PLACES, TASKS, freshState, loadState, formatTime, scheduleLabel, addLog, assignTask, tick, exportWorld } from './core.mjs';
 
 const STORAGE_KEY = 'trustnopeps-little-world-v1';
@@ -51,7 +52,17 @@ function floor() {
     desk(...place.position,place.color,symbol,place.name.split(' ')[0].toUpperCase());
   }
   const people=world.agents.map((a,i)=>({...a,info:AGENTS[i]})).sort((a,b)=>a.x+a.y-b.x-b.y);
-  people.forEach((a,i)=>person(a.x,a.y,a.info.color,a.info.name,i*2,a.id===world.selected));
+  people.forEach((a,i)=>{
+    const working=activity?.agent===a.id;
+    const [x,y]=working?[a.info.work[0],a.info.work[1]+1]:[a.x,a.y];
+    person(x,y,a.info.color,a.info.name,i*2,a.id===world.selected);
+    if(working){
+      const p=iso(x,y),beat=Math.floor(frame/4)%2;
+      rect(p.x-18,p.y-93,36,17,'#2c2443');
+      textAt(activity.stage==='loading'?'LOAD':'TYPE',p.x,p.y-81,10,'#adf9ce');
+      rect(p.x+7,p.y-34+beat*2,10,4,a.info.color);
+    }
+  });
   rect(32,620,250,55,'#fff9e8','#312845');textAt('THE INTERNET CAFE',157,644,16,'#3b2e56');textAt('EXPLORE • BUILD • REPEAT',157,661,11,'#755e9d');
   textAt('ISOMETRIC OFFICE / 001',1060,680,13,'#43515a','right');
 }
@@ -59,7 +70,7 @@ function hitAt(px,py) {
   const d=canvas.getBoundingClientRect();const x=(px-d.left)*canvas.width/d.width,y=(py-d.top)*canvas.height/d.height;
   let closest=null,best=46;
   for(const place of PLACES){const p=iso(...place.position);const distance=Math.hypot(x-p.x,(y-(p.y-35))*1.2);if(distance<best){closest={type:'place',id:place.id};best=distance;}}
-  for(const a of world.agents){const p=iso(a.x,a.y);const distance=Math.hypot(x-p.x,y-(p.y-27));if(distance<best){closest={type:'agent',id:a.id};best=distance;}}
+  for(const a of world.agents){const pos=activity?.agent===a.id?AGENTS.find(info=>info.id===a.id).work:null;const p=pos?iso(pos[0],pos[1]+1):iso(a.x,a.y);const distance=Math.hypot(x-p.x,y-(p.y-27));if(distance<best){closest={type:'agent',id:a.id};best=distance;}}
   return closest;
 }
 canvas.addEventListener('click',e=>{const hit=hitAt(e.clientX,e.clientY);if(!hit)return;if(hit.type==='agent'){world.selected=hit.id;addLog(world,`Selected ${AGENTS.find(a=>a.id===hit.id).name}.`);}else{const p=PLACES.find(p=>p.id===hit.id);addLog(world,`Opened desk: ${p.name}.`);window.open(projectUrl(p),'_blank','noopener,noreferrer');}persist();renderUI();});
@@ -70,11 +81,11 @@ TASKS.forEach(t=>{const option=document.createElement('option');option.value=t.i
 function renderUI() {
   $('#clock').textContent=`DAY ${String(world.day).padStart(2,'0')} · ${formatTime(world.minute)}`;
   $('#mood').textContent=scheduleLabel(world.minute);$('#coin').textContent=`◈ ${world.coins} coins`;
-  list.replaceChildren();AGENTS.forEach(info=>{const a=world.agents.find(a=>a.id===info.id);const button=document.createElement('button');button.type='button';button.className='agent';button.setAttribute('aria-pressed',String(world.selected===a.id));button.innerHTML=`<span class="avatar" style="background:${info.color}">●</span><span><strong>${info.name}</strong><small>${a.task?'ON TASK · '+Math.round(a.progress)+'%':'AVAILABLE · '+info.role}</small></span>`;button.addEventListener('click',()=>{world.selected=a.id;persist();renderUI();});list.append(button);});
+  list.replaceChildren();AGENTS.forEach(info=>{const a=world.agents.find(a=>a.id===info.id);const button=document.createElement('button');button.type='button';button.className='agent';button.setAttribute('aria-pressed',String(world.selected===a.id));button.innerHTML=`<span class="avatar" style="background:${info.color}">●</span><span><strong>${info.name}</strong><small>${activity?.agent===a.id?'AI · '+activity.stage.toUpperCase():a.task?'ON TASK · '+Math.round(a.progress)+'%':'AVAILABLE · '+info.role}</small></span>`;button.addEventListener('click',()=>{world.selected=a.id;persist();renderUI();});list.append(button);});
   const current=AGENTS.find(a=>a.id===world.selected),state=world.agents.find(a=>a.id===current.id);
   $('#agent-title').firstChild.textContent=current.name+' ';$('#agent-role').textContent=current.role;
   $('#energy').textContent=state.energy+'%';$('#energy-fill').style.width=state.energy+'%';
-  $('#task-status').textContent=state.task?`Working on ${TASKS.find(t=>t.id===state.task).title} · ${state.progress}%`:'Available for a scripted task. No AI model connected.';
+  $('#task-status').textContent=state.task?`Working on ${TASKS.find(t=>t.id===state.task).title} · ${state.progress}%`:'Ready for a simulated desk visit.';
   const log=$('#log');log.replaceChildren();world.log.slice(0,6).forEach(line=>{const li=document.createElement('li');li.textContent=line;log.append(li);});
   document.querySelectorAll('[data-speed]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.speed)===world.speed)));
 }
@@ -82,7 +93,7 @@ $('#assign').addEventListener('click',()=>{assignTask(world,world.selected,selec
 document.querySelectorAll('[data-speed]').forEach(b=>b.addEventListener('click',()=>{world.speed=Number(b.dataset.speed);persist();renderUI();}));
 $('#sound').addEventListener('click',()=>{$('#task-status').textContent='Sound is intentionally not included. Silent mode is always on.';});
 $('#download').addEventListener('click',()=>{const blob=new Blob([exportWorld(world)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='little-world-state.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-$('#reset').addEventListener('click',()=>{if(!confirm('Reset your local Little World progress?'))return;world=freshState();persist();renderUI();});
+$('#reset').addEventListener('click',()=>{if(!confirm('Reset your local Little World progress?'))return;resetWork();world=freshState();persist();renderUI();});
 const projects=$('#project-grid');const symbol={studio:'✳',lab:'∿',market:'▤',gallery:'▧'};
 for(const p of PLACES){const card=document.createElement('a');card.className='project-card';card.href=projectUrl(p);card.target='_blank';card.rel='noopener noreferrer';card.innerHTML=`<div class="project-art" style="background:${p.color}">${symbol[p.id]}</div><span class="project-tag">${p.type.toUpperCase()} / ${p.id==='gallery'?'CASE STUDY':'LIVE APP'}</span><h3>${p.name}</h3><p>${p.subtitle}. Open the project ↗</p>`;projects.append(card);}
-function animate(){frame++;floor();requestAnimationFrame(animate);}animate();renderUI();setInterval(()=>{tick(world,1);persist();renderUI();},1000);
+let lastFrame=-1000;function animate(now){const rate=matchMedia('(prefers-reduced-motion: reduce)').matches?1000:100;if(!document.hidden && now-lastFrame>=rate){frame++;floor();lastFrame=now;}requestAnimationFrame(animate);}requestAnimationFrame(animate);renderUI();setInterval(()=>{tick(world,1);persist();renderUI();},1000);

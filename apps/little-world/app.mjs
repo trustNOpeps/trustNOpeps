@@ -1,3 +1,5 @@
+import './sales.mjs';
+import {roomShell} from './architecture.mjs';
 import {activity,resetWork} from './work.mjs';
 import { AGENTS, PLACES, TASKS, freshState, loadState, formatTime, scheduleLabel, addLog, assignTask, tick, exportWorld } from './core.mjs';
 
@@ -5,7 +7,7 @@ const STORAGE_KEY = 'trustnopeps-little-world-v1';
 let world; try { world = loadState(localStorage.getItem(STORAGE_KEY)); } catch { world = freshState(); }
 const $ = (q) => document.querySelector(q);
 const canvas = $('#world'), ctx = canvas.getContext('2d');
-const origin = { x: 548, y: 140 }, tileW = 53, tileH = 27;
+const origin = { x: 457, y: 174 }, tileW = 70, tileH = 35;
 const hover = { id: null, type: null };
 let frame = 0;
 
@@ -16,10 +18,18 @@ function polygon(points, fill, stroke='#3f3358',line=2) { ctx.beginPath();points
 function rect(x,y,w,h,color,stroke) { ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math.round(y),w,h);if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.strokeRect(Math.round(x),Math.round(y),w,h);} }
 function textAt(text,x,y,size=14,color='#29203e',align='center') {ctx.font=`700 ${size}px monospace`;ctx.textAlign=align;ctx.fillStyle=color;ctx.fillText(text,x,y);}
 function desk(x,y,color,icon,label) {
-  const p=iso(x,y);const w=49,h=26;
-  polygon([{x:p.x-w/2,y:p.y-21},{x:p.x,y:p.y-21-h/2},{x:p.x+w/2,y:p.y-21},{x:p.x,y:p.y-21+h/2}],color);
-  polygon([{x:p.x-w/2,y:p.y-21},{x:p.x,y:p.y-21+h/2},{x:p.x,y:p.y+6},{x:p.x-w/2,y:p.y-8}],'#8460a0');
-  polygon([{x:p.x,y:p.y-21+h/2},{x:p.x+w/2,y:p.y-21},{x:p.x+w/2,y:p.y-8},{x:p.x,y:p.y+6}],'#5a456f');
+  const p=iso(x,y);
+  function top(dx,dy,z){return iso(x+dx,y+dy,z);}
+  for(const [dx,dy] of [[-1,-.46],[1,-.46],[-1,.46],[1,.46]]){
+    const leg=top(dx,dy,0);rect(leg.x-2,leg.y-22,5,22,'#7c695e');
+  }
+  const corners=[[-1.15,-.55],[1.15,-.55],[1.15,.55],[-1.15,.55]];
+  polygon(corners.map(([dx,dy])=>top(dx,dy,23)),'#f2e8d2','#8e776a',1);
+  polygon([top(1.15,-.55,23),top(1.15,.55,23),top(1.15,.55,18),top(1.15,-.55,18)],'#a9988b');
+  polygon([top(-1.15,.55,23),top(1.15,.55,23),top(1.15,.55,18),top(-1.15,.55,18)],color);
+  const papers=top(-.76,-.12,24);
+  rect(papers.x-8,papers.y-4,14,8,'#e6d3ae','#aa9688');
+  rect(papers.x-7,papers.y-6,14,7,'#fffae6');
   rect(p.x-16,p.y-64,33,24,'#2c2443','#1a1730');rect(p.x-12,p.y-60,25,16,'#e7f6df');
   textAt(icon,p.x,p.y-47,12,'#44335a');rect(p.x-2,p.y-39,5,9,'#33304c');
   textAt(label,p.x,p.y-80,12,'#312344');
@@ -32,39 +42,54 @@ function person(x,y,color,name,bob,selected) {
   if(selected){ctx.beginPath();ctx.ellipse(p.x,py+10,18,8,0,0,2*Math.PI);ctx.fillStyle='#f5e18e';ctx.fill();}
   rect(p.x-9,py-30,18,17,color,'#332547');rect(p.x-7,py-47,14,17,'#ffdcad','#332547');rect(p.x-8,py-49,16,6,'#43354f');rect(p.x-5,py-36,3,3,'#342745');rect(p.x+3,py-36,3,3,'#342745');rect(p.x-7,py-13,6,12,'#3b3453');rect(p.x+2,py-13,6,12,'#3b3453');textAt(name,p.x,py-57,11,'#2f2745');
 }
-function floor() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  const grad=ctx.createLinearGradient(0,0,0,720);grad.addColorStop(0,'#a7dbe2');grad.addColorStop(1,'#e7e8c1');ctx.fillStyle=grad;ctx.fillRect(0,0,1100,720);
-  // Pixel clouds and decorative windows outside the office.
-  for(let i=0;i<7;i++){rect(70+i*145,52+(i%3)*23,62,19,'#e4f7f2');rect(89+i*145,39+(i%3)*23,46,17,'#e4f7f2');}
-  for(let x=0;x<16;x++)for(let y=0;y<11;y++){
-    const p=iso(x,y), a={x:p.x,y:p.y-tileH/2},b={x:p.x+tileW/2,y:p.y},c={x:p.x,y:p.y+tileH/2},d={x:p.x-tileW/2,y:p.y};
-    let col=(x+y)%2?'#f5e8d6':'#f8eddc';if(x===0||y===0||x===15||y===10)col='#d6c5e7';
-    if(x===9||y===8)col=(x+y)%2?'#c3ddb9':'#d4e8c3';
-    polygon([a,b,c,d],col,'#e6d8ce',1);
+const symbols={studio:'✳',lab:'∿',market:'▤',gallery:'▧',books:'B',fashion:'AW'};
+const backdrop=document.createElement('canvas');
+backdrop.width=canvas.width;backdrop.height=canvas.height;
+roomShell(backdrop.getContext('2d'),iso);
+function floor(){
+  ctx.drawImage(backdrop,0,0);
+  const objects=[];
+  const put=(x,y,paint)=>objects.push({depth:x+y,paint});
+  for(const [x,y] of [[.7,.8],[14.8,1],[1,9.6],[10.4,8.8]])put(x,y,()=>plant(x,y));
+  put(.7,4.3,()=>vending(.7,4.3));
+  for(const place of PLACES){
+    const [x,y]=place.position;
+    put(x,y,()=>{
+      desk(x,y,place.color,symbols[place.id],place.short||place.name.split(' ')[0].toUpperCase());
+      const p=iso(x,y);
+      rect(p.x-17,p.y-28,22,5,'#564959');
+      for(let j=0;j<5;j++)rect(p.x-15+j*4,p.y-27,2,1,'#dfd6cb');
+      rect(p.x+15,p.y-33,6,9,'#e9ce8c');
+    });
+    put(x,y+1.05,()=>chair(x,y+1.05));
   }
-  // Back-wall posters and furniture are painted in painter's order.
-  const plants=[[2,1],[14,2],[1,9],[13,9],[9,1]];
-  plants.forEach(([x,y])=>plant(x,y));vending(1,4);
-  chair(5,3);chair(7,4);chair(11,6);chair(3,7);
-  for(const place of [...PLACES].sort((a,b)=>a.position[0]+a.position[1]-b.position[0]-b.position[1])){
-    const symbol={studio:'✳',lab:'∿',market:'▤',gallery:'▧'}[place.id];
-    desk(...place.position,place.color,symbol,place.name.split(' ')[0].toUpperCase());
-  }
+  // The shared packing bench separates the sales desks from the workstations.
+  put(11,8.8,()=>{
+    const x=11,y=8.8,at=(u,v,z)=>iso(x+u,y+v,z);
+    for(const u of [-1.5,1.5])for(const v of [-.52,.52]){
+      const q=at(u,v,0);rect(q.x,q.y-24,5,25,'#806957');
+    }
+    polygon([at(-1.6,-.65,25),at(1.6,-.65,25),at(1.6,.65,25),at(-1.6,.65,25)],'#bd9b79','#806757');
+    for(let i=0;i<3;i++){
+      const q=at(i*.78-.9,0,26);const c=['#6d7b8d','#b07885','#d7b489'][i];
+      rect(q.x-10,q.y-13,23,13,c,'#796958');rect(q.x-2,q.y-13,6,13,'#ead4ac');
+    }
+  });
   const people=world.agents.map((a,i)=>({...a,info:AGENTS[i]})).sort((a,b)=>a.x+a.y-b.x-b.y);
   people.forEach((a,i)=>{
     const working=activity?.agent===a.id;
     const [x,y]=working?[a.info.work[0],a.info.work[1]+1]:[a.x,a.y];
-    person(x,y,a.info.color,a.info.name,i*2,a.id===world.selected);
+    put(x,y+.15,()=>{person(x,y,a.info.color,a.info.name,i*2,a.id===world.selected);
     if(working){
       const p=iso(x,y),beat=Math.floor(frame/4)%2;
       rect(p.x-18,p.y-93,36,17,'#2c2443');
       textAt(activity.stage==='loading'?'LOAD':'TYPE',p.x,p.y-81,10,'#adf9ce');
       rect(p.x+7,p.y-34+beat*2,10,4,a.info.color);
     }
+    });
   });
-  rect(32,620,250,55,'#fff9e8','#312845');textAt('THE INTERNET CAFE',157,644,16,'#3b2e56');textAt('EXPLORE • BUILD • REPEAT',157,661,11,'#755e9d');
-  textAt('ISOMETRIC OFFICE / 001',1060,680,13,'#43515a','right');
+  objects.sort((a,b)=>a.depth-b.depth).forEach(o=>o.paint());
+
 }
 function hitAt(px,py) {
   const d=canvas.getBoundingClientRect();const x=(px-d.left)*canvas.width/d.width,y=(py-d.top)*canvas.height/d.height;
@@ -94,6 +119,6 @@ document.querySelectorAll('[data-speed]').forEach(b=>b.addEventListener('click',
 $('#sound').addEventListener('click',()=>{$('#task-status').textContent='Sound is intentionally not included. Silent mode is always on.';});
 $('#download').addEventListener('click',()=>{const blob=new Blob([exportWorld(world)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='little-world-state.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('#reset').addEventListener('click',()=>{if(!confirm('Reset your local Little World progress?'))return;resetWork();world=freshState();persist();renderUI();});
-const projects=$('#project-grid');const symbol={studio:'✳',lab:'∿',market:'▤',gallery:'▧'};
-for(const p of PLACES){const card=document.createElement('a');card.className='project-card';card.href=projectUrl(p);card.target='_blank';card.rel='noopener noreferrer';card.innerHTML=`<div class="project-art" style="background:${p.color}">${symbol[p.id]}</div><span class="project-tag">${p.type.toUpperCase()} / ${p.id==='gallery'?'CASE STUDY':'LIVE APP'}</span><h3>${p.name}</h3><p>${p.subtitle}. Open the project ↗</p>`;projects.append(card);}
+const projects=$('#project-grid');const symbol=symbols;
+for(const p of PLACES){const card=document.createElement('a');card.className='project-card';card.href=projectUrl(p);card.target='_blank';card.rel='noopener noreferrer';card.innerHTML=`<div class="project-art" style="background:${p.color}">${symbol[p.id]}</div><span class="project-tag">${p.type.toUpperCase()} / ${p.id==='gallery'?'CASE STUDY':p.id==='books'?'BOOK PREVIEW':p.id==='fashion'?'SHOWROOM':'LIVE APP'}</span><h3>${p.name}</h3><p>${p.subtitle}. Open the project ↗</p>`;projects.append(card);}
 let lastFrame=-1000;function animate(now){const rate=matchMedia('(prefers-reduced-motion: reduce)').matches?1000:100;if(!document.hidden && now-lastFrame>=rate){frame++;floor();lastFrame=now;}requestAnimationFrame(animate);}requestAnimationFrame(animate);renderUI();setInterval(()=>{tick(world,1);persist();renderUI();},1000);

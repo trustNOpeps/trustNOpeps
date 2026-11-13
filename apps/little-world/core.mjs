@@ -5,12 +5,16 @@ export const AGENTS = [
   { id: 'miso', name: 'Miso', role: 'Creative companion', color: '#f6cd74', home: [6, 7], work: [6, 2] },
 ];
 export const PLACES = [
+  { id:'books',name:'Publishing',short:'BOOKS',subtitle:'Berpikir di Era AI · book preview',color:'#e7c18b',position:[3,8],type:'publishing',href:'../../book/' },
+  { id:'fashion',name:'AFTER WANTING',short:'APPAREL',subtitle:'Original collections · garment showroom',color:'#be93a8',position:[13,2],type:'fashion',href:'../../showroom/' },
   { id: 'studio', name: 'Creative Studio', subtitle: 'Pixel Desk', color: '#b8a1f2', position: [6, 2], type: 'experiment', href: '../pixel-desk/' },
   { id: 'lab', name: 'Engineering Lab', subtitle: 'Tensile Desk', color: '#9cdece', position: [12, 5], type: 'engineering', href: '../tensile-desk/' },
   { id: 'market', name: 'Product Workshop', subtitle: 'Request Desk', color: '#f5b38f', position: [8, 3], type: 'product', href: '../request-desk/' },
   { id: 'gallery', name: 'Case Study Gallery', subtitle: 'Anonymous concepts', color: '#f1c87e', position: [3, 6], type: 'concept', href: 'https://github.com/trustNOpeps/trustNOpeps/tree/main/projects' },
 ];
 export const TASKS = [
+  { id:'editorial',title:'Visit the publishing desk',destination:'books',points:10 },
+  { id:'collection',title:'Visit the apparel desk',destination:'fashion',points:10 },
   { id: 'explore', title: 'Explore a project', destination: 'studio', points: 15 },
   { id: 'measure', title: 'Visit the engineering lab', destination: 'lab', points: 20 },
   { id: 'organize', title: 'Review product ideas', destination: 'market', points: 15 },

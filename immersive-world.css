@@ -343,13 +343,15 @@ body.world-ready .world-fallback{opacity:0}
 }
 
 
-.scene-slot { display:none; }
-@media (max-width:710px) {
-  .world-ready .scene-slot {
-    display:block;
-    height:clamp(145px, 25svh, 220px);
-    margin:0 auto 20px;
-    width:100%;
-  }
-  .world-ready .world-veil { opacity:.12; }
+
+.mobile-exhibit { display:none; }
+.scroll-progress { width:100%; transform-origin:left; transform:scaleX(0); }
+@media (max-width: 710px), (pointer: coarse) and (max-width: 1100px) {
+  .world-stage, .world-overlay { display:none; }
+  .chapter-container { display:block; }
+  .mobile-exhibit { display:block; height:clamp(148px,26svh,250px); width:100%; margin:0 auto 16px; }
+  .mobile-exhibit img { display:block; width:100%; height:100%; object-fit:contain; }
+  .site-header, .creative-card, .project-entry { backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .site-header { background:#0b1116; }
+  .chapter .content, #contact .content { width:100%; max-width:100%; }
 }

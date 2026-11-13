@@ -12,6 +12,7 @@
   const siteHeader = document.querySelector('.site-header');
   const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobileExhibits = window.matchMedia('(max-width: 710px), (pointer: coarse) and (max-width: 1100px)');
   let activeIndex = -1;
   let goalPosition = 0;
   let sceneCallback = null;
@@ -42,7 +43,7 @@
       });
     }
     const denominator=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
-    progress.style.width=(clamp(window.scrollY/denominator,0,1)*100).toFixed(2)+'%';
+    progress.style.transform='scaleX('+clamp(window.scrollY/denominator,0,1)+')';
     if(sceneCallback)sceneCallback(goalPosition);
   }
   function enqueueRead(){
@@ -56,9 +57,9 @@
     if (!hash || !hash.startsWith('#')) return false;
     const target = document.getElementById(hash.slice(1));
     if (!target) return false;
-    const phone = window.innerWidth <= 710;
+    const phone = mobileExhibits.matches;
     const destination = target.classList.contains('chapter')
-      ? ((phone && document.body.classList.contains('world-ready') && target.querySelector('.scene-slot')) || target.querySelector('.content') || target)
+      ? ((phone && target.querySelector('.mobile-exhibit')) || target.querySelector('.content') || target)
       : target;
     const headerHeight = siteHeader?.getBoundingClientRect().height || (phone ? 67 : 77);
     const gap = phone ? 20 : 34;
@@ -104,15 +105,18 @@
 
   if (!viewportCanvas || !window.WebGLRenderingContext) return;
 
-  import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js').then(THREE => {
-    let spacing = window.matchMedia('(max-width: 710px)').matches ? 8 : 12;
+  let desktopStarted = false;
+  function startDesktop() {
+    if (desktopStarted || mobileExhibits.matches) return;
+    desktopStarted = true;
+    import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js').then(THREE => {
+    const spacing = 12;
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog(0x0b1116,19,40);
     const camera = new THREE.PerspectiveCamera(40,1,.1,100);
-    const mobile=window.matchMedia('(max-width: 710px)').matches;
-    const renderer=new THREE.WebGLRenderer({canvas:viewportCanvas,antialias:!mobile,powerPreference:'low-power',alpha:false});
+    const renderer=new THREE.WebGLRenderer({canvas:viewportCanvas,antialias:true,powerPreference:'low-power',alpha:false});
     renderer.setClearColor(0x0b1116,1);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,mobile?1.15:1.6));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
     renderer.outputColorSpace=THREE.SRGBColorSpace;
     renderer.toneMapping=THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure=1.45;
@@ -332,27 +336,14 @@
     let effectivePosition=goalPosition;
     let lastTime=performance.now();
     let pointer={x:0,y:0};
-    let renderStarted=false;
-    const controller = window.matchMedia('(max-width: 710px)');
     const rail = document.querySelector('.progress-rail');
     const layouts = chapters.map(chapter => {
       const content = chapter.querySelector('.content');
-      const slot = document.createElement('div');
-      slot.className = 'scene-slot';
-      slot.setAttribute('aria-hidden', 'true');
-      content.before(slot);
-      return { content, slot, copyOnRight: content.parentElement.classList.contains('to-right') };
+      return { content, copyOnRight:content.parentElement.classList.contains('to-right') };
     });
-    const mobileCamera = new THREE.PerspectiveCamera(37, 1, .1, 100);
     function onResize(){
-      // Maintain scene spacing when a phone rotates into landscape or a tablet resizes.
-      const responsiveSpacing = controller.matches ? 8 : 12;
-      if (spacing !== responsiveSpacing) {
-        spacing = responsiveSpacing;
-        worlds.forEach((world, index) => { world.root.position.x = index * spacing; });
-      }
+      if (mobileExhibits.matches) return;
       camera.aspect=window.innerWidth/Math.max(1,window.innerHeight);
-      camera.fov=controller.matches?44:40;
       camera.updateProjectionMatrix();
       const railBounds = rail.getBoundingClientRect();
       const rightEdge = railBounds.width ? railBounds.left : window.innerWidth;
@@ -361,20 +352,19 @@
         layout.left = layout.copyOnRight ? 0 : copy.right;
         layout.right = layout.copyOnRight ? copy.left : rightEdge;
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,controller.matches?1.15:1.6));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
       renderer.setSize(window.innerWidth,window.innerHeight,false);
     }
     window.addEventListener('resize',onResize,{passive:true});
     onResize();
     document.fonts?.ready.then(onResize);
     window.addEventListener('pointermove',e=>{
-      if(controller.matches||reducedMotion)return;
+      if(mobileExhibits.matches||reducedMotion)return;
       pointer.x=clamp(e.clientX/window.innerWidth*2-1,-1,1);
       pointer.y=clamp(e.clientY/window.innerHeight*2-1,-1,1);
     },{passive:true});
     sceneCallback=pos=>{goalPosition=pos};
     document.body.classList.add('world-ready');
-    if (controller.matches && location.hash && chapters[activeIndex]?.id === location.hash.slice(1)) restoreHashPosition();
 
     function renderDesktopColumn(index, fraction) {
       const current = layouts[index];
@@ -397,41 +387,18 @@
       renderer.setViewport(0, 0, window.innerWidth, height);
     }
 
-    function renderMobileSlots() {
-      renderer.setScissorTest(false);
-      renderer.clear();
-      renderer.setScissorTest(true);
-      worlds.forEach(world => { world.root.visible = false; });
-      layouts.forEach(({ slot }, i) => {
-        const rect = slot.getBoundingClientRect();
-        if (!rect.height || rect.bottom <= 0 || rect.top >= window.innerHeight) return;
-        const x = worlds[i].root.position.x;
-        mobileCamera.aspect = rect.width / rect.height;
-        mobileCamera.updateProjectionMatrix();
-        mobileCamera.position.set(x + 2.1, 2.8, 8.8);
-        mobileCamera.lookAt(x, -.25, 0);
-        renderer.setViewport(rect.left, window.innerHeight - rect.bottom, rect.width, rect.height);
-        renderer.setScissor(rect.left, window.innerHeight - rect.bottom, rect.width, rect.height);
-        worlds[i].root.visible = true;
-        renderer.render(scene, mobileCamera);
-        worlds[i].root.visible = false;
-      });
-      renderer.setScissorTest(false);
-      renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
-    }
-
+    let animationFrame = 0;
     function loop(now){
-      requestAnimationFrame(loop);
-      if(document.hidden)return;
+      if (document.hidden || mobileExhibits.matches) return;
+      animationFrame = requestAnimationFrame(loop);
       const dt=Math.min(.045,(now-lastTime)/1000||.016);
       lastTime=now;
       effectivePosition+=(goalPosition-effectivePosition)*Math.min(1,dt*(reducedMotion?16:3.2));
       const idx=Math.min(worlds.length-1,Math.floor(effectivePosition));
       const frac=effectivePosition-idx;
       const interpolatedX=effectivePosition*spacing;
-      const isMobile=controller.matches;
-      const desiredPosition=new THREE.Vector3(interpolatedX+3.4+pointer.x*.23, isMobile?3.7:3.65+pointer.y*.15,isMobile?15.7:11.6);
-      const desiredTarget=new THREE.Vector3(interpolatedX,isMobile?-1.25:-.20,0);
+      const desiredPosition=new THREE.Vector3(interpolatedX+3.4+pointer.x*.23, 3.65+pointer.y*.15,11.6);
+      const desiredTarget=new THREE.Vector3(interpolatedX,-.20,0);
       cameraPos.lerp(desiredPosition,Math.min(1,dt*5.6));
       cameraTarget.lerp(desiredTarget,Math.min(1,dt*5.6));
       camera.position.copy(cameraPos);camera.lookAt(cameraTarget);
@@ -446,18 +413,29 @@
         if(axis==='y')mesh.rotation.y+=dt*speed;
         else mesh.rotation.z+=dt*speed;
       });}
-      if (isMobile) renderMobileSlots();
-      else renderDesktopColumn(idx, frac);
-      renderStarted=true;
+      renderDesktopColumn(idx, frac);
     }
     // First render before entering the animation loop to avoid an empty canvas flash.
     cameraPos.set(3.4,3.65,11.6); cameraTarget.set(0,-.20,0);
-    requestAnimationFrame(loop);
+    function resumeDesktop() {
+      cancelAnimationFrame(animationFrame);
+      if (mobileExhibits.matches || document.hidden) return;
+      onResize();
+      lastTime = performance.now();
+      animationFrame = requestAnimationFrame(loop);
+    }
+    document.addEventListener('visibilitychange', resumeDesktop);
+    mobileExhibits.addEventListener('change', resumeDesktop);
+    resumeDesktop();
     enqueueRead();
   }).catch(error=>{
     console.warn('3D mode unavailable; displaying the lightweight visual fallback.', error);
     document.body.classList.remove('world-ready');
     viewportCanvas.hidden=true;
   });
+  }
+  mobileExhibits.addEventListener('change', startDesktop);
+  startDesktop();
 })();
+
 

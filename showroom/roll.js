@@ -31,13 +31,28 @@ window.createTicketRoll=function(canvas,volumes,onSelect){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   function draw(){
     ctx.clearRect(0,0,520,490);
-    ctx.save();ctx.fillStyle='rgba(42,35,32,.12)';ctx.beginPath();ctx.ellipse(283,420,135,17,0,0,Math.PI*2);ctx.fill();ctx.restore();
     ctx.save();ctx.transform(1,-.045,.045,1,96,84);
+    // Wall flanges, bent arms and spindle in satin graphite.
+    function fitting(x){
+      ctx.save();ctx.translate(x,0);
+      ctx.shadowColor='rgba(50,43,38,.2)';ctx.shadowBlur=7;ctx.shadowOffsetX=4;ctx.shadowOffsetY=5;
+      ctx.fillStyle='#767269';ctx.beginPath();ctx.ellipse(7,-19,13,21,0,0,2*Math.PI);ctx.fill();
+      ctx.shadowColor='transparent';ctx.fillStyle='#b1aaa0';ctx.beginPath();ctx.ellipse(5,-20,11,19,0,0,2*Math.PI);ctx.fill();
+      ctx.fillStyle='#625e56';for(const y of [-32,-9]){ctx.beginPath();ctx.arc(6,y,1.5,0,2*Math.PI);ctx.fill();}
+      ctx.lineCap='round';ctx.strokeStyle='#58574f';ctx.lineWidth=10;ctx.beginPath();ctx.moveTo(5,-20);ctx.lineTo(-7,1);ctx.stroke();
+      ctx.strokeStyle='#ada99d';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(4,-21);ctx.lineTo(-8,-1);ctx.stroke();ctx.restore();
+    }
+    fitting(-17);fitting(width+32);
+    ctx.fillStyle='#656258';ctx.fillRect(-24,-3,width+53,8);ctx.fillStyle='#c8c2b4';ctx.fillRect(-24,-3,width+53,2);
+    ctx.save();ctx.shadowColor='rgba(62,50,40,.23)';ctx.shadowOffsetX=8;ctx.shadowOffsetY=10;ctx.shadowBlur=13;
+    ctx.fillStyle='#cfc6b4';ctx.fillRect(2,1,width-4,height-3);ctx.restore();
     const radius=51;
     const ellipse=(x,rx,fill)=>{ctx.fillStyle=fill;ctx.beginPath();ctx.ellipse(x,0,rx,radius,0,0,Math.PI*2);ctx.fill();};
     ellipse(width+2,21,'#cfc7b9');
     for(let i=1;i<8;i++){ctx.strokeStyle='#afa898';ctx.lineWidth=.8;ctx.beginPath();ctx.ellipse(width+2,0,21-i*1.8,radius-i*4.4,0,0,Math.PI*2);ctx.stroke();}
     ctx.fillStyle='#786851';ctx.beginPath();ctx.ellipse(width+3,0,6,14,0,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#757064';ctx.fillRect(width+3,-3,25,7);
+    ctx.fillStyle='#c3beaf';ctx.fillRect(width+3,-3,25,2);
     const feed=offset*height;
     function strip(t,y,h,shade){
       const pos=((Math.floor(t+feed)%(height*10))+height*10)%(height*10);

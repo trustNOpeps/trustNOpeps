@@ -1,4 +1,4 @@
-.packaging-stage.roll-stage{display:grid;place-content:center;justify-items:center;min-height:0;padding:clamp(14px,3vw,45px);background:#faf8f3;border:1px solid var(--line)}
+.packaging-stage.roll-stage{display:grid;place-content:center;justify-items:center;min-height:0;padding:clamp(14px,3vw,45px);background:transparent;border:0;box-shadow:none}
 #ticket-roll{display:block;width:min(100%,520px);height:auto;touch-action:pan-x;cursor:grab}
 #ticket-roll:active{cursor:grabbing}
 .roll-stage small{font:500 11px var(--sans);color:#655e56}

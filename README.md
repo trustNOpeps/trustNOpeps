@@ -10,6 +10,7 @@ I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in 
 
 | Project | What you can explore | Open |
 | --- | --- | --- |
+| **Tamuform Studio** | Hospitality website and inquiry CRM pilot, with a public case study and fictional examples. | [Case study](https://trustnopeps.github.io/trustNOpeps/tamuform/) · [Project notes](projects/tamuform-studio.md) |
 | **MechLabs** | Calculate stress and strain, compare material inputs and save runs locally. | [Workbench](https://mechlabs-engineering.lovable.app/) · [Source](https://github.com/trustNOpeps/Mechlabs) |
 | **Tensile Desk** | Follow a force–extension dataset from raw CSV to an engineering stress–strain curve. | [Try the synthetic example](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) · [Method and tests](https://github.com/trustNOpeps/Tensile-Desk) |
 | **Little World** | Explore a pixel-art office by selecting desks, assigning tasks and following scripted coworkers. | [Enter the office](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) · [Source](https://github.com/trustNOpeps/Little-World) |

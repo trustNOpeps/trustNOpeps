@@ -5,7 +5,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 
-.preview-banner{padding:12px 20px;background:#233b36;color:#fff;font:500 13px/1.5 Arial;text-align:center}.preview-banner a{color:#fff;text-decoration:underline}
+.preview-banner{padding:12px 20px;background:#233b36;color:#fff;font:500 13px/1.5 Arial;text-align:center}.preview-banner a{color:#fff;text-decoration:underline;display:inline-block;white-space:nowrap}
 .preview-message{padding:28px;background:#f1f0e6}.preview-message p{margin:20px 0}
 #preview-status{padding:12px 0}
 @media(max-width:600px){input,select,textarea{font-size:16px!important}.admin-header-right{flex-wrap:wrap}.filters{flex-wrap:wrap}.filters label{min-width:0;max-width:100%}.preview-banner{font-size:12px}}

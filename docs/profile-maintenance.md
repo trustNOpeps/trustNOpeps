@@ -4,7 +4,7 @@ Updated 17 November 2026. Account: **trustNOpeps**. Public identity: **haammkaki
 
 ## Structure
 
-Original dark/lime vector banner → introduction and contact links → categorized technology icons → curated projects → public repository snapshot → collaboration and verification notes.
+Original animated wordmark → original introduction and portfolio link → eight categories of confirmed tools → curated projects → public repository snapshot → collaboration and verification notes.
 
 Keep BOURN, VI Fieldnotes, Tamuform, engineering tools and AFTER WANTING visible. Prototype and pilot labels must stay accurate. Do not publish private Tamuform code, credentials or customer data. No proficiency scores, fake achievements or synthetic contributions are included.
 
@@ -18,6 +18,8 @@ Keep BOURN, VI Fieldnotes, Tamuform, engineering tools and AFTER WANTING visible
 - Figma, Canva and VS Code: tools in the owner's stated workflow.
 
 ## Assets
+
+The README lists 48 owner-confirmed tools. The original 16 Skill Icons assets are retained; 32 additional local SVG assets and their source/license notes live in [`assets/profile/tools`](../assets/profile/tools/SOURCES.md). Higgsfield and Google Flow have labeled text badges; Simulink and Codex use family marks. The inventory indicates use, not proficiency. All 48 SVG references were fetched successfully from `main` on 17 November 2026; public browser rendering is a separate check.
 
 `assets/profile/banner.svg` is original code-native artwork. Technology icons are vendored from [Skill Icons](https://github.com/tandpfun/skill-icons), with their license in `assets/profile/SKILL-ICONS-LICENSE.txt`. The README does not depend on the live icon service. Technology trademarks belong to their owners. Link labels and nearby text preserve context if an image does not load.
 

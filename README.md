@@ -8,16 +8,16 @@ I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in 
 
 ## 🧭 About me
 
-I'm a mechanical engineering undergraduate at **Universitas Udayana**. I use engineering thinking, research and AI-assisted development to build practical tools, explore digital products and develop creative concepts.
+Most of my projects start with a practical problem or something I'm curious about. I enjoy building tools, experimenting with design and learning how software can make everyday tasks easier.
 
-- **Building:** BOURN, a Bali trip-planning prototype, and VI Fieldnotes, an independent editorial website.
-- **Exploring:** hospitality workflows with Tamuform Studio and clothing concepts through AFTER WANTING.
-- **Learning:** reliable web applications, testing, databases and the business behind a useful product.
-- **Open to:** remote opportunities, thoughtful collaborations and conversations that turn an idea into a working prototype.
+* **Building:** BOURN, a prototype for planning trips in Bali, and VI Fieldnotes, an independent editorial website.
+* **Exploring:** hospitality workflows with Tamuform Studio and clothing concepts through AFTER WANTING.
+* **Learning:** reliable web applications, testing, databases and the business behind a useful product.
+* **Open to:** remote opportunities, thoughtful collaborations and conversations that turn an idea into a working prototype.
 
 ## 🛠 Tech Stack & Tools
 
-Tools and technologies I've used across engineering, product development, creative work and AI-assisted workflows. This is a practical toolset, not a proficiency rating.
+These are the tools I use for engineering, software, design and creative projects. My experience varies between them.
 
 **Web development**
 
@@ -67,26 +67,26 @@ Kling AI · Higgsfield · Google Flow · Suno
 
 Microsoft Word · Microsoft Excel · Microsoft PowerPoint · Google Docs · Google Sheets · Google Analytics · Google Search Console
 
-Next.js and Supabase are used in the BOURN prototype; its connected authentication remains unverified. Higgsfield and Google Flow use text badges; Simulink uses a MathWorks family mark and Codex uses an OpenAI family mark. [Icon sources](assets/profile/tools/SOURCES.md).
+Next.js and Supabase are part of BOURN. Authentication still needs testing. [Icon sources and notes](assets/profile/tools/SOURCES.md).
 
 ## 🚀 Selected projects
 
 | Project | What you can explore | Open |
 | --- | --- | --- |
 | **BOURN** | Bali travel planning prototype with recommendations, illustrative cost estimates and downloadable trip briefs. | [Live demo](https://trustnopeps.github.io/trustNOpeps/bourn/) · [Source](https://github.com/trustNOpeps/bourn) |
-| **VI Fieldnotes** | Independent editorial website with searchable guides, a storage calculator and a browser-saved checklist. | [Live website](https://vi-fieldnotes.pages.dev/) · [Case study](https://github.com/trustNOpeps/vi-fieldnotes/blob/main/docs/portfolio-case-study.md) · [Source](https://github.com/trustNOpeps/vi-fieldnotes) |
+| **VI Fieldnotes** | Independent editorial website with searchable guides, a storage calculator and a checklist saved in your browser. | [Live website](https://vi-fieldnotes.pages.dev/) · [Case study](https://github.com/trustNOpeps/vi-fieldnotes/blob/main/docs/portfolio-case-study.md) · [Source](https://github.com/trustNOpeps/vi-fieldnotes) |
 | **Tamuform Studio** | Hospitality website and inquiry CRM pilot, with a public case study and fictional examples. | [Case study](https://trustnopeps.github.io/trustNOpeps/tamuform/) · [Project notes](projects/tamuform-studio.md) |
 | **MechLabs** | Calculate stress and strain, compare material inputs and save runs locally. | [Workbench](https://mechlabs-engineering.lovable.app/) · [Source](https://github.com/trustNOpeps/Mechlabs) |
-| **Tensile Desk** | Follow a force–extension dataset from raw CSV to an engineering stress–strain curve. | [Try the synthetic example](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) · [Method and tests](https://github.com/trustNOpeps/Tensile-Desk) |
-| **Little World** | Explore a pixel-art office by selecting desks, assigning tasks and following scripted coworkers. | [Enter the office](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) · [Source](https://github.com/trustNOpeps/Little-World) |
+| **Tensile Desk** | Turn raw force and extension data into an engineering stress and strain curve. | [Try the synthetic example](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) · [Method and tests](https://github.com/trustNOpeps/Tensile-Desk) |
+| **Little World** | Explore a pixel art office by selecting desks, assigning tasks and following scripted coworkers. | [Enter the office](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) · [Source](https://github.com/trustNOpeps/Little-World) |
 | **AFTER WANTING** | Browse ten clothing concept collections, including garment studies with front and back views. | [Visit the showroom](https://trustnopeps.github.io/trustNOpeps/showroom/) · [Design notes](projects/after-wanting.md) |
 
 ## 🧪 More experiments
 
-- **[Mechatronics Lab](https://github.com/trustNOpeps/Mechatronics-Lab)** pairs an ultrasonic sensor with a servo in an Arduino simulation. The repository documents the wiring, threshold logic and limits of the virtual observations.
-- **[Request Desk](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/)** turns item specifications and quantities into an exportable quotation request. [Source](https://github.com/trustNOpeps/Request-Desk)
-- **[Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)** combines a searchable project gallery with a 16 × 16 drawing pad and PNG export. [Source](https://github.com/trustNOpeps/Pixel-Desk)
-- **[Berpikir di Era AI](https://trustnopeps.github.io/trustNOpeps/book/)** is an Indonesian nonfiction book in development. Read the public preview.
+* **[Mechatronics Lab](https://github.com/trustNOpeps/Mechatronics-Lab)** pairs an ultrasonic sensor with a servo in an Arduino simulation. The repository documents the wiring, threshold logic and limits of the virtual observations.
+* **[Request Desk](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/)** turns item specifications and quantities into an exportable quotation request. [Source](https://github.com/trustNOpeps/Request-Desk)
+* **[Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)** combines a searchable project gallery with a 16 × 16 drawing pad and PNG export. [Source](https://github.com/trustNOpeps/Pixel-Desk)
+* **[Berpikir di Era AI](https://trustnopeps.github.io/trustNOpeps/book/)** is an Indonesian nonfiction book in development. Read the public preview.
 
 ## 🎨 Product design studies
 
@@ -96,18 +96,18 @@ Three anonymized website concepts cover [procurement catalogues](projects/procur
 
 <a href="https://github.com/trustNOpeps?tab=repositories"><img src="assets/profile/repository-stats.svg" alt="Public repository snapshot with language distribution; date shown on the card" width="100%"></a>
 
-This dated snapshot uses GitHub's public repository data. Language counts describe repositories, not expertise or contribution totals. [See my actual contribution activity on GitHub →](https://github.com/trustNOpeps?tab=overview)
+This snapshot shows public repositories by their primary language. [View my GitHub activity](https://github.com/trustNOpeps?tab=overview)
 
 ## 🤝 Let's build something useful
 
-I enjoy discussing ideas across engineering, digital products and creative work. If you're exploring a problem or looking for someone to help shape a prototype, [connect on LinkedIn](https://www.linkedin.com/in/muhamad-hamka/en/).
+I enjoy discussing ideas across engineering, digital products and creative work. If you have an idea you'd like to explore or need help building a prototype, [connect on LinkedIn](https://www.linkedin.com/in/muhamad-hamka/en/).
 
 <details>
 <summary><strong>Project status, methods & verification</strong></summary>
 
-My independent projects use AI-assisted development. Engineering tools are educational and use clearly labeled synthetic examples. BOURN is a planning prototype, Tamuform is a pilot with fictional public previews, and AFTER WANTING is at the concept stage.
+I use AI as part of my development process. The engineering tools are for learning and use labeled synthetic examples. BOURN is a planning prototype, Tamuform is a pilot with fictional public previews, and AFTER WANTING is at the concept stage.
 
-Run standalone JavaScript tests with `npm test` from this repository. MechLabs has separate [engineering tests](apps/mechlabs/src/test/engineering.test.ts) and a [build workflow](.github/workflows/mechlabs-ci.yml). The portfolio website is published from `gh-pages`; this profile README is maintained on `main`.
+Run standalone JavaScript tests with `npm test` from this repository. MechLabs has separate [engineering tests](apps/mechlabs/src/test/engineering.test.ts) and a [build workflow](.github/workflows/mechlabs-ci.yml). The portfolio website is published from `gh-pages`. This profile README lives on `main`.
 
 [Portfolio design notes](docs/portfolio-design-qa.md) · [Profile assets and maintenance](docs/profile-maintenance.md)
 

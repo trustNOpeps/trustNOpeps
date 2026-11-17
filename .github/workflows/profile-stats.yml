@@ -1,0 +1,30 @@
+name: Refresh public profile snapshot
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 1 * * 1'
+permissions:
+  contents: write
+concurrency:
+  group: profile-snapshot
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Render public repository snapshot
+        run: python3 scripts/profile_stats.py
+      - name: Commit only changed snapshot
+        run: |
+          git add assets/profile/repository-stats.svg
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "docs: refresh public repository snapshot"
+          git push origin HEAD:main

@@ -10,6 +10,7 @@ I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in 
 
 | Project | What you can explore | Open |
 | --- | --- | --- |
+| **BOURN** | Bali travel planning prototype with recommendations, illustrative cost estimates and downloadable trip briefs. | [Live demo](https://trustnopeps.github.io/trustNOpeps/bourn/) · [Source](https://github.com/trustNOpeps/bourn) |
 | **VI Fieldnotes** | Independent editorial website with searchable guides, a storage calculator and a browser-saved checklist. | [Live website](https://vi-fieldnotes.pages.dev/) · [Case study](https://github.com/trustNOpeps/vi-fieldnotes/blob/main/docs/portfolio-case-study.md) · [Source](https://github.com/trustNOpeps/vi-fieldnotes) |
 | **Tamuform Studio** | Hospitality website and inquiry CRM pilot, with a public case study and fictional examples. | [Case study](https://trustnopeps.github.io/trustNOpeps/tamuform/) · [Project notes](projects/tamuform-studio.md) |
 | **MechLabs** | Calculate stress and strain, compare material inputs and save runs locally. | [Workbench](https://mechlabs-engineering.lovable.app/) · [Source](https://github.com/trustNOpeps/Mechlabs) |

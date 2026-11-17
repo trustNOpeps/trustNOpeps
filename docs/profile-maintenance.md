@@ -19,9 +19,9 @@ Keep BOURN, VI Fieldnotes, Tamuform, engineering tools and AFTER WANTING visible
 
 ## Assets
 
-The README lists 48 owner-confirmed tools. The original 16 Skill Icons assets are retained; 32 additional local SVG assets and their source/license notes live in [`assets/profile/tools`](../assets/profile/tools/SOURCES.md). Higgsfield and Google Flow have labeled text badges; Simulink and Codex use family marks. The inventory indicates use, not proficiency. All 48 SVG references were fetched successfully from `main` on 17 November 2026; public browser rendering is a separate check.
+The README lists 48 tools confirmed by the owner. The original 16 Skill Icons assets are retained. The 32 additional local SVG assets and their source and license notes live in [`assets/profile/tools`](../assets/profile/tools/SOURCES.md). Higgsfield and Google Flow have labeled text badges. Simulink and Codex use family marks. The inventory indicates use, not proficiency. All 48 SVG references were fetched successfully from `main` on 17 November 2026. Public browser rendering is a separate check.
 
-`assets/profile/banner.svg` is original code-native artwork. Technology icons are vendored from [Skill Icons](https://github.com/tandpfun/skill-icons), with their license in `assets/profile/SKILL-ICONS-LICENSE.txt`. The README does not depend on the live icon service. Technology trademarks belong to their owners. Link labels and nearby text preserve context if an image does not load.
+The active banner is the original animated wordmark at `assets/haammkaki-wordmark.svg`. The alternate design at `assets/profile/banner.svg` is retained but not displayed. Technology icons are vendored from [Skill Icons](https://github.com/tandpfun/skill-icons), with their license in `assets/profile/SKILL-ICONS-LICENSE.txt`. The README does not depend on the live icon service. Technology trademarks belong to their owners. Link labels and nearby text preserve context if an image does not load.
 
 ## Repository snapshot
 

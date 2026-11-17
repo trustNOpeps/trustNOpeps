@@ -1,16 +1,10 @@
-<p align="center">
-  <img src="assets/haammkaki-wordmark.svg" alt="haammkaki" width="100%">
-</p>
+<p align="center"><img src="assets/haammkaki-wordmark.svg" alt="haammkaki" width="100%" /></p>
 
-<h1 align="center">Hi, I'm haammkaki 👋</h1>
-<p align="center"><strong>Mechanical engineering student · Digital product builder · Creative explorer</strong></p>
-<p align="center">Based in Bali, Indonesia. Learning by turning ideas into things you can try.</p>
+# Engineering, software and creative work
 
-<p align="center">
-  <a href="https://trustnopeps.github.io/trustNOpeps/"><strong>Explore my portfolio ↗</strong></a> &nbsp; · &nbsp;
-  <a href="https://www.linkedin.com/in/muhamad-hamka/en/">LinkedIn</a> &nbsp; · &nbsp;
-  <a href="https://github.com/trustNOpeps?tab=repositories">Repositories</a>
-</p>
+I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in Bali. I build browser tools for engineering calculations, experiment with interactive spaces and develop clothing concepts through AFTER WANTING.
+
+**[Explore my portfolio](https://trustnopeps.github.io/trustNOpeps/)**
 
 ## 🧭 About me
 

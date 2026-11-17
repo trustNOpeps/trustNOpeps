@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/profile/banner.svg" alt="haammkaki — Engineering × Digital Products × Creative" width="100%">
+  <img src="assets/haammkaki-wordmark.svg" alt="haammkaki" width="100%">
 </p>
 
 <h1 align="center">Hi, I'm haammkaki 👋</h1>

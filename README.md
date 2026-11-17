@@ -15,35 +15,59 @@ I'm a mechanical engineering undergraduate at **Universitas Udayana**. I use eng
 - **Learning:** reliable web applications, testing, databases and the business behind a useful product.
 - **Open to:** remote opportunities, thoughtful collaborations and conversations that turn an idea into a working prototype.
 
-## 🛠 Tech Stack
+## 🛠 Tech Stack & Tools
 
-Technologies used across my projects and learning workflow. These represent hands-on exposure, not proficiency ratings.
+Tools and technologies I've used across engineering, product development, creative work and AI-assisted workflows. This is a practical toolset, not a proficiency rating.
 
-**Web interfaces**
+**Web development**
 
-<img src="assets/profile/HTML.svg" alt="HTML" title="HTML" width="44" height="44"> <img src="assets/profile/CSS.svg" alt="CSS" title="CSS" width="44" height="44"> <img src="assets/profile/JavaScript.svg" alt="JavaScript" title="JavaScript" width="44" height="44"> <img src="assets/profile/TypeScript.svg" alt="TypeScript" title="TypeScript" width="44" height="44"> <img src="assets/profile/React-Dark.svg" alt="React" title="React" width="44" height="44"> <img src="assets/profile/TailwindCSS-Dark.svg" alt="TailwindCSS" title="TailwindCSS" width="44" height="44">
+<img src="assets/profile/HTML.svg" alt="HTML" title="HTML" width="44" height="44"> <img src="assets/profile/CSS.svg" alt="CSS" title="CSS" width="44" height="44"> <img src="assets/profile/JavaScript.svg" alt="JavaScript" title="JavaScript" width="44" height="44"> <img src="assets/profile/TypeScript.svg" alt="TypeScript" title="TypeScript" width="44" height="44"> <img src="assets/profile/React-Dark.svg" alt="React" title="React" width="44" height="44"> <img src="assets/profile/tools/next-js.svg" alt="Next.js" title="Next.js" width="44" height="44"> <img src="assets/profile/TailwindCSS-Dark.svg" alt="Tailwind CSS" title="Tailwind CSS" width="44" height="44">
 
-HTML · CSS · JavaScript · TypeScript · React · Tailwind CSS
+HTML · CSS · JavaScript · TypeScript · React · Next.js · Tailwind CSS
 
-**Applications & data**
+**Backend & databases**
 
-<img src="assets/profile/Python-Dark.svg" alt="Python" title="Python" width="44" height="44"> <img src="assets/profile/FastAPI.svg" alt="FastAPI" title="FastAPI" width="44" height="44"> <img src="assets/profile/PostgreSQL-Dark.svg" alt="PostgreSQL" title="PostgreSQL" width="44" height="44"> <img src="assets/profile/SQLite.svg" alt="SQLite" title="SQLite" width="44" height="44">
+<img src="assets/profile/Python-Dark.svg" alt="Python" title="Python" width="44" height="44"> <img src="assets/profile/FastAPI.svg" alt="FastAPI" title="FastAPI" width="44" height="44"> <img src="assets/profile/tools/supabase.svg" alt="Supabase" title="Supabase" width="44" height="44"> <img src="assets/profile/PostgreSQL-Dark.svg" alt="PostgreSQL" title="PostgreSQL" width="44" height="44"> <img src="assets/profile/SQLite.svg" alt="SQLite" title="SQLite" width="44" height="44">
 
-Python · FastAPI · PostgreSQL · SQLite
+Python · FastAPI · Supabase · PostgreSQL · SQLite
 
-Next.js and Supabase are also used in the BOURN prototype; its connected authentication remains unverified.
+**Development & deployment**
 
-**Build & publish**
+<img src="assets/profile/VSCode-Dark.svg" alt="VS Code" title="VS Code" width="44" height="44"> <img src="assets/profile/Git.svg" alt="Git" title="Git" width="44" height="44"> <img src="assets/profile/Github-Dark.svg" alt="GitHub" title="GitHub" width="44" height="44"> <img src="assets/profile/tools/gitlab.svg" alt="GitLab" title="GitLab" width="44" height="44"> <img src="assets/profile/tools/github-pages.svg" alt="GitHub Pages" title="GitHub Pages" width="44" height="44"> <img src="assets/profile/Cloudflare-Dark.svg" alt="Cloudflare" title="Cloudflare" width="44" height="44"> <img src="assets/profile/tools/render.svg" alt="Render" title="Render" width="44" height="44"> <img src="assets/profile/tools/google-antigravity.svg" alt="Google Antigravity" title="Google Antigravity" width="44" height="44">
 
-<img src="assets/profile/Git.svg" alt="Git" title="Git" width="44" height="44"> <img src="assets/profile/Github-Dark.svg" alt="Github" title="Github" width="44" height="44"> <img src="assets/profile/VSCode-Dark.svg" alt="VSCode" title="VSCode" width="44" height="44"> <img src="assets/profile/Cloudflare-Dark.svg" alt="Cloudflare" title="Cloudflare" width="44" height="44">
+VS Code · Git · GitHub · GitLab · GitHub Pages · Cloudflare · Render · Google Antigravity
 
-Git · GitHub · VS Code · GitHub Pages · Cloudflare Pages
+**Engineering & simulation**
 
-**Design & engineering workflow**
+<img src="assets/profile/tools/matlab.svg" alt="MATLAB" title="MATLAB" width="44" height="44"> <img src="assets/profile/tools/simulink.svg" alt="Simulink" title="Simulink" width="44" height="44"> <img src="assets/profile/Arduino.svg" alt="Arduino" title="Arduino" width="44" height="44"> <img src="assets/profile/tools/tinkercad.svg" alt="Tinkercad" title="Tinkercad" width="44" height="44">
 
-<img src="assets/profile/Figma-Dark.svg" alt="Figma" title="Figma" width="44" height="44"> <img src="assets/profile/Arduino.svg" alt="Arduino" title="Arduino" width="44" height="44">
+MATLAB · Simulink · Arduino · Tinkercad
 
-Figma · Canva · Arduino / Tinkercad simulation · AI-assisted research and creative production
+**Design & creative production**
+
+<img src="assets/profile/Figma-Dark.svg" alt="Figma" title="Figma" width="44" height="44"> <img src="assets/profile/tools/canva.svg" alt="Canva" title="Canva" width="44" height="44"> <img src="assets/profile/tools/adobe-photoshop.svg" alt="Adobe Photoshop" title="Adobe Photoshop" width="44" height="44"> <img src="assets/profile/tools/adobe-illustrator.svg" alt="Adobe Illustrator" title="Adobe Illustrator" width="44" height="44"> <img src="assets/profile/tools/adobe-premiere-pro.svg" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" width="44" height="44"> <img src="assets/profile/tools/adobe-lightroom.svg" alt="Adobe Lightroom" title="Adobe Lightroom" width="44" height="44"> <img src="assets/profile/tools/capcut.svg" alt="CapCut" title="CapCut" width="44" height="44">
+
+Figma · Canva · Adobe Photoshop · Adobe Illustrator · Adobe Premiere Pro · Adobe Lightroom · CapCut
+
+**AI & product development**
+
+<img src="assets/profile/tools/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="44" height="44"> <img src="assets/profile/tools/openai-codex.svg" alt="OpenAI Codex" title="OpenAI Codex" width="44" height="44"> <img src="assets/profile/tools/claude.svg" alt="Claude" title="Claude" width="44" height="44"> <img src="assets/profile/tools/gemini.svg" alt="Gemini" title="Gemini" width="44" height="44"> <img src="assets/profile/tools/perplexity.svg" alt="Perplexity" title="Perplexity" width="44" height="44"> <img src="assets/profile/tools/lovable.svg" alt="Lovable" title="Lovable" width="44" height="44">
+
+ChatGPT · OpenAI Codex · Claude · Gemini · Perplexity · Lovable
+
+**AI media production**
+
+<img src="assets/profile/tools/kling-ai.svg" alt="Kling AI" title="Kling AI" width="44" height="44"> <img src="assets/profile/tools/higgsfield.svg" alt="Higgsfield" title="Higgsfield" width="44" height="44"> <img src="assets/profile/tools/google-flow.svg" alt="Google Flow" title="Google Flow" width="44" height="44"> <img src="assets/profile/tools/suno.svg" alt="Suno" title="Suno" width="44" height="44">
+
+Kling AI · Higgsfield · Google Flow · Suno
+
+**Productivity & analytics**
+
+<img src="assets/profile/tools/microsoft-word.svg" alt="Microsoft Word" title="Microsoft Word" width="44" height="44"> <img src="assets/profile/tools/microsoft-excel.svg" alt="Microsoft Excel" title="Microsoft Excel" width="44" height="44"> <img src="assets/profile/tools/microsoft-powerpoint.svg" alt="Microsoft PowerPoint" title="Microsoft PowerPoint" width="44" height="44"> <img src="assets/profile/tools/google-docs.svg" alt="Google Docs" title="Google Docs" width="44" height="44"> <img src="assets/profile/tools/google-sheets.svg" alt="Google Sheets" title="Google Sheets" width="44" height="44"> <img src="assets/profile/tools/google-analytics.svg" alt="Google Analytics" title="Google Analytics" width="44" height="44"> <img src="assets/profile/tools/google-search-console.svg" alt="Google Search Console" title="Google Search Console" width="44" height="44">
+
+Microsoft Word · Microsoft Excel · Microsoft PowerPoint · Google Docs · Google Sheets · Google Analytics · Google Search Console
+
+Next.js and Supabase are used in the BOURN prototype; its connected authentication remains unverified. Higgsfield and Google Flow use text badges; Simulink uses a MathWorks family mark and Codex uses an OpenAI family mark. [Icon sources](assets/profile/tools/SOURCES.md).
 
 ## 🚀 Selected projects
 

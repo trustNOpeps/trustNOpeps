@@ -59,3 +59,5 @@
 .showcase-visual:has(.system-study){min-height:320px}
 
 .showcase-row{scroll-margin-top:110px}
+
+.device-laptop img,.device-browser img{aspect-ratio:8/5}

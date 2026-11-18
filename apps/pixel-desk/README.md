@@ -1,34 +1,23 @@
-![pixel-desk original project cover](../../assets/pixel-desk-cover.svg)
+# Pixel Pad
 
-[Live demo on GitHub Pages](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
+A focused pixel art editor by haammkaki. The repository and published URL retain the Pixel-Desk name for existing links.
 
-# Pixel Desk
+[Open Pixel Pad](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
 
-A small, colorful browser experiment by **haammkaki**. Retro desktop-inspired windows contain a searchable project gallery and a 16 × 16 pixel drawing pad.
+## Features
 
-## Run
+Large canvas with 16, 32 and 64 pixel grids; pencil, eraser, flood fill and colour picker; four palettes and custom colours; horizontal mirror; undo/redo; grid toggle; heart/checker patterns; nearest-neighbour resizing; transparent PNG export; editable JSON project import/export; browser autosave.
 
-Open [index.html](index.html) in a modern browser. No build tools, dependencies, account, or backend required.
+The old Project Explorer has been removed. Keyboard users can focus the canvas, move with arrow keys and paint with Space. Project imports validate grid sizes, pixel count and colour values. No account or server is required.
 
-## Interactions
+## Run and verify
 
-- Filter projects by Engineering, Product or Concept; search by keyword.
-- Paint by pointer input, choose between seven colors, undo up to 50 strokes, or clear.
-- Export a 512 × 512 PNG postcard directly in the browser.
-- Visit linked repository folders and anonymized project notes.
+Serve this directory with a static HTTP server (ES modules need HTTP).
 
-## Portfolio honesty
+```sh
+python3 -m http.server 8000
+node --test core.test.mjs
+node --check app.mjs
+```
 
-**Built** labels refer to runnable learning apps in this repository. **Concept** and **Pitch** labels refer to case-study notes, not publicly launched client products. No client identities, confidential assets, or outcome claims are used in this app.
-
-## Implementation
-
-Vanilla HTML, CSS and JavaScript in a self-contained file. The raster drawing is stored in an in-memory array. PNG export uses an offscreen canvas. Desktop and mobile layouts share the same content.
-
-## Current limits
-
-- Drawing is not persisted between sessions.
-- Single-level drag gestures are grouped for Undo; no keyboard drawing controls.
-- GitHub source links are not live app deployment URLs.
-
-Created as a visual and frontend learning experiment, not production client software.
+Tests cover flood fill boundaries, continuous strokes, resizing and malformed project files. Local storage can be cleared by the browser; download a project file to keep a portable copy.

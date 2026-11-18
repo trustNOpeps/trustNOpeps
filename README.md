@@ -23,7 +23,7 @@ I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in 
 
 * [Mechatronics Lab](https://github.com/trustNOpeps/Mechatronics-Lab)
 * [Request Desk](https://trustnopeps.github.io/trustNOpeps/apps/request-desk/)
-* [Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
+* [Pixel Pad](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/)
 * [Berpikir di Era AI](https://trustnopeps.github.io/trustNOpeps/book/)
 * [Procurement website](projects/procurement-website.md), [property development](projects/property-company-website.md) and [hospitality](projects/hospitality-website.md) design studies
 

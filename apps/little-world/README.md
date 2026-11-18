@@ -1,37 +1,27 @@
-# Little World — The Creative Internet Café
+# Little World
 
-An original, pixel-inspired isometric portfolio office built by **haammkaki** as a frontend learning experiment.
+A pixel office by haammkaki with nine selectable coworkers and local work reports.
 
-[Live demo on GitHub Pages](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)
+[Open the office](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)
 
-## What works
+## Features
 
-- Isometric office rendered entirely with Canvas 2D; no downloaded sprites or borrowed game assets.
-- Four clickable project desks linking to existing portfolio apps and anonymous studies.
-- Three simulated coworkers with time-based routines, selectable roles and user-assigned tasks.
-- Local fictional coin rewards, clock speed controls, activity feed, save/download and reset.
-- Responsive UI, keyboard-accessible project links, and no account, API key, or backend requirement.
+Nine named crew members share one state model, directory and canvas. Each can be selected and sent to a desk. Older three-person saves migrate while retaining progress. Office visits remain scripted simulations.
 
-## Run
+Work Orders defaults to instant structured briefs and checklists. Caption mode supplies editable starters, and budget mode calculates whole-rupiah line items. These modes do not use a language model. Reports can be read, downloaded as Markdown and restored after a reload.
 
-Open `index.html` through a local static server. Because it uses JavaScript ES modules, opening through `file://` may be blocked by browser security policies.
+Optional Local AI is experimental. It downloads a third-party language model and uses device memory and CPU. A 45-second inactivity watchdog and four-minute overall limit prevent indefinite loading; Stop terminates the worker. Existing reports remain downloadable if AI fails. Successful inference is device/network dependent and is not claimed by the deterministic tests.
 
-```bash
-python3 -m http.server 8000
+The Sales Desk interface has been removed. Previously stored sales data is not erased. Its old source file remains for compatibility/history, but is not imported by the app.
+
+## Run and verify
+
+Serve the portfolio at its normal `/trustNOpeps/apps/little-world/` path, or open the deployed demo. This source is mirrored into the main portfolio and uses its relative project links.
+
+```sh
+node --test core.test.mjs
+node --check app.mjs
+node --check work.mjs
 ```
 
-Then open `http://localhost:8000/apps/little-world/` if running from the repository root (or the appropriate local path).
-
-Run pure logic tests with `node --test apps/little-world/core.test.mjs` from the repository root.
-
-## Honesty about the agents
-
-The coworkers are **scripted simulations**, not OpenClaw, Hermes, or autonomous AI models. Their tasks are small deterministic state transitions. They cannot access real files, web browsers, accounts, money, or third-party services. Fictional coins have no real-world value. Real agent integrations would require a backend, authorization, permissions, secrets management and explicit user approval.
-
-## Privacy & persistence
-
-Local progress is stored under a browser `localStorage` key. The export button downloads a JSON snapshot; reset only affects this application's local state. No analytics or network API calls are made by the app, although the external font service and linked demos are separate destinations.
-
-## Project context
-
-This project takes broad inspiration from cozy isometric offices and virtual agent workspaces, but its code, layout, copy and Canvas artwork are original. It does not reproduce My Virtual World's source code, proprietary assets, branding, or licensed features.
+Tests cover all nine crew, save migration, pause, template outputs and budget validation. No external actions, sales or payments are performed.

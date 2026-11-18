@@ -1,0 +1,59 @@
+/* Project imagery uses actual public interfaces. Device shells are original CSS. */
+.showcase-chapter{background:rgba(11,17,22,.96);padding-top:110px;padding-bottom:100px}
+.showcase-chapter .chapter-container,.showcase-chapter .chapter-container.to-right{display:block;padding-right:0}
+.showcase-chapter .content,.showcase-chapter .chapter-container.to-right .content{width:100%;max-width:100%}
+.showcase-chapter .content::before{display:none}
+.showcase-chapter .chapter-desc{max-width:620px;margin-bottom:56px}
+.showcase-chapter .project-list,.showcase-creative{display:grid;grid-template-columns:1fr;max-width:none;gap:56px}
+.showcase-row,.project-entry.showcase-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;padding:0 0 56px;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:visible;transform:none}
+.showcase-row:last-child{border-bottom:0;padding-bottom:0}
+.project-entry.showcase-row:hover,.creative-card.showcase-row:hover{transform:none;background:none;border-color:var(--line)}
+.showcase-row:nth-child(even) .showcase-visual{order:2}
+.showcase-row:nth-child(even) .showcase-copy{order:1}
+.showcase-visual{min-width:0;position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;padding:45px 30px 55px;border-radius:14px;overflow:hidden;text-decoration:none;isolation:isolate;border:1px solid #ffffff12;transition:border-color .2s}
+.showcase-visual:focus-visible{outline-offset:5px}
+.showcase-visual:hover{border-color:#c4f06b80}
+.tone-mint{background:radial-gradient(ellipse at 30% 20%,#3a5350,#1c2a2e 90%)}
+.tone-sand{background:radial-gradient(ellipse at 30% 20%,#e3ded1,#bdb7a8 95%)}
+.tone-clay{background:radial-gradient(ellipse at 25% 15%,#796550,#292a26 90%)}
+.tone-lavender{background:radial-gradient(ellipse at 30% 20%,#bbb5d5,#7f829c 95%)}
+.tone-blue{background:radial-gradient(ellipse at 30% 20%,#4c5d76,#242e3f 95%)}
+.visual-label{position:absolute;bottom:17px;left:22px;font:500 9px/1.5 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#f4f1e7b3}
+.tone-sand .visual-label,.tone-lavender .visual-label{color:#30353e}
+.device{width:100%;position:relative;filter:drop-shadow(0 20px 15px #0004)}
+.device img{display:block;width:100%;height:auto;object-fit:cover;object-position:top;background:#e9ece9}
+.device-laptop{width:94%;background:linear-gradient(120deg,#73787e,#22272e 40%,#444950);padding:7px 7px 13px;border:1px solid #9ba0a6;border-radius:10px 10px 3px 3px}
+.device-laptop img{aspect-ratio:1200/950;border-radius:3px}
+.device-laptop::before{content:'';position:absolute;width:116%;height:10px;left:-8%;bottom:-8px;border-radius:1px 1px 50% 50%;background:linear-gradient(#aeb2b8,#52565c 60%,#22262a);box-shadow:0 4px 4px #0003}
+.device-laptop::after{content:'';position:absolute;bottom:-2px;left:42%;width:16%;height:3px;background:#555b60;border-radius:0 0 5px 5px}
+.device-browser{border:1px solid #ffffff70;border-radius:7px;overflow:hidden;background:#f3f1eb}
+.device-browser img{aspect-ratio:1200/950}
+.browser-bar{height:19px;background:#e4e5e7;color:#9a9ca1;font-size:8px;line-height:19px;padding:0 8px;letter-spacing:2px}
+.device-phone{width:clamp(145px,16vw,224px);background:#131518;padding:7px;border:2px solid #96948e;border-radius:30px;transform:rotate(-5deg);box-shadow:inset 0 0 0 1px #333}
+.device-phone img{border-radius:21px;aspect-ratio:390/844}
+.device-phone::before{content:'';position:absolute;top:13px;left:38%;width:24%;height:8px;background:#111;border-radius:8px}
+.showcase-copy{padding:0;min-width:0}
+.showcase-number{display:block;color:#7c8e89;font:400 clamp(42px,5vw,76px)/1 'Space Grotesk',sans-serif;letter-spacing:-.07em;margin-bottom:22px}
+.showcase-copy .item-top{font-size:10px;line-height:1.6;letter-spacing:.06em;color:var(--lime)}
+.showcase-copy h3,.creative-body.showcase-copy h3{font:500 clamp(26px,3vw,42px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.05em;margin:15px 0}
+.showcase-copy p,.creative-body.showcase-copy p{font-size:15px;line-height:1.75;max-width:43ch;margin:0 0 24px;color:#bcc8c2}
+.showcase-copy .entry-actions{border:0;padding-top:0;gap:5px 20px}
+.showcase-copy .entry-actions a,.creative-cta{font:600 10px/1.5 ui-monospace,monospace;display:inline-flex;align-items:center;min-height:44px;color:var(--lime);text-decoration:none}
+.showcase-copy .entry-actions a:hover{text-decoration:underline;text-underline-offset:5px}
+.showcase-copy .item-top b{display:none}
+.system-study{width:min(290px,100%);text-align:center;color:#e2e9ed}
+.system-title{display:block;font:10px ui-monospace,monospace;letter-spacing:.15em;margin-bottom:18px}
+.system-part{position:relative;padding:12px 24px;border:1px solid #b7d2dc70;border-radius:4px;background:#152632}
+.system-part strong{display:block;font:500 18px 'Space Grotesk',sans-serif}.system-part span{display:block;font:10px ui-monospace,monospace;color:#aec3c9;margin-top:5px}.system-part b{position:absolute;left:9px;top:10px;color:#9cbaad;font:9px ui-monospace,monospace}.system-study i{display:block;font-style:normal;font-size:17px;line-height:1.3;color:var(--lime)}.system-part.board{background:#1e4b48}
+.editorial-product{width:100%;height:100%;object-fit:contain;max-height:340px;mix-blend-mode:multiply}
+.showcase-book{width:60%;aspect-ratio:.69;padding:25px 22px;color:#f1eee5;background:#273330;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(-7deg);border-left:6px solid #1e2926;box-shadow:5px 3px 0 #e4dfd2,9px 5px 0 #2d3831,18px 23px 25px #0003}
+.showcase-book small{font:7px/1.6 sans-serif;letter-spacing:.15em}.showcase-book strong{font:400 clamp(22px,3vw,40px)/1.18 Georgia,serif}.showcase-book em{font-style:normal;color:#c4a07a}.showcase-book span{font:8px sans-serif;letter-spacing:.22em}
+@media(min-width:1150px){.showcase-chapter{padding-right:clamp(190px,15vw,260px)}}
+@media(max-width:900px){.showcase-row,.project-entry.showcase-row{gap:24px;grid-template-columns:1.1fr 1fr}.showcase-visual{padding:35px 18px 45px}.showcase-copy p,.creative-body.showcase-copy p{font-size:14px}.showcase-number{font-size:44px;margin-bottom:14px}}
+@media(max-width:710px){.showcase-chapter{padding-top:76px;padding-bottom:60px}.showcase-chapter .chapter-desc{margin-bottom:32px}.showcase-chapter .project-list,.showcase-creative{gap:34px}.showcase-row,.project-entry.showcase-row{grid-template-columns:1fr;gap:24px;padding-bottom:34px}.showcase-row:nth-child(even) .showcase-visual,.showcase-row:nth-child(even) .showcase-copy{order:initial}.showcase-visual{aspect-ratio:4/3;padding:34px 24px 43px;border-radius:10px}.device-phone{width:40%;max-width:190px;border-radius:24px}.device-phone img{border-radius:16px}.showcase-copy{position:relative}.showcase-number{position:absolute;right:0;top:0;font-size:36px;opacity:.55}.showcase-copy .item-top{padding-right:45px;font-size:9px}.showcase-copy h3,.creative-body.showcase-copy h3{font-size:30px;margin:12px 0}.showcase-copy p,.creative-body.showcase-copy p{max-width:none;margin-bottom:12px;font-size:14px}.showcase-book{width:52%;max-height:270px}.showcase-book strong{font-size:29px}.system-part{padding:8px 20px}.system-title{margin-bottom:12px}.system-part strong{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.showcase-visual{transition:none}}
+/* Fit the full portrait viewport inside the landscape presentation panel. */
+.showcase-visual:has(.device-phone){padding:20px 24px 28px}
+.showcase-visual .device-phone{width:30%;max-width:180px;flex-shrink:0}
+#project-little-world .device-browser img{aspect-ratio:1.65;object-fit:contain}
+.showcase-visual:has(.system-study){min-height:320px}

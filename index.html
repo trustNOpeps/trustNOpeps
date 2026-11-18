@@ -1,28 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1116">
-  <meta name="color-scheme" content="dark">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="description" content="haammkaki: mechanical engineering, interactive projects, product experiments and creative practice. Explore an original 3D scroll portfolio.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="haammkaki — Interactive Engineering Studio">
-  <meta property="og:site_name" content="haammkaki">
-  <meta property="og:description" content="Engineering, product experiments, interactive worlds and creative practice by haammkaki.">
-  <meta property="og:url" content="https://trustnopeps.github.io/trustNOpeps/">
-  <meta property="og:image" content="https://trustnopeps.github.io/trustNOpeps/assets/portfolio-social.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://trustnopeps.github.io/trustNOpeps/assets/portfolio-social.png">
-  <link rel="canonical" href="https://trustnopeps.github.io/trustNOpeps/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1116'/%3E%3Ctext x='11' y='46' font-size='44' font-family='Arial,sans-serif' font-weight='700' fill='%23c4f06b'%3Eh%3C/text%3E%3C/svg%3E">
-  <title>haammkaki — Engineering × Digital × Creative</title>
-  <link rel="stylesheet" href="./immersive-world.css?v=mobile-exhibits-1">
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#0b1116" name="theme-color"/>
+<meta content="dark" name="color-scheme"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<meta content="haammkaki: mechanical engineering, interactive projects, product experiments and creative practice. Explore an original 3D scroll portfolio." name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="haammkaki — Interactive Engineering Studio" property="og:title"/>
+<meta content="haammkaki" property="og:site_name"/>
+<meta content="Engineering, product experiments, interactive worlds and creative practice by haammkaki." property="og:description"/>
+<meta content="https://trustnopeps.github.io/trustNOpeps/" property="og:url"/>
+<meta content="https://trustnopeps.github.io/trustNOpeps/assets/portfolio-social.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://trustnopeps.github.io/trustNOpeps/assets/portfolio-social.png" name="twitter:image"/>
+<link href="https://trustnopeps.github.io/trustNOpeps/" rel="canonical"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1116'/%3E%3Ctext x='11' y='46' font-size='44' font-family='Arial,sans-serif' font-weight='700' fill='%23c4f06b'%3Eh%3C/text%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+<title>haammkaki — Engineering × Digital × Creative</title>
+<link href="./immersive-world.css?v=mobile-exhibits-1" rel="stylesheet"/>
+<script>
     (function () {
       const url = new URL(location.href);
       if (url.searchParams.get('utm_source') === 'chatgpt.com') {
@@ -31,248 +32,228 @@
       }
     }());
   </script>
-</head>
+<link href="./project-showcase.css?v=1" rel="stylesheet"/></head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="world-stage" aria-hidden="true">
-    <div class="world-fallback"><div class="fallback-object"></div></div>
-    <canvas id="world-canvas" aria-hidden="true"></canvas>
-    <div class="world-veil"></div>
-  </div>
-  <div class="world-overlay" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div aria-hidden="true" class="world-stage">
+<div class="world-fallback"><div class="fallback-object"></div></div>
+<canvas aria-hidden="true" id="world-canvas"></canvas>
+<div class="world-veil"></div>
+</div>
+<div aria-hidden="true" class="world-overlay"></div>
+<header class="site-header">
+<div class="nav-shell">
+<a aria-label="haammkaki, back to beginning" class="brand" href="#top">haammkaki<b>_</b></a>
+<span class="brand-note">ENGINEERING / DIGITAL / CREATIVE</span>
+<nav aria-label="Main navigation" class="nav-links">
+<a href="#engineering">Engineering</a>
+<a href="#playground">Digital</a>
+<a href="#studio">Creative</a>
+<a href="#concepts">Concepts</a>
+<a href="#about">About</a>
+<a class="nav-contact" href="#contact">Contact ↗</a>
+</nav>
+<details class="mobile-navigation">
+<summary>MENU <span aria-hidden="true">☰</span></summary>
+<nav aria-label="Mobile navigation">
+<a href="#engineering">Engineering</a>
+<a href="#playground">Digital Playground</a>
+<a href="#studio">Creative Practice</a>
+<a href="#concepts">Concept Studies</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</details>
+</div>
+</header>
+<div aria-hidden="true" class="scroll-progress" id="reading-progress"></div>
+<aside aria-label="Portfolio chapters" class="progress-rail">
+<a aria-label="Overview" href="#top">00 / START</a>
+<a aria-label="Engineering" href="#engineering">01 / ENGINEERING</a>
+<a aria-label="Digital projects" href="#playground">02 / DIGITAL</a>
+<a aria-label="Creative work" href="#studio">03 / CREATIVE</a>
+<a aria-label="Concepts" href="#concepts">04 / CONCEPT STUDIES</a>
+<a aria-label="About" href="#about">05 / ABOUT</a>
+<a aria-label="Contact" href="#contact">06 / CONTACT</a>
+</aside>
+<div aria-hidden="true" class="scene-caption" id="scene-label">STUDIO / OVERVIEW</div>
+<div aria-hidden="true" class="scene-counter" id="scene-count">01 / 07</div>
+<main id="main" tabindex="-1">
+<section aria-labelledby="hero-heading" class="chapter hero" data-scene="overview" id="top">
+<div class="chapter-container">
+<picture aria-hidden="true" class="mobile-exhibit">
+<source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/overview.webp"/>
+<img alt="" decoding="async" fetchpriority="high" height="660" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100"/>
+</picture>
+<div class="content">
+<p class="eyebrow">Mechanical engineering · Bali, Indonesia</p>
+<h1 class="hero-title" id="hero-heading">haammkaki<span>.</span></h1>
+<p class="lead">I turn ideas into practical tools and thoughtful digital experiences. My work connects mechanical engineering, product design and creative exploration.</p>
+<p class="hero-focus">ENGINEERING THINKING <span>×</span> DIGITAL PRODUCTS <span>×</span> CREATIVE PRACTICE</p>
+<div class="hero-sub"><a href="#engineering">Explore my work ↓</a></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="engineering-heading" class="chapter showcase-chapter" data-scene="engineering" id="engineering">
+<div class="chapter-container">
 
-  <header class="site-header">
-    <div class="nav-shell">
-      <a class="brand" href="#top" aria-label="haammkaki, back to beginning">haammkaki<b>_</b></a>
-      <span class="brand-note">ENGINEERING / DIGITAL / CREATIVE</span>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#engineering">Engineering</a>
-        <a href="#playground">Digital</a>
-        <a href="#studio">Creative</a>
-        <a href="#concepts">Concepts</a>
-        <a href="#about">About</a>
-        <a class="nav-contact" href="#contact">Contact ↗</a>
-      </nav>
-      <details class="mobile-navigation">
-        <summary>MENU <span aria-hidden="true">☰</span></summary>
-        <nav aria-label="Mobile navigation">
-          <a href="#engineering">Engineering</a>
-          <a href="#playground">Digital Playground</a>
-          <a href="#studio">Creative Practice</a>
-          <a href="#concepts">Concept Studies</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </details>
-    </div>
-  </header>
-  <div class="scroll-progress" id="reading-progress" aria-hidden="true"></div>
-  <aside class="progress-rail" aria-label="Portfolio chapters">
-    <a href="#top" aria-label="Overview">00 / START</a>
-    <a href="#engineering" aria-label="Engineering">01 / ENGINEERING</a>
-    <a href="#playground" aria-label="Digital projects">02 / DIGITAL</a>
-    <a href="#studio" aria-label="Creative work">03 / CREATIVE</a>
-    <a href="#concepts" aria-label="Concepts">04 / CONCEPT STUDIES</a>
-    <a href="#about" aria-label="About">05 / ABOUT</a>
-    <a href="#contact" aria-label="Contact">06 / CONTACT</a>
-  </aside>
-  <div class="scene-caption" id="scene-label" aria-hidden="true">STUDIO / OVERVIEW</div>
-  <div class="scene-counter" id="scene-count" aria-hidden="true">01 / 07</div>
+<div class="content">
+<span class="chapter-num">01 / ENGINEERING WORKBENCH</span>
+<h2 class="chapter-title" id="engineering-heading">Test ideas.<br/><em>Show the method.</em></h2>
+<p class="chapter-desc">Mechanical engineering is my foundation. These tools and experiments focus on calculations, measured inputs and the limits of what a simulation can prove.</p>
+<div aria-label="Engineering projects" class="project-list">
+<article class="project-entry showcase-row" id="project-mechlabs"><a aria-label="Open MechLabs" class="showcase-visual tone-mint" href="https://mechlabs-engineering.lovable.app/"><div class="device device-laptop"><img alt="Engineering stress and strain workbench in MechLabs" decoding="async" height="950" loading="lazy" src="./assets/showcase/mechlabs.webp" width="1200"/></div><span aria-hidden="true" class="visual-label">Learning workbench</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">01</span>
+<div class="item-top"><span>ENGINEERING / REACT + TYPESCRIPT</span></div>
+<h3>MechLabs</h3>
+<p>A learning workbench for stress–strain, unit conversion, comparison and browser-local records. Not certified engineering software.</p>
+<div class="entry-actions"><a href="https://mechlabs-engineering.lovable.app/">LIVE APP ↗</a><a href="https://github.com/trustNOpeps/mechlabs">SOURCE ↗</a></div>
+</div></article>
+<article class="project-entry showcase-row" id="project-tensile-desk"><a aria-label="Open Tensile Desk" class="showcase-visual tone-sand" href="./apps/tensile-desk/"><div class="device device-laptop"><img alt="Tensile Desk input form and stress strain results workspace" decoding="async" height="950" loading="lazy" src="./assets/showcase/tensile.webp" width="1200"/></div><span aria-hidden="true" class="visual-label">Calculation tool</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">02</span>
+<div class="item-top"><span>CALCULATION / JAVASCRIPT</span></div>
+<h3>Tensile Desk</h3>
+<p>Turns force and extension inputs into engineering stress–strain values, plots and CSV exports. Sample data are synthetic.</p>
+<div class="entry-actions"><a href="./apps/tensile-desk/">TRY TOOL ↗</a><a href="https://github.com/trustNOpeps/tensile-desk">SOURCE ↗</a></div>
+</div></article>
+<article class="project-entry showcase-row" id="project-mechatronics-lab"><a aria-label="Open Mechatronics Lab" class="showcase-visual tone-blue" href="https://github.com/trustNOpeps/mechatronics-lab"><div aria-label="System concept: distance sensing, control, servo motion" class="system-study"><span class="system-title">SENSE / COMPUTE / MOVE</span><div class="system-part"><b>01</b><strong>Ultrasonic sensor</strong><span>Distance input</span></div><i>↓</i><div class="system-part board"><b>02</b><strong>Arduino</strong><span>Control logic</span></div><i>↓</i><div class="system-part"><b>03</b><strong>Servo</strong><span>Position output</span></div></div><span aria-hidden="true" class="visual-label">Simulation study</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">03</span>
+<div class="item-top"><span>ARDUINO / CIRCUIT SIMULATION</span></div>
+<h3>Mechatronics Lab</h3>
+<p>Documented ultrasonic sensor and servo simulation, example Arduino sketch and Tinkercad workflow notes. No physical validation claimed.</p>
+<div class="entry-actions"><a href="https://github.com/trustNOpeps/mechatronics-lab">OPEN PROJECT ↗</a></div>
+</div></article>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="digital-heading" class="chapter showcase-chapter" data-scene="digital" id="playground">
+<div class="chapter-container to-right">
 
-  <main id="main" tabindex="-1">
-    <section class="chapter hero" id="top" data-scene="overview" aria-labelledby="hero-heading">
-      <div class="chapter-container">
-        <picture class="mobile-exhibit" aria-hidden="true">
-          <source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/overview.webp">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100" height="660" alt="" decoding="async" fetchpriority="high">
-        </picture>
-        <div class="content">
-          <p class="eyebrow">Mechanical engineering · Bali, Indonesia</p>
-          <h1 class="hero-title" id="hero-heading">haammkaki<span>.</span></h1>
-          <p class="lead">I turn ideas into practical tools and thoughtful digital experiences. My work connects mechanical engineering, product design and creative exploration.</p>
-          <p class="hero-focus">ENGINEERING THINKING <span>×</span> DIGITAL PRODUCTS <span>×</span> CREATIVE PRACTICE</p>
-          <div class="hero-sub"><a href="#engineering">Explore my work ↓</a></div>
-        </div>
-      </div>
-    </section>
+<div class="content">
+<span class="chapter-num">02 / DIGITAL PLAYGROUND</span>
+<h2 class="chapter-title" id="digital-heading">Make it work.<br/><em>Make it playful.</em></h2>
+<p class="chapter-desc">Small browser applications are my way of learning interaction design. They start with a simple question and become something you can actually click.</p>
+<div aria-label="Digital experiments" class="project-list">
+<article class="project-entry showcase-row" id="project-bourn"><a aria-label="Open BOURN" class="showcase-visual tone-clay" href="./bourn/"><div class="device device-phone"><img alt="BOURN mobile homepage with Bali trip planning" decoding="async" height="844" loading="lazy" src="./assets/showcase/bourn.webp" width="390"/></div><span aria-hidden="true" class="visual-label">Travel prototype</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">04</span>
+<div class="item-top"><span>TRAVEL PRODUCT / NEXT.JS + TYPESCRIPT</span></div>
+<h3>BOURN</h3>
+<p>A Bali travel planning and concierge prototype. Shape a trip, explore an illustrative budget and download a personal brief. Originally developed as PERON.</p>
+<div class="entry-actions"><a href="./bourn/">LIVE DEMO ↗</a><a href="https://github.com/trustNOpeps/bourn">SOURCE + CASE STUDY ↗</a></div>
+</div></article>
+<article class="project-entry showcase-row" id="project-vi-fieldnotes"><a aria-label="Open VI Fieldnotes" class="showcase-visual tone-lavender" href="https://vi-fieldnotes.pages.dev/"><div class="device device-browser"><div aria-hidden="true" class="browser-bar">●  ●  ●</div><img alt="VI Fieldnotes editorial homepage and guide navigation" decoding="async" height="950" loading="lazy" src="./assets/showcase/fieldnotes.webp" width="1200"/></div><span aria-hidden="true" class="visual-label">Independent publication</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">05</span>
+<div class="item-top"><span>EDITORIAL PRODUCT / RESEARCH + FRONT-END</span></div>
+<h3>VI Fieldnotes</h3>
+<p>An independent GTA VI guide publication with searchable articles, a storage calculator and a saved launch checklist. Built with HTML, CSS and JavaScript.</p>
+<div class="entry-actions"><a href="https://vi-fieldnotes.pages.dev/">LIVE WEBSITE ↗</a><a href="https://github.com/trustNOpeps/vi-fieldnotes/blob/main/docs/portfolio-case-study.md">CASE STUDY ↗</a><a href="https://github.com/trustNOpeps/vi-fieldnotes">SOURCE ↗</a></div>
+</div></article>
+<article class="project-entry showcase-row" id="project-tamuform-studio"><a aria-label="Open Tamuform Studio" class="showcase-visual tone-mint" href="./tamuform/"><div class="device device-laptop"><img alt="Tamuform inquiry workspace with fictional sample prospects" decoding="async" height="950" loading="lazy" src="./assets/showcase/tamuform.webp" width="1200"/></div><span aria-hidden="true" class="visual-label">Hospitality pilot</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">06</span>
+<div class="item-top"><span>PRODUCT PILOT / HOSPITALITY CRM</span></div>
+<h3>Tamuform Studio</h3>
+<p>A bilingual hospitality website and inquiry workspace. Explore the product case study and a fictional CRM walkthrough.</p>
+<div class="entry-actions"><a href="./tamuform/">CASE STUDY ↗</a><a href="./tamuform/previews/workspace.html">CRM PREVIEW ↗</a></div>
+</div></article>
+<article class="project-entry showcase-row" id="project-little-world"><a aria-label="Open Little World" class="showcase-visual tone-lavender" href="./apps/little-world/"><div class="device device-browser"><div aria-hidden="true" class="browser-bar">●  ●  ●</div><img alt="Little World isometric pixel office" decoding="async" height="655" loading="lazy" src="./assets/showcase/../little-world-preview.webp" width="1000"/></div><span aria-hidden="true" class="visual-label">Interactive office</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">07</span>
+<div class="item-top"><span>CANVAS / ISOMETRIC WORLD</span></div>
+<h3>Little World</h3>
+<p>An isometric office with nine selectable coworkers, instant work reports and optional local AI drafting.</p>
+<div class="entry-actions"><a href="./apps/little-world/">EXPLORE ↗</a><a href="https://github.com/trustNOpeps/little-world">SOURCE ↗</a></div>
+</div></article>
+<article class="project-entry showcase-row" id="project-pixel-pad"><a aria-label="Open Pixel Pad" class="showcase-visual tone-blue" href="./apps/pixel-desk/"><div class="device device-laptop"><img alt="Pixel Pad canvas, drawing tools and colour palette" decoding="async" height="950" loading="lazy" src="./assets/showcase/pixel.webp" width="1200"/></div><span aria-hidden="true" class="visual-label">Creative tool</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">08</span>
+<div class="item-top"><span>PIXEL EDITOR / INTERACTION</span></div>
+<h3>Pixel Pad</h3>
+<p>A spacious pixel art editor with drawing tools, palettes, undo, project files and PNG export.</p>
+<div class="entry-actions"><a href="./apps/pixel-desk/">OPEN DEMO ↗</a><a href="https://github.com/trustNOpeps/pixel-desk">SOURCE ↗</a></div>
+</div></article>
+<article class="project-entry showcase-row" id="project-request-desk"><a aria-label="Open Request Desk" class="showcase-visual tone-sand" href="./apps/request-desk/"><div class="device device-browser"><div aria-hidden="true" class="browser-bar">●  ●  ●</div><img alt="Request Desk quotation draft form and item list" decoding="async" height="950" loading="lazy" src="./assets/showcase/request.webp" width="1200"/></div><span aria-hidden="true" class="visual-label">Browser workspace</span></a><div class="showcase-copy"><span aria-hidden="true" class="showcase-number">09</span>
+<div class="item-top"><span>PRODUCT / LOCAL WORKSPACE</span></div>
+<h3>Request Desk</h3>
+<p>A request-for-quotation draft tool with item editing, validation and structured exports. No orders are submitted.</p>
+<div class="entry-actions"><a href="./apps/request-desk/">TRY APP ↗</a><a href="https://github.com/trustNOpeps/request-desk">SOURCE ↗</a></div>
+</div></article>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="creative-heading" class="chapter showcase-chapter" data-scene="creative" id="studio">
+<div class="chapter-container">
 
-    <section class="chapter" id="engineering" data-scene="engineering" aria-labelledby="engineering-heading">
-      <div class="chapter-container">
-        <picture class="mobile-exhibit" aria-hidden="true">
-          <source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/engineering.webp">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100" height="660" alt="" decoding="async" loading="lazy">
-        </picture>
-        <div class="content">
-          <span class="chapter-num">01 / ENGINEERING WORKBENCH</span>
-          <h2 class="chapter-title" id="engineering-heading">Test ideas.<br><em>Show the method.</em></h2>
-          <p class="chapter-desc">Mechanical engineering is my foundation. These tools and experiments focus on calculations, measured inputs and the limits of what a simulation can prove.</p>
-          <div class="project-list" aria-label="Engineering projects">
-            <article class="project-entry">
-              <div class="item-top"><span>ENGINEERING / REACT + TYPESCRIPT</span><b>01</b></div>
-              <h3>MechLabs</h3>
-              <p>A learning workbench for stress–strain, unit conversion, comparison and browser-local records. Not certified engineering software.</p>
-              <div class="entry-actions"><a href="https://mechlabs-engineering.lovable.app/">LIVE APP ↗</a><a href="https://github.com/trustNOpeps/mechlabs">SOURCE ↗</a></div>
-            </article>
-            <article class="project-entry">
-              <div class="item-top"><span>CALCULATION / JAVASCRIPT</span><b>02</b></div>
-              <h3>Tensile Desk</h3>
-              <p>Turns force and extension inputs into engineering stress–strain values, plots and CSV exports. Sample data are synthetic.</p>
-              <div class="entry-actions"><a href="./apps/tensile-desk/">TRY TOOL ↗</a><a href="https://github.com/trustNOpeps/tensile-desk">SOURCE ↗</a></div>
-            </article>
-            <article class="project-entry">
-              <div class="item-top"><span>ARDUINO / CIRCUIT SIMULATION</span><b>03</b></div>
-              <h3>Mechatronics Lab</h3>
-              <p>Documented ultrasonic sensor and servo simulation, example Arduino sketch and Tinkercad workflow notes. No physical validation claimed.</p>
-              <div class="entry-actions"><a href="https://github.com/trustNOpeps/mechatronics-lab">OPEN PROJECT ↗</a></div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="playground" data-scene="digital" aria-labelledby="digital-heading">
-      <div class="chapter-container to-right">
-        <picture class="mobile-exhibit" aria-hidden="true">
-          <source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/digital.webp">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100" height="660" alt="" decoding="async" loading="lazy">
-        </picture>
-        <div class="content">
-          <span class="chapter-num">02 / DIGITAL PLAYGROUND</span>
-          <h2 class="chapter-title" id="digital-heading">Make it work.<br><em>Make it playful.</em></h2>
-          <p class="chapter-desc">Small browser applications are my way of learning interaction design. They start with a simple question and become something you can actually click.</p>
-          <div class="project-list" aria-label="Digital experiments">
-            <article class="project-entry">
-              <div class="item-top"><span>TRAVEL PRODUCT / NEXT.JS + TYPESCRIPT</span></div>
-              <h3>BOURN</h3>
-              <p>A Bali travel planning and concierge prototype. Shape a trip, explore an illustrative budget and download a personal brief. Originally developed as PERON.</p>
-              <div class="entry-actions"><a href="./bourn/">LIVE DEMO ↗</a><a href="https://github.com/trustNOpeps/bourn">SOURCE + CASE STUDY ↗</a></div>
-            </article>
-
-            <article class="project-entry">
-              <div class="item-top"><span>EDITORIAL PRODUCT / RESEARCH + FRONT-END</span></div>
-              <h3>VI Fieldnotes</h3>
-              <p>An independent GTA VI guide publication with searchable articles, a storage calculator and a saved launch checklist. Built with HTML, CSS and JavaScript.</p>
-              <div class="entry-actions"><a href="https://vi-fieldnotes.pages.dev/">LIVE WEBSITE ↗</a><a href="https://github.com/trustNOpeps/vi-fieldnotes/blob/main/docs/portfolio-case-study.md">CASE STUDY ↗</a><a href="https://github.com/trustNOpeps/vi-fieldnotes">SOURCE ↗</a></div>
-            </article>
-            <article class="project-entry">
-              <div class="item-top"><span>PRODUCT PILOT / HOSPITALITY CRM</span></div>
-              <h3>Tamuform Studio</h3>
-              <p>A bilingual hospitality website and inquiry workspace. Explore the product case study and a fictional CRM walkthrough.</p>
-              <div class="entry-actions"><a href="./tamuform/">CASE STUDY ↗</a><a href="./tamuform/previews/workspace.html">CRM PREVIEW ↗</a></div>
-            </article>
-            <article class="project-entry">
-              <div class="item-top"><span>CANVAS / ISOMETRIC WORLD</span><b>04</b></div>
-              <h3>Little World</h3>
-              <p>An isometric office with nine selectable coworkers, instant work reports and optional local AI drafting.</p>
-              <div class="entry-actions"><a href="./apps/little-world/">EXPLORE ↗</a><a href="https://github.com/trustNOpeps/little-world">SOURCE ↗</a></div>
-            </article>
-            <article class="project-entry">
-              <div class="item-top"><span>PIXEL EDITOR / INTERACTION</span><b>05</b></div>
-              <h3>Pixel Pad</h3>
-              <p>A spacious pixel art editor with drawing tools, palettes, undo, project files and PNG export.</p>
-              <div class="entry-actions"><a href="./apps/pixel-desk/">OPEN DEMO ↗</a><a href="https://github.com/trustNOpeps/pixel-desk">SOURCE ↗</a></div>
-            </article>
-            <article class="project-entry">
-              <div class="item-top"><span>PRODUCT / LOCAL WORKSPACE</span><b>06</b></div>
-              <h3>Request Desk</h3>
-              <p>A request-for-quotation draft tool with item editing, validation and structured exports. No orders are submitted.</p>
-              <div class="entry-actions"><a href="./apps/request-desk/">TRY APP ↗</a><a href="https://github.com/trustNOpeps/request-desk">SOURCE ↗</a></div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="studio" data-scene="creative" aria-labelledby="creative-heading">
-      <div class="chapter-container">
-        <picture class="mobile-exhibit" aria-hidden="true">
-          <source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/creative.webp">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100" height="660" alt="" decoding="async" loading="lazy">
-        </picture>
-        <div class="content">
-          <span class="chapter-num">03 / CREATIVE PRACTICE</span>
-          <h2 class="chapter-title" id="creative-heading">Thinking beyond<br><em>the interface.</em></h2>
-          <p class="chapter-desc">Visual identity, editorial thinking and writing also belong in the process. These are creative projects, each with its current status stated plainly.</p>
-          <div class="creative-cards">
-            <a class="creative-card" href="./showroom/">
-              <div class="creative-thumb"><img src="./assets/after-wanting/aw-monogram.svg" width="400" height="205" loading="lazy" style="object-fit:contain;object-position:center;background:#eee6df" alt=""></div>
-              <div class="creative-body"><small>FASHION / CONCEPT ARCHIVE</small><h3>AFTER WANTING ↗</h3><p>Ten original clothing collections, presented as an editorial brand archive with a virtual campaign model and packaging studies. Concepts, not yet for sale.</p></div>
-            </a>
-            <a class="creative-card" href="./book/">
-              <div class="creative-thumb book"><span>Berpikir di<br>Era AI</span></div>
-              <div class="creative-body"><small>WRITING / IN PROGRESS</small><h3>Berpikir di Era AI ↗</h3><p>An Indonesian nonfiction book in development. Only the public preview is shown.</p></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="concepts" data-scene="concepts" aria-labelledby="concepts-heading">
-      <div class="chapter-container to-right">
-        <picture class="mobile-exhibit" aria-hidden="true">
-          <source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/concepts.webp">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100" height="660" alt="" decoding="async" loading="lazy">
-        </picture>
-        <div class="content">
-          <span class="chapter-num">04 / CONCEPT STUDIES</span>
-          <h2 class="chapter-title" id="concepts-heading">The thinking<br><em>behind the build.</em></h2>
-          <p class="chapter-desc">Information architecture, content structure and design systems. These are anonymized studies or pitches, not claims of delivered client websites.</p>
-          <div class="concept-index">
-            <article><span>01</span><div><h3><a href="https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/procurement-website.md">Procurement catalogue ↗</a></h3><p>Organizing specifications and quotation requests without assuming fixed prices.</p></div></article>
-            <article><span>02</span><div><h3><a href="https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/property-company-website.md">Property & developments ↗</a></h3><p>A company-first presentation with projects arranged as a clear catalogue.</p></div></article>
-            <article><span>03</span><div><h3><a href="https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/hospitality-website.md">Hospitality & place ↗</a></h3><p>A bilingual venue concept built around atmosphere, menus and visiting information.</p></div></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="about" data-scene="about" aria-labelledby="about-heading">
-      <div class="chapter-container">
-        <picture class="mobile-exhibit" aria-hidden="true">
-          <source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/about.webp">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100" height="660" alt="" decoding="async" loading="lazy">
-        </picture>
-        <div class="content">
-          <span class="chapter-num">05 / ABOUT</span>
-          <h2 class="chapter-title" id="about-heading">Engineering mind.<br><em>Creative practice.</em></h2>
-          <p class="chapter-desc">I'm a mechanical engineering undergraduate at Universitas Udayana, based in Bali. My interests cross research, product thinking, UI/UX and software. Building and testing small projects is how I learn.</p>
-          <dl class="about-facts">
-            <div><dt>Foundation</dt><dd>Mechanical engineering and materials research</dd></div>
-            <div><dt>Digital</dt><dd>HTML, CSS, JavaScript, React and GitHub</dd></div>
-            <div><dt>Creative</dt><dd>Interface design, visual direction, writing</dd></div>
-            <div><dt>Approach</dt><dd>Understand → prototype → test → revise</dd></div>
-          </dl>
-          <p style="margin:24px 0 0"><a class="outline-button" href="https://github.com/trustNOpeps?tab=repositories">EXPLORE THE REPOSITORIES ↗</a></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="contact" data-scene="contact" aria-labelledby="contact-heading">
-      <div class="chapter-container to-right">
-        <picture class="mobile-exhibit" aria-hidden="true">
-          <source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/contact.webp">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100" height="660" alt="" decoding="async" loading="lazy">
-        </picture>
-        <div class="content">
-          <span class="chapter-num">06 / THE NEXT EXPERIMENT</span>
-          <h2 class="contact-title" id="contact-heading">Have an idea?<br><em>Let's talk.</em></h2>
-          <p class="chapter-desc">I'm interested in learning with others, making useful digital tools and exploring the space between engineering and creative work.</p>
-          <div class="contact-actions">
-            <a href="https://github.com/trustNOpeps/trustNOpeps/issues/new" aria-label="Start a public project conversation on GitHub Issues">OPEN A PUBLIC ISSUE ↗</a>
-            <a href="https://github.com/trustNOpeps">GITHUB PROFILE ↗</a>
-          </div>
-          <p class="microcopy contact-note">GITHUB ISSUES ARE PUBLIC. PLEASE DO NOT SHARE CONFIDENTIAL INFORMATION.</p>
-          <p class="microcopy" style="margin-top:15px">BALI, INDONESIA · 2026</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <span>© 2026 haammkaki. Independent, AI-assisted projects with documented limitations.</span>
-    <span><a href="#top">BACK TO THE BEGINNING ↑</a></span>
-  </footer>
-  <script type="module" src="./immersive-world.js?v=mobile-exhibits-1"></script>
+<div class="content">
+<span class="chapter-num">03 / CREATIVE PRACTICE</span>
+<h2 class="chapter-title" id="creative-heading">Thinking beyond<br/><em>the interface.</em></h2>
+<p class="chapter-desc">Visual identity, editorial thinking and writing also belong in the process. These are creative projects, each with its current status stated plainly.</p>
+<div class="creative-cards showcase-creative">
+<a class="creative-card showcase-row" href="./showroom/">
+<div class="showcase-visual tone-sand"><img alt="Memory Garden clothing collection from AFTER WANTING" class="editorial-product" decoding="async" height="900" loading="lazy" src="./assets/after-wanting/vol06.webp" width="1200"/></div>
+<div class="creative-body showcase-copy"><small>FASHION / CONCEPT ARCHIVE</small><h3>AFTER WANTING ↗</h3><p>Ten original clothing collections, presented as an editorial brand archive with a virtual campaign model and packaging studies. Concepts, not yet for sale.</p><span class="creative-cta">EXPLORE THE PROJECT ↗</span></div>
+</a>
+<a class="creative-card showcase-row" href="./book/">
+<div class="showcase-visual tone-sand"><div class="showcase-book"><small>SEBUAH PANDUAN UNTUK TETAP BERPIKIR</small><strong>Berpikir<br/>di Era <em>AI.</em></strong><span>HAAMMKAKI</span></div></div>
+<div class="creative-body showcase-copy"><small>WRITING / IN PROGRESS</small><h3>Berpikir di Era AI ↗</h3><p>An Indonesian nonfiction book in development. Only the public preview is shown.</p><span class="creative-cta">EXPLORE THE PROJECT ↗</span></div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="concepts-heading" class="chapter" data-scene="concepts" id="concepts">
+<div class="chapter-container to-right">
+<picture aria-hidden="true" class="mobile-exhibit">
+<source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/concepts.webp"/>
+<img alt="" decoding="async" height="660" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100"/>
+</picture>
+<div class="content">
+<span class="chapter-num">04 / CONCEPT STUDIES</span>
+<h2 class="chapter-title" id="concepts-heading">The thinking<br/><em>behind the build.</em></h2>
+<p class="chapter-desc">Information architecture, content structure and design systems. These are anonymized studies or pitches, not claims of delivered client websites.</p>
+<div class="concept-index">
+<article><span>01</span><div><h3><a href="https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/procurement-website.md">Procurement catalogue ↗</a></h3><p>Organizing specifications and quotation requests without assuming fixed prices.</p></div></article>
+<article><span>02</span><div><h3><a href="https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/property-company-website.md">Property &amp; developments ↗</a></h3><p>A company-first presentation with projects arranged as a clear catalogue.</p></div></article>
+<article><span>03</span><div><h3><a href="https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/hospitality-website.md">Hospitality &amp; place ↗</a></h3><p>A bilingual venue concept built around atmosphere, menus and visiting information.</p></div></article>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="about-heading" class="chapter" data-scene="about" id="about">
+<div class="chapter-container">
+<picture aria-hidden="true" class="mobile-exhibit">
+<source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/about.webp"/>
+<img alt="" decoding="async" height="660" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100"/>
+</picture>
+<div class="content">
+<span class="chapter-num">05 / ABOUT</span>
+<h2 class="chapter-title" id="about-heading">Engineering mind.<br/><em>Creative practice.</em></h2>
+<p class="chapter-desc">I'm a mechanical engineering undergraduate at Universitas Udayana, based in Bali. My interests cross research, product thinking, UI/UX and software. Building and testing small projects is how I learn.</p>
+<dl class="about-facts">
+<div><dt>Foundation</dt><dd>Mechanical engineering and materials research</dd></div>
+<div><dt>Digital</dt><dd>HTML, CSS, JavaScript, React and GitHub</dd></div>
+<div><dt>Creative</dt><dd>Interface design, visual direction, writing</dd></div>
+<div><dt>Approach</dt><dd>Understand → prototype → test → revise</dd></div>
+</dl>
+<p style="margin:24px 0 0"><a class="outline-button" href="https://github.com/trustNOpeps?tab=repositories">EXPLORE THE REPOSITORIES ↗</a></p>
+</div>
+</div>
+</section>
+<section aria-labelledby="contact-heading" class="chapter" data-scene="contact" id="contact">
+<div class="chapter-container to-right">
+<picture aria-hidden="true" class="mobile-exhibit">
+<source media="(max-width: 710px), (pointer: coarse) and (max-width: 1100px)" srcset="./assets/exhibits/contact.webp"/>
+<img alt="" decoding="async" height="660" loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1100"/>
+</picture>
+<div class="content">
+<span class="chapter-num">06 / THE NEXT EXPERIMENT</span>
+<h2 class="contact-title" id="contact-heading">Have an idea?<br/><em>Let's talk.</em></h2>
+<p class="chapter-desc">I'm interested in learning with others, making useful digital tools and exploring the space between engineering and creative work.</p>
+<div class="contact-actions">
+<a aria-label="Start a public project conversation on GitHub Issues" href="https://github.com/trustNOpeps/trustNOpeps/issues/new">OPEN A PUBLIC ISSUE ↗</a>
+<a href="https://github.com/trustNOpeps">GITHUB PROFILE ↗</a>
+</div>
+<p class="microcopy contact-note">GITHUB ISSUES ARE PUBLIC. PLEASE DO NOT SHARE CONFIDENTIAL INFORMATION.</p>
+<p class="microcopy" style="margin-top:15px">BALI, INDONESIA · 2026</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<span>© 2026 haammkaki. Independent, AI-assisted projects with documented limitations.</span>
+<span><a href="#top">BACK TO THE BEGINNING ↑</a></span>
+</footer>
+<script src="./immersive-world.js?v=mobile-exhibits-1" type="module"></script>
 </body>
 </html>
-
-

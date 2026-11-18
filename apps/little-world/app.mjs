@@ -1,4 +1,3 @@
-import './sales.mjs';
 import {roomShell} from './architecture.mjs';
 import {activity,resetWork} from './work.mjs';
 import { AGENTS, PLACES, TASKS, freshState, loadState, formatTime, scheduleLabel, addLog, assignTask, tick, exportWorld } from './core.mjs';
@@ -138,15 +137,6 @@ function floor(){
     r(-14,-38,25,6,'#696968');r(-10,-46,19,10,'#f5f0df');
     r(-10,-28,17,5,'#53555a');r(-10,-12,18,2,'#a9a596');r(8,-28,3,3,'#6c9b91');
   });
-  const residents=[
-    [3.9,8.35,'#a5b9ce',3,'read'],[13.3,3.05,'#d98b74',4,'desk'],
-    [11.4,9.55,'#99b39c',5,'pack'],[8.7,7.6,'#d9b984',2,'walk'],
-    [2.35,3.2,'#a1b6a4',1,'read'],[13.7,7.1,'#bbb0ca',0,'walk']
-  ];
-  residents.forEach(([x,y,color,variant,pose],i)=>{
-    const drift=pose==='walk'?(1-Math.cos(frame/35+i))*.62:0;
-    put(x+drift,y+.16,()=>person(x+drift,y,color,'',variant,false,pose,i%2===0));
-  });
   const people=world.agents.map((a,i)=>({...a,info:AGENTS[i]})).sort((a,b)=>a.x+a.y-b.x-b.y);
   people.forEach((a,i)=>{
     const working=activity?.agent===a.id;
@@ -178,7 +168,9 @@ TASKS.forEach(t=>{const option=document.createElement('option');option.value=t.i
 function renderUI() {
   $('#clock').textContent=`DAY ${String(world.day).padStart(2,'0')} · ${formatTime(world.minute)}`;
   $('#mood').textContent=scheduleLabel(world.minute);$('#coin').textContent=`◈ ${world.coins} coins`;
-  list.replaceChildren();AGENTS.forEach(info=>{const a=world.agents.find(a=>a.id===info.id);const button=document.createElement('button');button.type='button';button.className='agent';button.setAttribute('aria-pressed',String(world.selected===a.id));button.innerHTML=`<span class="avatar" style="background:${info.color}">●</span><span><strong>${info.name}</strong><small>${activity?.agent===a.id?'AI · '+activity.stage.toUpperCase():a.task?'ON TASK · '+Math.round(a.progress)+'%':'AVAILABLE · '+info.role}</small></span>`;button.addEventListener('click',()=>{world.selected=a.id;persist();renderUI();});list.append(button);});
+  const focused=document.activeElement?.closest('.agent')?.dataset.agent;
+  list.replaceChildren();AGENTS.forEach(info=>{const a=world.agents.find(a=>a.id===info.id);const button=document.createElement('button');button.type='button';button.className='agent';button.dataset.agent=info.id;button.setAttribute('aria-pressed',String(world.selected===a.id));button.innerHTML=`<span class="avatar" style="background:${info.color}">●</span><span><strong>${info.name}</strong><small>${activity?.agent===a.id?'WORK · '+activity.stage.toUpperCase():a.task?'ON TASK · '+Math.round(a.progress)+'%':'AVAILABLE · '+info.role}</small></span>`;button.addEventListener('click',()=>{world.selected=a.id;persist();renderUI();});list.append(button);});
+  if(focused)list.querySelector(`[data-agent="${focused}"]`)?.focus({preventScroll:true});
   const current=AGENTS.find(a=>a.id===world.selected),state=world.agents.find(a=>a.id===current.id);
   $('#agent-title').firstChild.textContent=current.name+' ';$('#agent-role').textContent=current.role;
   $('#energy').textContent=state.energy+'%';$('#energy-fill').style.width=state.energy+'%';

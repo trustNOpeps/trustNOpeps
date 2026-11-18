@@ -9,5 +9,5 @@
 #job-output{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;font:14px/1.6 monospace}
 #job-status{overflow-wrap:anywhere}.job-grid button{min-height:44px}.job-grid button:disabled{opacity:.55}
 @media(max-width:720px){.job-grid{grid-template-columns:1fr}}
-#sale-form input,#sale-form select{display:block;width:100%;margin:.25rem 0 .7rem;padding:.55rem;font:inherit;border:1px solid #756280;background:#fffaf1;color:#322442}
-#sales-list{padding:0;list-style:none;max-height:340px;overflow:auto}#sales-list li{border-top:1px solid #ccbdcb;padding:8px 0;overflow-wrap:anywhere}#sales-list button{display:block}
+
+.agent-list{max-height:410px;overflow:auto}.agent{min-height:70px}.avatar{flex-shrink:0}#job-output{min-height:120px;background:#f5eedc;padding:16px;border:1px solid #d5c8ae}.job-grid button{padding:12px}button:disabled{cursor:not-allowed}.job-grid textarea:focus-visible{outline:3px solid #875cc9;outline-offset:2px}

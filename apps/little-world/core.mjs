@@ -1,13 +1,19 @@
-export const WORLD_VERSION = 1;
+export const WORLD_VERSION = 2;
 export const AGENTS = [
   { id: 'nova', name: 'Nova', role: 'Product explorer', color: '#e99ebc', home: [3, 5], work: [8, 3] },
   { id: 'byte', name: 'Byte', role: 'Engineering helper', color: '#8edac4', home: [4, 6], work: [12, 5] },
   { id: 'miso', name: 'Miso', role: 'Creative companion', color: '#f6cd74', home: [6, 7], work: [6, 2] },
+  { id:'luna', name:'Luna', role:'Publishing editor', color:'#a5b9ce', home:[4,8], work:[3,9] },
+  { id:'rio', name:'Rio', role:'Apparel coordinator', color:'#d98b74', home:[13,3], work:[13,3] },
+  { id:'sage', name:'Sage', role:'Production planner', color:'#99b39c', home:[11,9], work:[11,9] },
+  { id:'kai', name:'Kai', role:'Research assistant', color:'#d9b984', home:[9,7], work:[3,7] },
+  { id:'cleo', name:'Cleo', role:'Content reviewer', color:'#a1b6a4', home:[2,3], work:[6,3] },
+  { id:'remy', name:'Remy', role:'Quality reviewer', color:'#bbb0ca', home:[14,7], work:[12,6] },
 ];
 export const PLACES = [
   { id:'books',name:'Publishing',short:'BOOKS',subtitle:'Berpikir di Era AI · book preview',color:'#e7c18b',position:[3,8],type:'publishing',href:'../../book/' },
   { id:'fashion',name:'AFTER WANTING',short:'APPAREL',subtitle:'Original collections · garment showroom',color:'#be93a8',position:[13,2],type:'fashion',href:'../../showroom/' },
-  { id: 'studio', name: 'Creative Studio', subtitle: 'Pixel Desk', color: '#b8a1f2', position: [6, 2], type: 'experiment', href: '../pixel-desk/' },
+  { id: 'studio', name: 'Creative Studio', subtitle: 'Pixel Pad', color: '#b8a1f2', position: [6, 2], type: 'experiment', href: '../pixel-desk/' },
   { id: 'lab', name: 'Engineering Lab', subtitle: 'Tensile Desk', color: '#9cdece', position: [12, 5], type: 'engineering', href: '../tensile-desk/' },
   { id: 'market', name: 'Product Workshop', subtitle: 'Request Desk', color: '#f5b38f', position: [8, 3], type: 'product', href: '../request-desk/' },
   { id: 'gallery', name: 'Case Study Gallery', subtitle: 'Anonymous concepts', color: '#f1c87e', position: [3, 6], type: 'concept', href: 'https://github.com/trustNOpeps/trustNOpeps/tree/main/projects' },
@@ -31,7 +37,7 @@ export function loadState(raw) {
   if (typeof raw !== 'string') return freshState();
   try {
     const parsed = JSON.parse(raw);
-    if (parsed?.version !== WORLD_VERSION || !Array.isArray(parsed.agents) || parsed.agents.length !== AGENTS.length) return freshState();
+    if (![1, WORLD_VERSION].includes(parsed?.version) || !Array.isArray(parsed.agents)) return freshState();
     const base = freshState();
     base.day = clampInteger(parsed.day, 1, 999, 1);
     base.minute = clampInteger(parsed.minute, 0, 1439, 480);

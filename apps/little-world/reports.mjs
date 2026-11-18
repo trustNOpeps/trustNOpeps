@@ -1,0 +1,11 @@
+import {budgetReport} from './budget.mjs';
+export function instantReport(mode, brief){
+ const input=String(brief).trim();
+ if(!input)throw Error('Enter a brief first.');
+ if(input.length>1800)throw Error('Keep the brief within 1,800 characters.');
+ if(mode==='budget')return budgetReport(input);
+ if(!['brief','captions'].includes(mode))throw Error('Choose a supported instant report type.');
+ const heading='# Studio work report\n\nMode: structured template, not AI generation. Review and adapt before use.\n\n## Your brief\n\n'+input+'\n\n';
+ if(mode==='captions')return heading+'## Miso · Three editable caption starters\n\n1. Story\nDi balik [nama produk], ada [cerita atau gagasan utama]. Kami menerjemahkannya melalui [detail desain yang dapat dibuktikan]. Bagian mana yang paling dekat denganmu?\n\n2. Product detail\nKenali [nama produk]: [fitur utama] dengan [detail bahan atau desain]. Dibuat untuk [kebutuhan audiens]. Lihat detailnya di [tautan katalog].\n\n3. Conversation\nKalau kamu memilih [jenis produk], mana yang paling penting: [opsi A] atau [opsi B]? Ceritakan pilihanmu. [Nama koleksi] sedang kami kembangkan dengan pertanyaan ini.\n\n## Cleo · Editing checklist\n\n- [ ] Replace every bracket using facts from the brief.\n- [ ] Match the audience, language and word limit requested.\n- [ ] Verify product availability and links.\n- [ ] Remove claims that cannot be supported.\n';
+ return heading+'## Nova · Scope\n\nDeliverable: '+input.split('\n')[0]+'\n\nConfirm before execution: intended audience, output format, deadline and source materials. Missing details remain open; no assumptions are treated as facts.\n\n## Sage · Execution checklist\n\n- [ ] Gather the materials referenced in the brief.\n- [ ] Write the acceptance criteria for the requested deliverable.\n- [ ] Prepare a first version using those materials.\n- [ ] Review content against the brief and acceptance criteria.\n- [ ] Test links, files and presentation on the target device.\n- [ ] Export the reviewed deliverable and record open questions.\n\n## Remy · Review\n\nCheck accuracy, completeness, readability and required format. This report organizes the work; it does not perform external research, send messages or produce an arbitrary finished deliverable.\n';
+}

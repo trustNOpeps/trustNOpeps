@@ -355,3 +355,5 @@ body.world-ready .world-fallback{opacity:0}
   .site-header { background:#0b1116; }
   .chapter .content, #contact .content { width:100%; max-width:100%; }
 }
+
+.hero-focus{max-width:600px;border-top:1px solid #42524e;padding-top:22px;font:500 11px/2 ui-monospace,monospace;letter-spacing:.09em;color:#b9c7c0}.hero-focus span{color:var(--lime);padding:0 9px}

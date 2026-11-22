@@ -11,9 +11,6 @@
   const mobileChapterCaption = document.getElementById('mobile-chapter-caption');
   const mobileChapterLabels = ['OVERVIEW','ENGINEERING','DIGITAL','CREATIVE','CONCEPTS','ABOUT','CONTACT'];
   const mobileMenu = document.querySelector('.mobile-navigation');
-  const mobileChapterNav = document.querySelector('.mobile-chapter-nav');
-  const mobileChapterToggle = document.querySelector('.mobile-chapter-toggle');
-  const mobileChapterPoints = document.getElementById('mobile-chapter-points');
   const siteHeader = document.querySelector('.site-header');
   const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -39,7 +36,9 @@
     const nearest=clamp(Math.round(goalPosition),0,chapters.length-1);
     if (nearest!==activeIndex) {
       activeIndex=nearest;
-      document.body.dataset.scene = chapters[nearest].dataset.scene || "overview";
+      // Dense project-showcase chapters do not need a floating 3D sculpture.
+      // CSS fades out the canvas; the original scroll-driven engine continues.
+      document.body.classList.toggle('showcase-reading', chapters[nearest].classList.contains('showcase-chapter'));
       sceneLabel.textContent=sceneNames[nearest];
       sceneCount.textContent=String(nearest+1).padStart(2,'0')+' / 07';
       if (mobileChapterCaption) mobileChapterCaption.textContent = String(nearest+1).padStart(2,'0')+' / '+mobileChapterLabels[nearest];
@@ -107,27 +106,6 @@
   });
   document.addEventListener('pointerdown', event => {
     if (mobileMenu?.open && !mobileMenu.contains(event.target)) mobileMenu.open = false;
-  });
-  // A compact disclosure keeps the section index available without covering text.
-  function setChapterIndexOpen(open) {
-    if (!mobileChapterPoints || !mobileChapterToggle) return;
-    mobileChapterPoints.hidden = !open;
-    mobileChapterToggle.setAttribute('aria-expanded', String(open));
-  }
-  mobileChapterToggle?.addEventListener('click', () => {
-    setChapterIndexOpen(mobileChapterPoints.hidden);
-  });
-  mobileChapterPoints?.addEventListener('click', event => {
-    if (event.target.closest('a')) setChapterIndexOpen(false);
-  });
-  document.addEventListener('pointerdown', event => {
-    if (mobileChapterNav && !mobileChapterNav.contains(event.target)) setChapterIndexOpen(false);
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && mobileChapterPoints && !mobileChapterPoints.hidden) {
-      setChapterIndexOpen(false);
-      mobileChapterToggle?.focus();
-    }
   });
   enqueueRead();
 
@@ -367,7 +345,11 @@
     const rail = document.querySelector('.progress-rail');
     const layouts = chapters.map(chapter => {
       const content = chapter.querySelector('.content');
-      return { content, copyOnRight:content.parentElement.classList.contains('to-right') };
+      return {
+        content,
+        isShowcase:chapter.classList.contains('showcase-chapter'),
+        copyOnRight:content.parentElement.classList.contains('to-right')
+      };
     });
     function onResize(){
       if (mobileExhibits.matches) return;
@@ -377,8 +359,17 @@
       const rightEdge = railBounds.width ? railBounds.left : window.innerWidth;
       layouts.forEach(layout => {
         const copy = layout.content.getBoundingClientRect();
-        layout.left = layout.copyOnRight ? 0 : copy.right;
-        layout.right = layout.copyOnRight ? copy.left : rightEdge;
+        // Showcase copy spans the entire row. Using copy.right as the canvas
+        // left edge made right-left negative, producing a 1px viewport and
+        // an almost invisible object (observed at chapter boundaries).
+        if (layout.isShowcase) {
+          const reserve = Math.min(640, Math.max(380, window.innerWidth * .4));
+          layout.left = Math.max(24, rightEdge - reserve);
+          layout.right = rightEdge;
+        } else {
+          layout.left = layout.copyOnRight ? 0 : copy.right;
+          layout.right = layout.copyOnRight ? copy.left : rightEdge;
+        }
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
       renderer.setSize(window.innerWidth,window.innerHeight,false);
@@ -397,9 +388,16 @@
     function renderDesktopColumn(index, fraction) {
       const current = layouts[index];
       const next = layouts[Math.min(index + 1, layouts.length - 1)];
-      const left = THREE.MathUtils.lerp(current.left, next.left, fraction);
-      const right = THREE.MathUtils.lerp(current.right, next.right, fraction);
-      const width = Math.max(1, right - left);
+      let left = THREE.MathUtils.lerp(current.left, next.left, fraction);
+      let right = THREE.MathUtils.lerp(current.right, next.right, fraction);
+      // Never allow a degenerate scissor or a nearly-zero perspective zoom.
+      if (right - left < 280) {
+        const width = Math.min(460, Math.max(300, window.innerWidth * .32));
+        const centre = clamp((left + right) / 2, width / 2, window.innerWidth - width / 2);
+        left = centre - width / 2;
+        right = centre + width / 2;
+      }
+      const width = right - left;
       const height = window.innerHeight;
       renderer.setScissorTest(false);
       renderer.clear();

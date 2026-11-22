@@ -12,6 +12,10 @@ a{color:inherit}button{font:inherit}
 .world-stage{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 75% 46%,#1c292b 0%,#0b1116 60%,#070c11 100%);overflow:hidden}
 .world-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .8s ease}
 body.world-ready .world-stage canvas{opacity:1}
+/* The interactive world remains on Hero, Concepts, About and Contact.
+   Hide its canvas during full-width project galleries where the art viewport
+   has no legitimate column, with a smooth fade instead of tiny fragments. */
+body.world-ready.showcase-reading .world-stage canvas{opacity:0}
 .world-fallback{position:absolute;inset:0;display:grid;place-items:center;opacity:.65;transition:opacity .6s}
 body.world-ready .world-fallback{opacity:0}
 .fallback-object{width:min(55vmin,600px);aspect-ratio:1;position:absolute;left:53%;top:16%;transform:rotateX(62deg) rotateZ(-35deg);border:1px solid #607e75;border-radius:50%;box-shadow:0 0 0 35px rgba(91,118,106,.04),0 0 0 100px rgba(91,118,106,.025),inset 0 0 120px rgba(128,174,143,.14)}

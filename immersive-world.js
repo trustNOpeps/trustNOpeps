@@ -7,7 +7,9 @@
   const progress = document.getElementById('reading-progress');
   const sceneLabel = document.getElementById('scene-label');
   const sceneCount = document.getElementById('scene-count');
-  const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a, .mobile-navigation nav a')];
+  const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a, .mobile-navigation nav a, .mobile-chapter-points a')];
+  const mobileChapterCaption = document.getElementById('mobile-chapter-caption');
+  const mobileChapterLabels = ['OVERVIEW','ENGINEERING','DIGITAL','CREATIVE','CONCEPTS','ABOUT','CONTACT'];
   const mobileMenu = document.querySelector('.mobile-navigation');
   const siteHeader = document.querySelector('.site-header');
   const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
@@ -36,6 +38,7 @@
       activeIndex=nearest;
       sceneLabel.textContent=sceneNames[nearest];
       sceneCount.textContent=String(nearest+1).padStart(2,'0')+' / 07';
+      if (mobileChapterCaption) mobileChapterCaption.textContent = String(nearest+1).padStart(2,'0')+' / '+mobileChapterLabels[nearest];
       const currentId=chapters[nearest].id;
       desktopLinks.forEach(a=>{
         if(a.hash==='#'+currentId)a.setAttribute('aria-current','location');

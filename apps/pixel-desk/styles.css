@@ -7,3 +7,14 @@
  .panel select{font-size:16px}
  .top-tools button{min-height:44px}
 }
+
+/* Deliberate two-row Pixel Pad toolbar and usable utility links on compact phones. */
+@media(max-width:390px){
+ .top-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .top-tools > *{min-width:0}
+ .top-tools > label{display:flex;align-items:center;gap:8px;font-size:12px}
+ .top-tools select{min-width:0;width:100%;font-size:16px}
+ .top-tools button{width:100%;min-height:48px}
+ header{align-items:center;flex-wrap:wrap;gap:5px 12px}
+ header a,footer a{display:inline-flex;min-height:44px;align-items:center;line-height:1.4}
+}

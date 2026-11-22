@@ -48,3 +48,13 @@ At the tested positions:
 ## Future work guidance
 
 Do not reintroduce editorial light-panel redesign or 3D canvas overlays within full-width project galleries without user approval. Prioritize stable responsive behavior and functional navigation. All future changes to the scrollytelling camera/viewport require before-and-after browser tests of at least one project-gallery midpoint and one dedicated 3D scene, not merely a successful GitHub build.
+
+## Additional Creative → Concepts transition regression and fix
+
+A later real user screenshot showed stray partial 3D models behind the last **Berpikir di Era AI** creative card and the opening of **The thinking behind the build**. The earlier gallery-midpoint QA passed but did not explicitly inspect this cross-chapter boundary. It was premature to call the transition finished.
+
+**Cause:** `readScroll()` previously removed `showcase-reading` when the rounded, goal scene index changed from Creative to Concepts, before the new chapter had cleared the sticky header or the interpolated Three.js camera had settled. For part of that transition the old Creative model and new Concepts model could both be visible as clipped background fragments.
+
+**Fix published:** `gh-pages/immersive-world.js` now gates canvas visibility for entry into Concepts until (1) `#concepts` has passed the fixed header, and (2) the rendered scene position reaches `conceptsIndex - .003`, ensuring the prior model is no longer visible at its existing `.995` visibility threshold. `gh-pages/immersive-world.css` shortens fade-out to `.16s` while keeping the original slow fade-in, with browser-cache version `concept-boundary-gate-2`. Original layout, colors and other 3D scenes remain unchanged.
+
+**Live browser verification, after deployment:** GitHub Pages run [45050902913](https://github.com/trustNOpeps/trustNOpeps/actions/runs/45050902913) succeeded. At 1440×900, when Concepts chapter top was around **500px, 250px and 120px** from viewport top, canvas opacity stayed **0**, and no 3D fragments appeared. At chapter top around **70px**, the dedicated Concepts 3D scene displayed at normal scale after settling with canvas opacity **1**. Scrolling upward Concepts → Creative hid the canvas appropriately. Hero and About preserved their animations. At 320×640 mobile, no horizontal overflow, and all tested anchors worked. Status: **PASS for this specific previously missed transition**.

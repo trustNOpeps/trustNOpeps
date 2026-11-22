@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#172323" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="ELSEWHERE is a thoughtful decision studio. Compare paths, explore tradeoffs, and understand what changes when your priorities do." />
+  <meta property="og:title" content="ELSEWHERE — Explore the roads not taken" />
+  <meta property="og:description" content="An interactive, local-first studio for decisions worth thinking about." />
+  <title>ELSEWHERE — A studio for better questions</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+      <div class="brand-row"><a class="brand" href="#overview" aria-label="Elsewhere home"><span class="brand-symbol"><span></span><span></span><span></span></span><span>elsewhere<span class="brand-dot">.</span></span></a><button id="close-sidebar" class="icon-button mobile-only" aria-label="Close navigation">×</button></div>
+      <div class="side-kicker">YOUR THINKING SPACE</div>
+      <div class="workspace-chip"><span class="workspace-icon">✳</span><div class="workspace-copy"><strong>Personal studio</strong><small>Private to this device</small></div><span class="workspace-chevron">⌄</span></div>
+      <button id="library-sidebar" class="library-side" type="button"><span aria-hidden="true">▤</span><span>My decisions</span><strong id="library-side-count">1</strong></button>
+      <div class="sidebar-section-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Workspace views">
+        <button class="nav-item active" data-view="overview"><span class="nav-symbol">◫</span> Overview <span class="nav-arrow">↗</span></button>
+        <button class="nav-item" data-view="compare"><span class="nav-symbol">≡</span> Compare options</button>
+        <button class="nav-item" data-view="scenario"><span class="nav-symbol">◇</span> Scenario lab</button>
+        <button class="nav-item" data-view="notes"><span class="nav-symbol">▤</span> Decision journal</button>
+      </nav>
+      <div class="sidebar-section-label second">EXPLORE</div>
+      <nav class="nav-list" aria-label="Explore actions">
+        <button id="templates-button" class="nav-item"><span class="nav-symbol">▦</span> Example decisions</button>
+        <button id="new-sidebar" class="nav-item"><span class="nav-symbol">＋</span> New decision</button>
+      </nav>
+      <div class="sidebar-grow"></div>
+      <div class="sidebar-note"><div class="tiny-star">✳</div><strong>Your choices, your call.</strong><p>Scores organize thinking. They never replace your judgment.</p></div>
+      <div class="sidebar-footer"><span class="local-pulse"></span> Saved locally <span class="footer-sep">·</span> v2.0</div>
+    </aside>
+    <div id="mobile-scrim" class="mobile-scrim" hidden></div>
+    <main class="main">
+      <header class="topbar"><div class="breadcrumb"><button id="menu-button" class="menu-button mobile-only" aria-label="Open navigation">☰</button><span>WORKSPACE</span><span class="crumb-slash">/</span><span id="breadcrumb-view">Overview</span></div><div class="top-actions"><span class="privacy-text"><span class="dot-green"></span> Private by default</span><button class="top-ghost" id="library-top" title="Your saved decisions">My decisions <span id="library-top-count">(1)</span></button><button class="top-ghost" id="import-button" title="Import a saved decision">Import</button><button class="top-ghost" id="export-button" title="Export decision as JSON">Export <span aria-hidden="true">↗</span></button><button id="new-top" class="button primary small"><span>＋</span> New decision</button></div></header>
+      <div class="content-wrap">
+        <section class="page-section active" id="view-overview">
+          <div class="section-prelude"><span class="eyebrow"><i></i> A SPACE TO THINK DIFFERENTLY</span><span class="today-meta">DECISION STUDIO / 001</span></div>
+          <div class="hero"><div class="hero-copy"><p class="hero-issue">A CLEARER WAY FORWARD</p><h1>Make space for<br /><em>better</em> decisions<span class="orange-period">.</span></h1><p class="hero-description">Compare what matters, test your assumptions, and choose with more clarity. No account, no black-box answers.</p><div class="hero-cta"><button id="hero-new" class="button ink">Start a decision <span>↗</span></button><button id="hero-examples" class="button hero-secondary">Try an example</button></div><p class="hero-side-note">Private by design. Saved only on this device.</p></div><div class="hero-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-center"></div><div class="art-path path-one"></div><div class="art-path path-two"></div><div class="art-path path-three"></div><div class="art-dot art-dot-one"></div><div class="art-dot art-dot-two"></div><div class="art-dot art-dot-three"></div><div class="art-label art-label-one">WHAT IF?</div><div class="art-label art-label-two">WHAT ELSE?</div><div class="art-caption">THE ROADS<br />NOT TAKEN ↗</div></div></div>
+          <div class="quick-start" aria-label="Three easy steps"><div class="quick-start-intro"><span class="section-label">HOW IT WORKS</span><strong>Three steps to clearer thinking.</strong></div><button type="button" id="step-question" class="quick-step"><span>01</span> Your question <b>↗</b></button><button type="button" class="quick-step" data-go="compare"><span>02</span> Rate your options <b>↗</b></button><button type="button" class="quick-step" data-go="scenario"><span>03</span> Explore the what-ifs <b>↗</b></button></div>
+          <div id="example-banner" class="example-banner" hidden><span>✳ <strong>Example workspace.</strong> These ratings are made up to demonstrate the tool. Change them to reflect your own situation.</span><button id="example-personalize" type="button">Make it yours ↗</button></div>
+          <div class="decision-heading"><div><span class="section-label">YOUR CURRENT QUESTION</span><h2 id="decision-heading">How should I spend my weekend?</h2><p id="decision-description">A small decision with more than one good answer.</p></div><button id="change-decision" class="text-action">Edit question <span>↗</span></button></div>
+          <div class="metrics" id="metrics"></div>
+          <div class="block-head"><div><span class="section-label">THE CURRENT LANDSCAPE</span><h2>Different paths, side by side<span class="title-period">.</span></h2></div><button class="text-action" data-go="compare">Full comparison <span>↗</span></button></div>
+          <div class="option-grid" id="option-grid"></div>
+          <div class="insight-row"><div class="insight-copy"><span class="section-label">A GENTLE REMINDER</span><h3>Numbers don't<br />make the decision.<br /><em>You do.</em></h3><p>Scores help make your priorities visible. They don't capture everything that matters. Leave room for intuition, context, and what you don't know yet.</p><button class="text-action" data-go="scenario">Try a different perspective <span>↗</span></button></div><div class="insight-panel" id="insight-panel"></div></div>
+          <div class="footnote-banner"><span>✳</span><p>A decision is rarely about finding a perfect option. It's about understanding the tradeoffs you're willing to make.</p><button data-go="notes" class="text-action">Write it down ↗</button></div>
+        </section>
+        <section class="page-section" id="view-compare">
+          <div class="view-top"><span class="eyebrow"><i></i> 02 / LOOK CLOSER</span><h1>See the whole <em>picture.</em></h1><p>Give every option a score from 0 to 10 for each criterion. You can change the scores, add what matters, or remove what's irrelevant. All changes are saved on this device.</p></div>
+          <div class="inline-info"><span class="info-icon">ⓘ</span><span>Rate each choice from 0 to 10. A higher number always means a better fit. Weights tell the model what matters more. These scores are personal estimates, not predictions.</span></div>
+          <div class="panel table-panel"><div class="panel-head"><div><span class="section-label">YOUR COMPARISON</span><h2>Make it your own</h2></div><div class="panel-head-actions"><button class="button outline small" id="add-criterion">＋ Criterion</button><button class="button ink small" id="add-option">＋ Option</button></div></div><div id="mobile-score" class="mobile-score"></div><div class="matrix-scroll"><table class="matrix-table" id="matrix-table"><caption class="sr-only">Editable scores for each option and criterion</caption></table></div></div>
+          <div class="compare-bottom"><div class="panel" id="compare-ranking"></div><div class="panel explain-panel"><div class="section-label">HOW TO READ THE RESULTS</div><h3>Not a verdict.<br /><em>A conversation starter.</em></h3><p>Each score is your own assessment, and each weight describes what deserves more attention. Try changing a low-confidence score or a dominant weight. If the leader switches easily, your choice is sensitive to those assumptions.</p><button class="text-action" data-go="scenario">Open scenario lab ↗</button></div></div>
+        </section>
+        <section class="page-section" id="view-scenario">
+          <div class="view-top"><span class="eyebrow"><i></i> 03 / WHAT IF?</span><h1>Shift your <em>perspective.</em></h1><p>Explore how the ranking changes when you care more or less about certain things. This is a sensitivity experiment, not a prediction of real-world outcomes.</p></div>
+          <div class="scenario-layout"><div class="panel scenario-controls"><div class="panel-head"><div><span class="section-label">YOUR PRIORITIES</span><h2>Move what matters.</h2></div><button id="reset-weights" class="text-action">Reset ↺</button></div><p class="subtle">Adjust each weight. Only their relative proportions matter in the calculation.</p><div id="weight-controls" class="weight-controls"></div><div class="scenario-presets"><span class="section-label">QUICK EXPERIMENTS</span><div class="preset-row"><button data-preset="balanced" class="pill">Equal emphasis</button><button data-preset="invert" class="pill">Flip priorities</button><button data-preset="baseline" class="pill active">Original</button></div></div><button class="button ink full" id="save-scenario">Save this scenario <span>↗</span></button></div><div class="scenario-right"><div class="panel scenario-results"><div class="panel-head"><div><span class="section-label">LIVE COMPARISON</span><h2>See what changes.</h2></div><span id="scenario-outcome" class="status-tag">Recalculating</span></div><div id="scenario-chart" class="scenario-chart"></div><div class="chart-legend"><span><i class="legend-base"></i> Original priorities</span><span><i class="legend-current"></i> Your experiment</span></div></div><div class="panel stability-panel"><div class="section-label">ASSUMPTION STRESS TEST</div><h3>How easily does the leader change?</h3><p>Explore 121 deterministic variations in criterion weights. This describes model sensitivity, <strong>not</strong> the probability that an option succeeds.</p><div class="range-top"><label for="stress-range">Weight variation</label><strong id="stress-range-value">±20%</strong></div><input type="range" min="0" max="50" step="5" value="20" id="stress-range" /><div id="stability-results"></div></div></div></div>
+          <div class="panel saved-scenarios"><div class="panel-head"><div><span class="section-label">YOUR EXPLORATIONS</span><h2>Saved perspectives</h2></div><span class="muted-caption">On this device only</span></div><div id="saved-scenarios" class="saved-list"></div></div>
+        </section>
+        <section class="page-section" id="view-notes">
+          <div class="view-top"><span class="eyebrow"><i></i> 04 / THE HUMAN PART</span><h1>Leave room for <em>thought.</em></h1><p>The best decision isn't always the highest-scoring one. Capture context the numbers can't hold, then revisit it when your circumstances change.</p></div>
+          <div class="journal-layout"><div class="panel journal-main"><div class="section-label">DECISION JOURNAL</div><label for="journal-reflection">What is really at stake?</label><textarea id="journal-reflection" placeholder="Write freely. What do you want, and what is making this choice difficult?"></textarea><div class="journal-separator"></div><label for="journal-unknowns">What don't you know yet?</label><textarea id="journal-unknowns" placeholder="Missing information, fragile assumptions, questions to ask…"></textarea><div class="journal-separator"></div><label for="journal-condition">What could change your mind?</label><textarea id="journal-condition" placeholder="A condition, a new piece of evidence, a conversation…"></textarea><div class="journal-save-line"><span id="journal-status"><span class="dot-green"></span> Notes saved locally</span><button class="button outline small" id="print-report">Print summary ↗</button></div></div><div class="journal-right"><div class="panel journal-quote"><span>✳</span><blockquote>“A good decision is one you understand, even when the outcome is uncertain.”</blockquote><p>ELSEWHERE / A NOTE TO SELF</p></div><div class="panel journal-mini" id="journal-mini"></div><div class="privacy-card"><strong>Private by design.</strong><p>Your questions, scores and notes remain in your browser's local storage. Nothing is sent to our server. Export a copy if you want to keep it somewhere safe.</p><button id="export-from-notes" class="text-action">Export your decision ↗</button></div></div></div>
+        </section>
+      </div>
+      <footer class="main-footer"><span>ELSEWHERE <i>✳</i> The space between choices.</span><span>Made for the questions worth asking. <span class="footer-divider">/</span> <button id="about-button">About this tool</button></span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden />
+  <dialog id="dialog" class="modal"><form id="dialog-form" method="dialog"><div class="modal-top"><div><span id="dialog-kicker" class="section-label"></span><h2 id="dialog-title"></h2></div><button type="button" id="dialog-close" class="icon-button" aria-label="Close dialog">×</button></div><p id="dialog-description" class="subtle"></p><div id="dialog-fields"></div><div class="dialog-actions"><button type="button" class="button outline" id="dialog-cancel">Cancel</button><button type="submit" id="dialog-submit" class="button ink">Save changes ↗</button></div></form></dialog>
+</body>
+</html>

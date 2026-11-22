@@ -10,6 +10,7 @@ I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in 
 
 | Project | Description |
 | --- | --- |
+| [ELSEWHERE](https://elsewhere-decision-studio.vercel.app/) · [Source](apps/elsewhere/) | Local-first decision studio with weighted comparisons, a mobile-first scoring flow, saved workspaces and scenario sensitivity. |
 | [BOURN](https://trustnopeps.github.io/trustNOpeps/bourn/) · [Source](https://github.com/trustNOpeps/bourn) | Travel planning prototype for Bali. |
 | [VI Fieldnotes](https://vi-fieldnotes.pages.dev/) · [Source](https://github.com/trustNOpeps/vi-fieldnotes) | Independent editorial website with guides and interactive tools. |
 | [Tamuform Studio](https://trustnopeps.github.io/trustNOpeps/tamuform/) | Hospitality website and inquiry CRM pilot. |

@@ -1,9 +1,10 @@
 # Portfolio Labs
 
-Five independent browser projects, also maintained as standalone repositories, from **trustNOpeps**. These are personal learning experiments, not delivered client products.
+Six independent browser projects, also maintained as standalone repositories, from **trustNOpeps**. These are personal learning experiments, not delivered client products.
 
 | Project | Focus | Live demo |
 |---|---|---|
+| [ELSEWHERE](elsewhere/) | Local-first multi-decision studio with weighted comparison, sensitivity experiments, and personal notes | [Open ELSEWHERE](https://elsewhere-decision-studio.vercel.app/) |
 | [MechLabs](https://github.com/trustNOpeps/mechlabs) | React/TypeScript engineering workbench with unit tests and CI | [Open MechLabs](https://mechlabs-engineering.lovable.app/) |
 | [Little World](https://github.com/trustNOpeps/little-world) | Isometric creative internet café, scripted coworker routines, local tasks and saved progress | [Explore Little World](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) |
 | [Pixel Desk](https://github.com/trustNOpeps/pixel-desk) | Retro project explorer, 16 × 16 pixel pad and PNG export | [Open Pixel Desk](https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/) |

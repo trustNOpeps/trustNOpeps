@@ -1,0 +1,26 @@
+/* ELSEWHERE v4 — bilingual UI additions. The Decision Atlas visual system is retained. */
+.locale-toggle {display:inline-flex;align-items:stretch;flex:none;border:1.5px solid var(--ink);background:var(--paper);height:37px;overflow:hidden}
+.locale-toggle button {font:700 11px/1 var(--mono);letter-spacing:.02em;min-width:37px;padding:0 9px;color:var(--ink);border:0;background:transparent;cursor:pointer;border-radius:0}
+.locale-toggle button+button {border-left:1px solid var(--ink)}
+.locale-toggle button.active,.locale-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--signal)}
+.locale-toggle button:hover:not(.active){background:var(--signal)}
+.locale-toggle button:focus-visible{outline-offset:-3px!important}
+.drawer-locale{display:none}
+.score-guide{display:grid;grid-template-columns:1fr;gap:0;margin:0 0 24px;border:2px solid var(--ink);background:var(--paper)}
+.score-guide-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 19px;background:var(--ink);color:var(--paper)}
+.score-guide-header .section-label{color:var(--signal)}
+.score-guide-header p{margin:0;font-size:11px;font-weight:600;color:var(--paper)}
+.score-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.score-guide-grid>div{padding:16px 19px;border-right:1px solid var(--line)}
+.score-guide-grid>div:last-child{border:0}
+.score-guide-grid strong{display:block;font:600 13px/1.4 var(--sans)}
+.score-guide-grid p{font-size:12px;line-height:1.5;color:var(--muted);margin:5px 0 0}
+.score-guide-foot{margin:0;padding:10px 19px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+html[lang="id"] .hero h1{font-size:clamp(48px,4.9vw,84px);letter-spacing:-.08em}
+@media(max-width:1150px){.topbar{gap:9px}.top-actions{gap:9px}}
+@media(max-width:900px){.drawer-locale{display:block;padding:12px 12px 20px;border-top:1px solid #62635c}.drawer-locale .sidebar-section-label{display:block;color:#C8C8BF;margin:0 0 9px}.drawer-locale .locale-toggle{height:42px}.drawer-locale .locale-toggle button{min-width:50px}}
+@media(max-width:640px){.top-actions #new-top,.top-actions #library-top{display:none!important}.top-actions{gap:8px}.locale-toggle{height:38px}.locale-toggle button{min-width:32px;padding:0 6px}html[lang="id"] .hero h1{font-size:clamp(37px,9vw,58px);line-height:1.08}.score-guide-header{display:block}.score-guide-header p{margin-top:5px;font-size:11px}.score-guide-grid{grid-template-columns:1fr}.score-guide-grid>div{padding:13px 16px;border-right:0;border-bottom:1px solid var(--line)}.score-guide-grid>div:last-child{border-bottom:0}.score-guide-foot{padding:10px 16px}}
+@media(max-width:360px){.top-brand{gap:7px}.brand-emblem{width:37px;height:37px;font-size:25px}.brand-emblem span{left:21px}.brand-name{font-size:11px}.topbar{padding:0 12px}.top-actions{gap:6px}html[lang="id"] .hero h1{font-size:37px}}
+
+/* Keep the concluding thought readable on narrow phones instead of a three-column squeeze. */
+@media(max-width:640px){.footnote-banner{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px;padding:19px 0}.footnote-banner>span{flex:none}.footnote-banner p{flex:1 1 190px;min-width:0;margin:0;font-size:13px;line-height:1.6}.footnote-banner .text-action{margin-left:24px}}

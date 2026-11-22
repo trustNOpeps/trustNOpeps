@@ -1,4 +1,4 @@
-# ELSEWHERE / Decision Atlas 3.0
+# ELSEWHERE / Decision Atlas 4.0
 
 **One choice. Many roads.** A thoughtful, local-first decision studio for comparing different paths, understanding tradeoffs, and challenging your own assumptions.
 
@@ -6,7 +6,8 @@ ELSEWHERE is not an AI oracle. It doesn't pretend to know your future. Instead, 
 
 ## What it does
 
-- **Friendly onboarding:** A clear start action, three-step guide, illustrative examples clearly marked, and quick access to saved work.
+- **Beginner-friendly onboarding:** A three-step guide, hands-on 0–10 score explanation, plain-language priority definitions, illustrative examples clearly marked, and quick access to saved work.
+- **Bilingual UI:** English and Bahasa Indonesia, visible EN/ID switcher on desktop and mobile, locale preference stored separately from decisions. Every major view, dialog, help text, status, and sample content is localized.
 - **Decision overview:** An editorial route atlas with your options, relative fit scores, leading score gap, and current priorities.
 - **Easy mobile scoring:** Rate one option at a time using accessible sliders, while desktop offers a full comparison matrix.
 - **Editable comparison matrix:** Create, rename and remove options and criteria; assign ratings from 0–10; adjust importance weights; inspect how the ranking changes.
@@ -40,11 +41,12 @@ Or serve the folder using any static HTTP server. Deploy the repository to Verce
 | File | Responsibility |
 | --- | --- |
 | `index.html` | Semantic app layout, interactive views, modal and accessibility labels |
-| `styles.css` + `atlas.css` | Baseline component CSS plus the distinctive v3 visual redesign, responsive layouts, reduced-motion and print rules |
+| `styles.css` + `atlas.css` + `locale.css` | Base layout, editorial direction, accessible language switch, responsive layout, reduced-motion and print rules |
 | `app.js` | DOM rendering, UI events, validation, local-first persistence, import/export |
+| `i18n.js` | English/Indonesian UI language resources, safe sample display, locale persistence, and HTML language metadata |
 | `core.js` | Pure scoring, scenario comparison, deterministic weight sensitivity, import validation |
-| `tests/core.test.js` | Node unit tests for scoring, input handling, ties, import and sensitivity |
-| `tests/browser_v3.py` | Offline Playwright regression checks at 1440, 390 and 320 CSS px |
+| `tests/core.test.js` + `tests/i18n.test.js` | Node tests for scoring, sanitization, ties, and language selection |
+| `tests/browser_v4.py` | Offline Playwright bilingual regression checks at 1440, 390 and 320 CSS px |
 | `server.mjs` | Tiny dependency-free local preview server |
 | `vercel.json` | Static deployment headers |
 
@@ -68,7 +70,7 @@ To show how sensitive the leading option is to assumptions, ELSEWHERE recomputes
 
 Decision content is never transmitted by app JavaScript. `localStorage` can be cleared by private browsing, browser cleanup, or a change of device, so **export important decisions**. Imports are size-limited in the UI and sanitized/normalized through `importDecision` (maximum 12 criteria, 12 options and 15 snapshots).
 
-## Visual direction: Decision Atlas (v3)
+## Visual direction: Decision Atlas (v4)
 
 This release deliberately avoids generic SaaS dashboard conventions. The visual metaphor is a **printed decision field guide + route map**, not an AI prediction product.
 
@@ -79,6 +81,14 @@ This release deliberately avoids generic SaaS dashboard conventions. The visual 
 - **No illustrative performance claims**: displayed sample scores remain explicitly marked as illustrative, not success probabilities.
 
 See [`DESIGN_NOTES.md`](DESIGN_NOTES.md) for rationale and references.
+
+## Language and data behavior
+
+- Select **EN** or **ID** in the header or mobile drawer. The initial preference follows the browser language (Indonesian browsers default to ID); after selection it is saved under `elsewhere.locale.v1`.
+- Switching languages changes **interface text and untouched sample display**, not the content the user wrote. Previously saved data stays in `elsewhere.library.v2` with the original schema; no migration is required for personal decisions.
+- The `lang` attribute on `<html>`, browser tab title, help labels, placeholders, and dialog text are updated for the chosen language, supporting screen readers. English text is restored when returning to EN.
+- Sample text is presented in the selected language only while the original sample values remain available in the stored decision. New blank workspaces use starting labels in the selected language at creation. The app does **not** translate user-entered notes or decisions automatically.
+- The model score is an arithmetic comparison of self-reported values, never a probability or forecast.
 
 ## Current limitations
 
@@ -98,11 +108,15 @@ See [`DESIGN_NOTES.md`](DESIGN_NOTES.md) for rationale and references.
 4. Automated CI checks for browser behavior and accessibility using a headless browser.
 5. Optional private sync for people who need cross-device continuity.
 
-## Design philosophy
-
-Warm ivory, deep forest ink, muted sage, editorial serif headings, and low-noise interactive elements. The interface favors clarity over gamification and avoids implying that a higher numerical score is a universal truth.
 
 ## Attribution and sources
+
+The clearer microcopy and language design follow:
+
+- [GOV.UK — Writing for user interfaces](https://www.gov.uk/service-manual/design/writing-for-user-interfaces) (plain language and reduced cognitive load)
+- [Nielsen Norman Group — UX Writing FAQs](https://www.nngroup.com/articles/ux-writing-faqs/) (clear labels for mixed audiences)
+- [W3C WAI — Language of page](https://www.w3.org/WAI/WCAG22/Techniques/html/H57) (correct HTML `lang` metadata)
+- [Microsoft Globalization — Software internationalization](https://learn.microsoft.com/en-us/globalization/methodology/software-internationalization) (separation of text resources from application state)
 
 Implementation uses native browser APIs and Node.js standard libraries. Documentation and optional future exploration: [Next.js](https://nextjs.org/docs/app), [React Flow](https://reactflow.dev/), [Vercel Git deployment](https://vercel.com/docs/git). These are references, not dependencies of this release.
 

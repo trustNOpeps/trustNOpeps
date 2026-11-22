@@ -1,4 +1,4 @@
-# Visual direction · Decision Atlas / 003
+# Visual direction · Decision Atlas / 004
 
 ## Intent
 
@@ -36,7 +36,7 @@ Warm paper and route colors are purposeful: lime is an action/high-fit cue, oran
 ## Quality checklist
 
 - Calculations: `npm test` (seven math/safety cases)
-- Browser: `python tests/browser_v3.py` (requires Playwright and Chromium at `/usr/bin/chromium`)
+- Browser: `python tests/browser_v4.py` (requires Playwright and Chromium at `/usr/bin/chromium`)
 - Smallest checked viewport: 320 CSS px; no document-level horizontal overflow
 - Must preserve existing `localStorage` keys to avoid deleting v2 decisions
 - Font requests may fail offline; system fallback remains usable
@@ -49,3 +49,13 @@ Warm paper and route colors are purposeful: lime is an action/high-fit cue, oran
 - MDN accessible focus patterns: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
 
 All layout, illustrations, and styling in this project are written for ELSEWHERE rather than copied from a commercial template.
+
+## v4.0 — English / Indonesia UX writing
+
+A clear language switch was placed in the masthead, not hidden in settings. The two languages share the same page structure and model. "Criteria" is described as "what matters / hal penting", weights as "priority / tingkat kepentingan", and weighted results as a comparison **rather than probabilities**. Every text label required for navigation, form completion, and error recovery is authored locally rather than generated dynamically by AI. Source English content remains available and user-authored text never receives automatic translation.
+
+## Supporting UX references
+
+- https://www.gov.uk/service-manual/design/writing-for-user-interfaces
+- https://www.nngroup.com/articles/ux-writing-faqs/
+- https://www.w3.org/WAI/WCAG22/Techniques/html/H57

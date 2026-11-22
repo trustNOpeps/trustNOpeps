@@ -21,7 +21,7 @@ export const TEMPLATES = [
 ];
 
 export function makeDecision(template = TEMPLATES[0]) {
-  return { version: 1, id: uid(), isExample:true, title: template.title, description: template.description,
+  return { version: 1, id: uid(), isExample:true, sampleTemplateId:template.id??null, title: template.title, description: template.description,
     criteria: template.criteria.map(x=>({...x})), options:template.options.map(x=>({...x, scores:{...x.scores}})),
     scenarioWeights:{}, snapshots:[], notes:{reflection:'',unknowns:'',condition:''}, updatedAt:new Date().toISOString() };
 }
@@ -29,7 +29,7 @@ export function makeBlankDecision(title, description='') {
   const result=makeDecision({title: safeText(title, 120)||'A question worth exploring',description:safeText(description,300)||'Start with a few options and make the scores your own.',
     criteria:[c('value','Overall value',30,'How much value it creates'),c('effort','Ease & effort',25,'Higher = easier to achieve'),c('fit','Personal fit',30,'How well it meets your needs'),c('risk','Confidence',15,'Higher = greater confidence')],
     options:[o('a','Option A','Add a description',{value:5,effort:5,fit:5,risk:5}),o('b','Option B','Add a description',{value:5,effort:5,fit:5,risk:5})]});
-  result.isExample=false; return result;
+  result.isExample=false; result.sampleTemplateId=null; return result;
 }
 
 /** Scores: 0..10 per criterion. Weights are non-negative and relative; 100 is not required. */
@@ -82,5 +82,5 @@ export function importDecision(raw){
   const options=raw.options.map((x,i)=>({id:`o${i}_${uid().slice(0,8)}`,name:safeText(x.name,75)||`Option ${i+1}`,note:safeText(x.note,300),scores:Object.fromEntries([...idMap.entries()].map(([old,newId])=>[newId,clamp(x.scores?.[old],0,10)]))}));
   const scenarioWeights=Object.fromEntries([...idMap.entries()].filter(([old])=>raw.scenarioWeights&&Object.hasOwn(raw.scenarioWeights,old)).map(([old,id])=>[id,clamp(raw.scenarioWeights[old],0,100)]));
   const snapshots=(Array.isArray(raw.snapshots)?raw.snapshots:[]).slice(0,15).map((s,i)=>({id:`snap${i}_${uid().slice(0,7)}`,name:safeText(s.name,60)||`Scenario ${i+1}`,savedAt:safeText(s.savedAt,40),weights:Object.fromEntries([...idMap.entries()].map(([old,id])=>[id,clamp(s.weights?.[old]??raw.criteria.find(x=>String(x.id)===old)?.weight??0,0,100)]))}));
-  return {version:1,id:uid(),isExample:Boolean(raw.isExample),title:safeText(raw.title,120)||'Imported decision',description:safeText(raw.description,300),criteria,options,scenarioWeights,snapshots,notes:{reflection:safeText(raw.notes?.reflection,7000),unknowns:safeText(raw.notes?.unknowns,7000),condition:safeText(raw.notes?.condition,7000)},updatedAt:new Date().toISOString()};
+  return {version:1,id:uid(),isExample:Boolean(raw.isExample),sampleTemplateId: typeof raw.sampleTemplateId==='string'&&TEMPLATES.some(t=>t.id===raw.sampleTemplateId)?raw.sampleTemplateId:null,title:safeText(raw.title,120)||'Imported decision',description:safeText(raw.description,300),criteria,options,scenarioWeights,snapshots,notes:{reflection:safeText(raw.notes?.reflection,7000),unknowns:safeText(raw.notes?.unknowns,7000),condition:safeText(raw.notes?.condition,7000)},updatedAt:new Date().toISOString()};
 }

@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="atlas.css" />
+  <link rel="stylesheet" href="locale.css" />
   <script type="module" src="app.js"></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
   <div class="shell">
     <aside id="sidebar" class="sidebar" aria-label="Main navigation">
       <div class="brand-row"><a class="brand" href="#overview" aria-label="Elsewhere home"><span class="brand-symbol"><span></span><span></span><span></span></span><span>ELSEWHERE<span class="brand-dot"> /</span></span></a><button id="close-sidebar" class="icon-button mobile-only" aria-label="Close navigation">×</button></div>
-      <div class="side-kicker">THE DECISION ATLAS / VOL. 03</div>
+      <div class="side-kicker">THE DECISION ATLAS / VOL. 04</div>
       <div class="workspace-chip"><span class="workspace-icon">✳</span><div class="workspace-copy"><strong>Personal studio</strong><small>Locally saved on your device</small></div><span class="workspace-chevron">⌄</span></div>
       <button id="library-sidebar" class="library-side" type="button"><span aria-hidden="true">▤</span><span>My decisions</span><strong id="library-side-count">1</strong></button>
       <div class="sidebar-section-label">WORKSPACE</div>
@@ -37,10 +38,10 @@
         <button id="templates-button" class="nav-item"><span class="nav-symbol">▦</span> Example decisions</button>
         <button id="new-sidebar" class="nav-item"><span class="nav-symbol">＋</span> New decision</button>
       </nav>
-      <div class="drawer-tools"><span class="sidebar-section-label">DATA & BACKUPS</span><button type="button" id="mobile-import" class="nav-item">↙ Import decision</button><button type="button" id="mobile-export" class="nav-item">↗ Export decision</button></div>
+      <div class="drawer-locale"><span class="sidebar-section-label">LANGUAGE / BAHASA</span><div class="locale-toggle" role="group" aria-label="Language / Bahasa"><button type="button" data-locale="en" lang="en" aria-pressed="true">EN</button><button type="button" data-locale="id" lang="id" aria-pressed="false">ID</button></div></div><div class="drawer-tools"><span class="sidebar-section-label">DATA & BACKUPS</span><button type="button" id="mobile-import" class="nav-item">↙ Import decision</button><button type="button" id="mobile-export" class="nav-item">↗ Export decision</button></div>
       <div class="sidebar-grow"></div>
       <div class="sidebar-note"><div class="tiny-star">✳</div><strong>There is no perfect map.</strong><p>Your priorities draw the routes. Your judgment chooses where to go.</p></div>
-      <div class="sidebar-footer"><span class="local-pulse"></span> Local storage <span class="footer-sep">/</span> v3.0</div>
+      <div class="sidebar-footer"><span class="local-pulse"></span> Local storage <span class="footer-sep">/</span> v4.0</div>
     </aside>
     <div id="mobile-scrim" class="mobile-scrim" hidden></div>
     <main class="main">
@@ -53,6 +54,7 @@
           <button class="nav-item" data-view="notes"><span class="nav-index">04</span> Notes</button>
         </nav>
         <div class="top-actions">
+          <div class="locale-toggle" role="group" aria-label="Language / Bahasa"><button type="button" data-locale="en" lang="en" aria-pressed="true">EN</button><button type="button" data-locale="id" lang="id" aria-pressed="false">ID</button></div>
           <button class="top-ghost" id="library-top" title="Your saved decisions">Archive <span id="library-top-count">(1)</span></button>
           <details class="tools-menu"><summary>TOOLS <span aria-hidden="true">⌄</span></summary><div class="tools-panel"><span class="tools-caption">YOUR DATA / LOCAL ONLY</span><button class="top-ghost" id="import-button" title="Import a saved decision">Import JSON ↙</button><button class="top-ghost" id="export-button" title="Export decision as JSON">Export JSON ↗</button></div></details>
           <button id="new-top" class="button primary small"><span aria-hidden="true">+</span> New decision</button>
@@ -62,10 +64,10 @@
       </header>
       <div class="content-wrap">
         <section class="page-section active" id="view-overview">
-          <div class="section-prelude"><span class="eyebrow">A FIELD GUIDE TO THE POSSIBLE</span><span class="today-meta">ISSUE NO. 003 <span class="slash-sep">/</span> OPEN EDITION</span></div>
+          <div class="section-prelude"><span class="eyebrow">A FIELD GUIDE TO THE POSSIBLE</span><span class="today-meta">ISSUE NO. 004 <span class="slash-sep">/</span> OPEN EDITION</span></div>
           <div class="hero">
             <div class="hero-copy">
-              <div class="hero-meta"><span>THINKING, WITHOUT THE AUTO-PILOT</span><span>VOL. 003 / 2026</span></div>
+              <div class="hero-meta"><span>THINKING, WITHOUT THE AUTO-PILOT</span><span>VOL. 004 / 2026</span></div>
               <h1>ONE<br />CHOICE.<br /><span class="hero-highlight">MANY</span><br />ROADS<span class="orange-period">.</span></h1>
               <div class="hero-bottom"><p class="hero-description">Map your options. Question your assumptions. See where another route might lead. No crystal ball, just a clearer view.</p><div class="hero-cta"><button id="hero-new" class="button ink">Start exploring <span>↗</span></button><button id="hero-examples" class="button hero-secondary">See an example ↗</button></div></div>
             </div>
@@ -85,7 +87,7 @@
           </div>
           <div class="quick-start" aria-label="Three easy steps"><div class="quick-start-intro"><span class="section-label">HOW IT WORKS</span><strong>A method, not a verdict.</strong></div><button type="button" id="step-question" class="quick-step"><span>01</span> Your question <b>↗</b></button><button type="button" class="quick-step" data-go="compare"><span>02</span> Rate your options <b>↗</b></button><button type="button" class="quick-step" data-go="scenario"><span>03</span> Explore the what-ifs <b>↗</b></button></div>
           <div id="example-banner" class="example-banner" hidden><span>✳ <strong>Example workspace.</strong> These ratings are made up to demonstrate the tool. Change them to reflect your own situation.</span><button id="example-personalize" type="button">Make it yours ↗</button></div>
-          <div class="decision-heading"><div><span class="section-label">CURRENT DESTINATION / 001</span><h2 id="decision-heading">How should I spend my weekend?</h2><p id="decision-description">A small decision with more than one good answer.</p></div><button id="change-decision" class="text-action">Edit question <span>↗</span></button></div>
+          <div class="decision-heading"><div><span class="section-label">CURRENT DESTINATION / 001</span><h2 id="decision-heading" data-no-i18n>How should I spend my weekend?</h2><p id="decision-description" data-no-i18n>A small decision with more than one good answer.</p></div><button id="change-decision" class="text-action">Edit question <span>↗</span></button></div>
           <div class="metrics" id="metrics"></div>
           <div class="block-head"><div><span class="section-label">THE CURRENT LANDSCAPE</span><h2>A few ways forward<span class="title-period">.</span></h2></div><button class="text-action" data-go="compare">Full comparison <span>↗</span></button></div>
           <div class="option-grid" id="option-grid"></div>
@@ -95,6 +97,7 @@
         <section class="page-section" id="view-compare">
           <div class="view-top"><span class="eyebrow"><i></i> 02 / LOOK CLOSER</span><h1>See the whole <em>picture.</em></h1><p>Give every option a score from 0 to 10 for each criterion. You can change the scores, add what matters, or remove what's irrelevant. All changes are saved on this device.</p></div>
           <div class="inline-info"><span class="info-icon">ⓘ</span><span>Rate each choice from 0 to 10. A higher number always means a better fit. Weights tell the model what matters more. These scores are personal estimates, not predictions.</span></div>
+          <div class="score-guide" aria-label="What the numbers mean"><div class="score-guide-header"><span class="section-label">What do the numbers mean?</span><p>1. Name your options  2. Rate each need  3. Compare the results</p></div><div class="score-guide-grid"><div><strong>Score 0–10</strong><p>How well does this option meet this one need?</p></div><div><strong>Priority 0–100</strong><p>How important is this need compared with the others?</p></div><div><strong>Final result 0–100</strong><p>A weighted comparison of your scores, not a chance of success.</p></div></div><p class="score-guide-foot">You can change these anytime. This is a thinking aid, not an automatic answer.</p></div>
           <div class="panel table-panel"><div class="panel-head"><div><span class="section-label">YOUR COMPARISON</span><h2>Make it your own</h2></div><div class="panel-head-actions"><button class="button outline small" id="add-criterion">＋ Criterion</button><button class="button ink small" id="add-option">＋ Option</button></div></div><div id="mobile-score" class="mobile-score"></div><div class="matrix-scroll"><table class="matrix-table" id="matrix-table"><caption class="sr-only">Editable scores for each option and criterion</caption></table></div></div>
           <div class="compare-bottom"><div class="panel" id="compare-ranking"></div><div class="panel explain-panel"><div class="section-label">HOW TO READ THE RESULTS</div><h3>Not a verdict.<br /><em>A conversation starter.</em></h3><p>Each score is your own assessment, and each weight describes what deserves more attention. Try changing a low-confidence score or a dominant weight. If the leader switches easily, your choice is sensitive to those assumptions.</p><button class="text-action" data-go="scenario">Open scenario lab ↗</button></div></div>
         </section>
@@ -108,7 +111,7 @@
           <div class="journal-layout"><div class="panel journal-main"><div class="section-label">DECISION JOURNAL</div><label for="journal-reflection">What is really at stake?</label><textarea id="journal-reflection" placeholder="Write freely. What do you want, and what is making this choice difficult?"></textarea><div class="journal-separator"></div><label for="journal-unknowns">What don't you know yet?</label><textarea id="journal-unknowns" placeholder="Missing information, fragile assumptions, questions to ask…"></textarea><div class="journal-separator"></div><label for="journal-condition">What could change your mind?</label><textarea id="journal-condition" placeholder="A condition, a new piece of evidence, a conversation…"></textarea><div class="journal-save-line"><span id="journal-status"><span class="dot-green"></span> Notes saved locally</span><button class="button outline small" id="print-report">Print summary ↗</button></div></div><div class="journal-right"><div class="panel journal-quote"><span>✳</span><blockquote>“A good decision is one you understand, even when the outcome is uncertain.”</blockquote><p>ELSEWHERE / A NOTE TO SELF</p></div><div class="panel journal-mini" id="journal-mini"></div><div class="privacy-card"><strong>Private by design.</strong><p>Your questions, scores and notes remain in your browser's local storage. Nothing is sent to our server. Export a copy if you want to keep it somewhere safe.</p><button id="export-from-notes" class="text-action">Export your decision ↗</button></div></div></div>
         </section>
       </div>
-      <footer class="main-footer"><span class="footer-wordmark">ELSEWHERE<span>↗</span></span><span>A FIELD GUIDE TO THE ROADS NOT TAKEN. <span class="footer-divider">/</span> <button id="about-button">Method & privacy</button></span><span>© OPEN EDITION · V3.0</span></footer>
+      <footer class="main-footer"><span class="footer-wordmark">ELSEWHERE<span>↗</span></span><span>A FIELD GUIDE TO THE ROADS NOT TAKEN. <span class="footer-divider">/</span> <button id="about-button">Method & privacy</button></span><span>© OPEN EDITION · V4.0</span></footer>
     </main>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>

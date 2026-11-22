@@ -11,6 +11,9 @@
   const mobileChapterCaption = document.getElementById('mobile-chapter-caption');
   const mobileChapterLabels = ['OVERVIEW','ENGINEERING','DIGITAL','CREATIVE','CONCEPTS','ABOUT','CONTACT'];
   const mobileMenu = document.querySelector('.mobile-navigation');
+  const mobileChapterNav = document.querySelector('.mobile-chapter-nav');
+  const mobileChapterToggle = document.querySelector('.mobile-chapter-toggle');
+  const mobileChapterPoints = document.getElementById('mobile-chapter-points');
   const siteHeader = document.querySelector('.site-header');
   const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -104,6 +107,27 @@
   });
   document.addEventListener('pointerdown', event => {
     if (mobileMenu?.open && !mobileMenu.contains(event.target)) mobileMenu.open = false;
+  });
+  // A compact disclosure keeps the section index available without covering text.
+  function setChapterIndexOpen(open) {
+    if (!mobileChapterPoints || !mobileChapterToggle) return;
+    mobileChapterPoints.hidden = !open;
+    mobileChapterToggle.setAttribute('aria-expanded', String(open));
+  }
+  mobileChapterToggle?.addEventListener('click', () => {
+    setChapterIndexOpen(mobileChapterPoints.hidden);
+  });
+  mobileChapterPoints?.addEventListener('click', event => {
+    if (event.target.closest('a')) setChapterIndexOpen(false);
+  });
+  document.addEventListener('pointerdown', event => {
+    if (mobileChapterNav && !mobileChapterNav.contains(event.target)) setChapterIndexOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && mobileChapterPoints && !mobileChapterPoints.hidden) {
+      setChapterIndexOpen(false);
+      mobileChapterToggle?.focus();
+    }
   });
   enqueueRead();
 

@@ -1,0 +1,24 @@
+name: ELSEWHERE quality checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/elsewhere/**'
+      - '.github/workflows/elsewhere-ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/elsewhere/**'
+      - '.github/workflows/elsewhere-ci.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source and decision tests
+        working-directory: apps/elsewhere
+        run: npm run check

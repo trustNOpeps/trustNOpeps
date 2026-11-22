@@ -96,3 +96,38 @@ body[data-scene="contact"] .world-veil { background-color: rgba(8, 17, 15, .02);
   .world-veil,
   .mobile-chapter-toggle span:last-child { transition:none; }
 }
+
+
+/* A small action label confirms that the visual previews really open projects.
+   The complete preview card remains the tap target. */
+.project-entry a.showcase-visual::before,
+.creative-card .showcase-visual::before {
+  content:"OPEN ↗";
+  position:absolute;
+  z-index:4;
+  top:15px;
+  right:15px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:65px;
+  height:30px;
+  padding:5px 10px;
+  background:rgba(11,20,23,.88);
+  border:1px solid rgba(235,246,228,.48);
+  color:#eff7e8;
+  font:600 10px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.065em;
+  pointer-events:none;
+}
+.project-entry a.showcase-visual:hover::before,
+.project-entry a.showcase-visual:focus-visible::before,
+.creative-card:hover .showcase-visual::before,
+.creative-card:focus-visible .showcase-visual::before {
+  border-color:var(--lime);
+  color:var(--lime);
+}
+@media(max-width:710px) {
+  .project-entry a.showcase-visual::before,
+  .creative-card .showcase-visual::before {top:9px;right:9px}
+}

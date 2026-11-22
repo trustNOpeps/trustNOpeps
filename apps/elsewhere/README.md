@@ -1,13 +1,13 @@
-# ELSEWHERE ✳ · Decision Studio 2.0
+# ELSEWHERE / Decision Atlas 3.0
 
-**The space between choices.** A thoughtful, local-first decision studio for comparing different paths, understanding tradeoffs, and challenging your own assumptions.
+**One choice. Many roads.** A thoughtful, local-first decision studio for comparing different paths, understanding tradeoffs, and challenging your own assumptions.
 
 ELSEWHERE is not an AI oracle. It doesn't pretend to know your future. Instead, you provide the options, criteria, ratings and relative priorities, and it makes the math and sensitivity visible.
 
 ## What it does
 
 - **Friendly onboarding:** A clear start action, three-step guide, illustrative examples clearly marked, and quick access to saved work.
-- **Decision overview:** An editorial dashboard with your options, relative fit scores, leading score gap, and current priorities.
+- **Decision overview:** An editorial route atlas with your options, relative fit scores, leading score gap, and current priorities.
 - **Easy mobile scoring:** Rate one option at a time using accessible sliders, while desktop offers a full comparison matrix.
 - **Editable comparison matrix:** Create, rename and remove options and criteria; assign ratings from 0–10; adjust importance weights; inspect how the ranking changes.
 - **Scenario lab:** Experiment with alternate priority weights using sliders and presets; compare baseline and adjusted rankings; save up to 15 local perspectives.
@@ -40,11 +40,11 @@ Or serve the folder using any static HTTP server. Deploy the repository to Verce
 | File | Responsibility |
 | --- | --- |
 | `index.html` | Semantic app layout, interactive views, modal and accessibility labels |
-| `styles.css` | Responsive editorial design system, animations, reduced motion, print rules |
+| `styles.css` + `atlas.css` | Baseline component CSS plus the distinctive v3 visual redesign, responsive layouts, reduced-motion and print rules |
 | `app.js` | DOM rendering, UI events, validation, local-first persistence, import/export |
 | `core.js` | Pure scoring, scenario comparison, deterministic weight sensitivity, import validation |
 | `tests/core.test.js` | Node unit tests for scoring, input handling, ties, import and sensitivity |
-| `tests/browser_v2.py` | Offline Playwright browser checks across desktop and mobile |
+| `tests/browser_v3.py` | Offline Playwright regression checks at 1440, 390 and 320 CSS px |
 | `server.mjs` | Tiny dependency-free local preview server |
 | `vercel.json` | Static deployment headers |
 
@@ -67,6 +67,18 @@ To show how sensitive the leading option is to assumptions, ELSEWHERE recomputes
 ### Data and privacy
 
 Decision content is never transmitted by app JavaScript. `localStorage` can be cleared by private browsing, browser cleanup, or a change of device, so **export important decisions**. Imports are size-limited in the UI and sanitized/normalized through `importDecision` (maximum 12 criteria, 12 options and 15 snapshots).
+
+## Visual direction: Decision Atlas (v3)
+
+This release deliberately avoids generic SaaS dashboard conventions. The visual metaphor is a **printed decision field guide + route map**, not an AI prediction product.
+
+- **Typography**: Unbounded for identity and editorial headlines; IBM Plex Sans for readable forms/content; IBM Plex Mono for route codes, labels, score metadata. Fallbacks are supplied. Fonts load from Google Fonts; decision contents are not sent with font requests.
+- **Palette**: near-black `#191C1C`, paper `#F2F0E9`, signal lime `#ECF96E`, route vermilion `#EC5335`, secondary route blue `#4856DB`.
+- **Structure**: persistent horizontal chapter navigation, oversized asymmetric dark poster hero, meaningful score-driven route diagram, hard grid rules, sparse rectangles, and notes that behave like a paper journal.
+- **Interaction**: direct actions, native form controls, accessible keyboard focus, no essential animation, reduced-motion support, and a small-screen drawer containing data tools.
+- **No illustrative performance claims**: displayed sample scores remain explicitly marked as illustrative, not success probabilities.
+
+See [`DESIGN_NOTES.md`](DESIGN_NOTES.md) for rationale and references.
 
 ## Current limitations
 

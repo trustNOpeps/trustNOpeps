@@ -1,29 +1,32 @@
-# ELSEWHERE — Decision Studio
+# ELSEWHERE — Decision Atlas
 
-**Live:** https://elsewhere-decision-studio.vercel.app/
-
+**Live:** https://elsewhere-decision-studio.vercel.app/  
 **Source:** [apps/elsewhere](../apps/elsewhere/)
 
-## Product brief
+## What it is
 
-ELSEWHERE is a lightweight, browser-based workspace for exploring personal decisions. Users define options, criteria, relative priority weights, and subjective ratings to compare trade-offs. No account, AI predictions, or external database is required.
+A lightweight, local-first decision atlas that helps people compare subjective options, visualize tradeoffs and test sensitivity to their own assumptions. It neither predicts outcomes nor claims that the highest weighted score is objectively best.
 
-## What was built
+## The v3 design
 
-- A responsive editorial interface with a guided three-step introduction and accessible mobile score inputs.
-- A local decision library that retains up to 30 decisions and attempts to migrate previous v1 browser data.
-- A deterministic weighted-fit scoring engine, sensitivity experiments, and explicit handling of tied outcomes.
-- A private decision journal and JSON import/export.
-- Browser-based UI smoke checks and pure logic unit tests.
+The former forest-green SaaS dashboard was replaced by a **graphic-publication interface** with a deliberate wayfinding metaphor, not a generic template. A black editorial poster introduces the product, while a score-driven route diagram illustrates up to three paths from the actual current decision. Persistent top-level chapter navigation makes Overview, Compare, What if and Notes equally accessible. Mobile users receive a focused vertical route drawing and a drawer with import/export actions.
 
-## Design direction
+The typography system uses **Unbounded** for display and identity, **IBM Plex Sans** for interface clarity, and **IBM Plex Mono** for labels and numeric information. The palette is near-black, warm paper, high-visibility lime, route vermilion and secondary blue. Squared rules and deliberately varied type scale replace rounded cards, gradients and faux-AI visual effects.
 
-Warm ivory backgrounds, deep forest navigation, sage accents, high-contrast copy and serif display type. The page distinguishes sample ratings from user data and keeps advanced sensitivity tools separate from basic comparison.
+## Functionality and limits
 
-## Trade-offs and limitations
+- Compare options and weighted criteria, with transparent 0–100 model scores
+- Adjust priorities in the scenario lab, including deterministic 121-case weight experiments
+- Keep up to 30 decisions and 15 saved scenarios in local browser storage
+- Save private reflections in the Decision Journal and export/import JSON
+- Mark example data clearly; ties do not imply a false leader
+- No backend, account, analytics, AI prediction, or cross-device synchronization
+- Browser data can be deleted by clearing local storage; users should export backups
 
-Scores and weights are subjective, not predictive probabilities. Data stays in localStorage and does not sync across devices; export important decisions for backup. Stress tests vary weights rather than actual real-world conditions. Avoid using it as professional advice in high-stakes matters.
+## Validation
+
+Seven Node unit tests passed. Playwright smoke checks of the redesign passed on 1440, 390 and 320 CSS-pixel wide Chromium viewports: create/edit options and criteria, scenario controls, journal writing, archive navigation, no page errors, and no horizontal overflow. Browser test coverage is not a guarantee of all devices and assistive technology compatibility.
 
 ## Implementation
 
-HTML, CSS, JavaScript ES modules, Node.js standard-library testing and Playwright browser checks. The source is static and has no npm runtime dependencies. Built and deployed with Vercel.
+Dependency-free static HTML, CSS and JavaScript ES modules deployed to Vercel. The project is stored in the existing GitHub portfolio repository under `apps/elsewhere/` to avoid redundant repositories. Read the local [design notes](../apps/elsewhere/DESIGN_NOTES.md) for the typographic rationale, palette and references.

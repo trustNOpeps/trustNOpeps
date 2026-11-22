@@ -1,0 +1,98 @@
+/* Original interactive world restored.
+   Keep the motion, procedural 3D scene and established dark palette intact.
+   This small file only softens scene colour transitions and preserves the
+   non-obstructive chapter selector on narrow screens. */
+
+/* Viewport veil already contains the original cinematic gradients. Change
+   only its tint, never replace or hide the scroll-driven 3D canvas. */
+.world-veil {
+  background-color: rgba(7, 15, 18, .025);
+  transition: background-color 1150ms ease-in-out;
+}
+body[data-scene="overview"] .world-veil { background-color: rgba(10, 18, 21, .015); }
+body[data-scene="engineering"] .world-veil { background-color: rgba(20, 35, 37, .07); }
+body[data-scene="digital"] .world-veil { background-color: rgba(12, 22, 32, .075); }
+body[data-scene="creative"] .world-veil { background-color: rgba(32, 24, 30, .055); }
+body[data-scene="concepts"] .world-veil { background-color: rgba(24, 24, 32, .06); }
+body[data-scene="about"] .world-veil { background-color: rgba(15, 28, 25, .045); }
+body[data-scene="contact"] .world-veil { background-color: rgba(8, 17, 15, .02); }
+
+/* The original scene should show through the chapter edges. Deliberately use
+   transparent-to-dark transitions, not fully opaque paper-colour backgrounds
+   that mask the 3D or turn its dark text panels into unreadable boxes. */
+.showcase-chapter {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 17, 22, 0) 0%,
+    rgba(11, 17, 22, .78) 9%,
+    rgba(11, 17, 22, .92) 23%,
+    rgba(11, 17, 22, .92) 78%,
+    rgba(11, 17, 22, .78) 91%,
+    rgba(11, 17, 22, 0) 100%
+  );
+}
+/* Keep copy legible even when the scene animation briefly pauses. */
+#engineering .showcase-copy,
+#playground .showcase-copy,
+#studio .showcase-copy { color: var(--paper); }
+#about .content, #concepts .content, #contact .content { color: var(--paper); }
+#about .about-facts dd, #concepts .chapter-desc, #contact .chapter-desc { color: #c3ccc6; }
+
+/* Mobile reading index: always one compact button, seven visible chapter
+   targets only on demand. Desktop retains its original progress rail. */
+.mobile-chapter-toggle { display: none; }
+@media (max-width:710px) {
+  .mobile-chapter-nav {
+    width:min(310px,calc(100vw - 22px));
+    padding:5px 7px;
+    background:rgba(11,19,24,.96);
+    border-radius:9px;
+    border-color:rgba(196,240,107,.27);
+  }
+  .mobile-chapter-toggle {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    width:100%;
+    min-height:44px;
+    padding:7px 9px;
+    font:600 10px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;
+    letter-spacing:.05em;
+    background:transparent;
+    color:#f0f3ec;
+    border:0;
+    text-align:left;
+    cursor:pointer;
+  }
+  .mobile-chapter-toggle .mobile-chapter-caption {
+    padding:0;
+    margin:0;
+    color:var(--lime);
+    font-size:10px;
+    line-height:1.25;
+    white-space:nowrap;
+  }
+  .mobile-chapter-toggle span:last-child {
+    font-size:16px;
+    line-height:1;
+    transition:transform .2s;
+  }
+  .mobile-chapter-toggle[aria-expanded="true"] span:last-child {
+    transform:rotate(180deg);
+  }
+  .mobile-chapter-toggle:focus-visible {
+    outline:2px solid var(--lime);
+    outline-offset:-2px;
+  }
+  .mobile-chapter-points[hidden] { display:none !important; }
+  .mobile-chapter-points {
+    border-top:1px solid #425247;
+    padding-top:4px;
+  }
+  .mobile-chapter-points a { min-height:44px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .world-veil,
+  .mobile-chapter-toggle span:last-child { transition:none; }
+}

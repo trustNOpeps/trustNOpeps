@@ -59,6 +59,9 @@ jobs:
           test -s bourn/.demo-build/out/plan/index.html
           grep -q 'Explore' bourn/.demo-build/out/index.html
           grep -q 'BOURN' bourn/.demo-build/out/index.html
+          grep -q 'bourn-chapter-index' bourn/.demo-build/out/index.html
+          grep -q 'href="#stay"' bourn/.demo-build/out/index.html
+          grep -q 'aria-pressed' bourn/.demo-build/out/plan/who/index.html
 
       - name: Publish only BOURN directory on gh-pages
         working-directory: portfolio

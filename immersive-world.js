@@ -19,6 +19,21 @@
   let goalPosition = 0;
   let sceneCallback = null;
   let scrollQueued = false;
+  // The Concepts artwork must not appear while the Creative gallery is
+  // still in view or while Three.js is interpolating between both models.
+  const conceptsIndex = chapters.findIndex(chapter => chapter.id === 'concepts');
+  let renderedScenePosition = 0;
+  function syncWorldVisibility() {
+    const galleryReading = chapters[activeIndex]?.classList.contains('showcase-chapter') || false;
+    const conceptsNotReady = conceptsIndex >= 0 && activeIndex === conceptsIndex && (
+      // Require the new chapter boundary to clear the fixed site header.
+      window.scrollY + (siteHeader?.offsetHeight || 77) + 12 < chapters[conceptsIndex].offsetTop ||
+      // The previous model stays visible until its distance exceeds .995.
+      // Do not fade the canvas in before the old model is fully gone.
+      renderedScenePosition < conceptsIndex - .003
+    );
+    document.body.classList.toggle('showcase-reading', galleryReading || conceptsNotReady);
+  }
   const clamp = (x,a,b) => Math.max(a, Math.min(b,x));
   const smooth = t => t*t*(3-2*t);
 
@@ -36,9 +51,6 @@
     const nearest=clamp(Math.round(goalPosition),0,chapters.length-1);
     if (nearest!==activeIndex) {
       activeIndex=nearest;
-      // Dense project-showcase chapters do not need a floating 3D sculpture.
-      // CSS fades out the canvas; the original scroll-driven engine continues.
-      document.body.classList.toggle('showcase-reading', chapters[nearest].classList.contains('showcase-chapter'));
       sceneLabel.textContent=sceneNames[nearest];
       sceneCount.textContent=String(nearest+1).padStart(2,'0')+' / 07';
       if (mobileChapterCaption) mobileChapterCaption.textContent = String(nearest+1).padStart(2,'0')+' / '+mobileChapterLabels[nearest];
@@ -48,6 +60,7 @@
         else a.removeAttribute('aria-current');
       });
     }
+    syncWorldVisibility();
     const denominator=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
     progress.style.transform='scaleX('+clamp(window.scrollY/denominator,0,1)+')';
     if(sceneCallback)sceneCallback(goalPosition);
@@ -420,6 +433,8 @@
       const dt=Math.min(.045,(now-lastTime)/1000||.016);
       lastTime=now;
       effectivePosition+=(goalPosition-effectivePosition)*Math.min(1,dt*(reducedMotion?16:3.2));
+      renderedScenePosition = effectivePosition;
+      syncWorldVisibility();
       const idx=Math.min(worlds.length-1,Math.floor(effectivePosition));
       const frac=effectivePosition-idx;
       const interpolatedX=effectivePosition*spacing;

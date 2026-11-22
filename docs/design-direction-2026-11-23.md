@@ -1,3 +1,5 @@
+> **Superseded / rejected after visual review, 23 November 2026.** The owner did not like the experimental light-paper editorial redesign. It masked the original procedural 3D scene, broke the natural scrollytelling, and made the About section hard to read because the preexisting dark content vignette sat over a pale background. The `studio-archive.css` design is **not active** and must not be reintroduced without explicit approval. The live homepage returned to the original hero, Space Grotesk/DM Sans visual language, dark cinematic chapters and Three.js scroll-driven procedural artwork. The only new visual layer is `gh-pages/motion-restoration.css`, which adds restrained dark gradients, gentle scene tint transitions, a compact mobile chapter control and small OPEN indicators on genuinely clickable portfolio previews. BOURN remains a separate travel-editorial UI, now with visible six-step chapter navigation and selected-option markers. Verify live browser behaviour, not just source or workflow status.
+
 # haammkaki — Art direction and mobile QA, 23 November 2026
 
 ## Decision

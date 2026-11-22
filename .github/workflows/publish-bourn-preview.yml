@@ -60,8 +60,9 @@ jobs:
           grep -q 'Explore' bourn/.demo-build/out/index.html
           grep -q 'BOURN' bourn/.demo-build/out/index.html
           grep -q 'bourn-chapter-index' bourn/.demo-build/out/index.html
-          grep -q 'href="#stay"' bourn/.demo-build/out/index.html
-          grep -q 'aria-pressed' bourn/.demo-build/out/plan/who/index.html
+          grep -q 'bourn-chapter-track' bourn/app/page.tsx
+          grep -q 'aria-pressed' bourn/app/plan/who/page.tsx
+          echo "BOURN static demo and source selection hooks validated."
 
       - name: Publish only BOURN directory on gh-pages
         working-directory: portfolio

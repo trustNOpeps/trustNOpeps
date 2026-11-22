@@ -36,6 +36,7 @@
     const nearest=clamp(Math.round(goalPosition),0,chapters.length-1);
     if (nearest!==activeIndex) {
       activeIndex=nearest;
+      document.body.dataset.scene = chapters[nearest].dataset.scene || "overview";
       sceneLabel.textContent=sceneNames[nearest];
       sceneCount.textContent=String(nearest+1).padStart(2,'0')+' / 07';
       if (mobileChapterCaption) mobileChapterCaption.textContent = String(nearest+1).padStart(2,'0')+' / '+mobileChapterLabels[nearest];

@@ -6,18 +6,39 @@ I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in 
 
 **[Portfolio](https://trustnopeps.github.io/trustNOpeps/)** · [LinkedIn](https://www.linkedin.com/in/muhamad-hamka/en/)
 
-## Selected projects
+## Selected work
 
-| Project | Description |
-| --- | --- |
-| [ELSEWHERE](https://elsewhere-decision-studio.vercel.app/) · [Source](apps/elsewhere/) | Interactive decision atlas with route visualizations, transparent weighted comparisons, a mobile-first scoring flow and scenario sensitivity. |
-| [BOURN](https://trustnopeps.github.io/trustNOpeps/bourn/) · [Source](https://github.com/trustNOpeps/bourn) | Travel planning prototype for Bali. |
-| [VI Fieldnotes](https://vi-fieldnotes.pages.dev/) · [Source](https://github.com/trustNOpeps/vi-fieldnotes) | Independent editorial website with guides and interactive tools. |
-| [Tamuform Studio](https://trustnopeps.github.io/trustNOpeps/tamuform/) | Hospitality website and inquiry CRM pilot. |
-| [MechLabs](https://mechlabs-engineering.lovable.app/) · [Source](https://github.com/trustNOpeps/Mechlabs) | Engineering workbench for stress, strain and material comparisons. |
-| [Tensile Desk](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/) · [Source](https://github.com/trustNOpeps/Tensile-Desk) | Tensile data analysis using an educational example. |
-| [Little World](https://trustnopeps.github.io/trustNOpeps/apps/little-world/) · [Source](https://github.com/trustNOpeps/Little-World) | Interactive pixel art office. |
-| [AFTER WANTING](https://trustnopeps.github.io/trustNOpeps/showroom/) | Clothing concepts and collection design. |
+My projects sit somewhere between engineering, useful software and visual experiments. The public links below lead to working tools, documented prototypes or clearly labeled concept studies.
+
+### 01 / Engineering
+
+**[MechLabs](https://mechlabs-engineering.lovable.app/)** · [Code](https://github.com/trustNOpeps/Mechlabs)  
+An engineering workbench for stress, strain and material comparison. Educational, not certified analysis software.
+
+**[Tensile Desk](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)** · [Code](https://github.com/trustNOpeps/Tensile-Desk)  
+Stress and strain calculations from force and extension, with curves and CSV export. Example measurements are synthetic.
+
+### 02 / Digital
+
+**[ELSEWHERE](https://elsewhere-decision-studio.vercel.app/)** · [Code](apps/elsewhere/)  
+A decision atlas for comparing options, looking at trade-offs and testing how conclusions change with different priorities.
+
+**[BOURN](https://trustnopeps.github.io/trustNOpeps/bourn/)** · [Code](https://github.com/trustNOpeps/bourn)  
+An exploratory Bali travel planning experience. Public preview, not a live concierge service.
+
+**[Little World](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)** · [Code](https://github.com/trustNOpeps/Little-World)  
+A playful simulated pixel office with work orders and browser-local reports. Not autonomous AI employees.
+
+### 03 / Creative & editorial
+
+**[AFTER WANTING](https://trustnopeps.github.io/trustNOpeps/showroom/)** · [Project notes](projects/after-wanting.md)  
+An independent clothing design archive exploring garments, stories and packaging across ten concept volumes.
+
+**[VI Fieldnotes](https://vi-fieldnotes.pages.dev/)** · [Code](https://github.com/trustNOpeps/vi-fieldnotes)  
+An independent editorial guide, with sourced articles and small reader tools.
+
+**[Tamuform Studio](https://trustnopeps.github.io/trustNOpeps/tamuform/)** · [Case study](projects/tamuform-studio.md)  
+A hospitality website and inquiry workflow pilot using fictional public examples.
 
 <details>
 <summary>More projects and case studies</summary>

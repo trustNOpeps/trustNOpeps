@@ -1,0 +1,78 @@
+name: Publish BOURN portfolio preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-bourn-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-bourn-preview
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out portfolio with publishing permissions
+        uses: actions/checkout@v4
+        with:
+          path: portfolio
+          fetch-depth: 0
+
+      - name: Check out BOURN source
+        uses: actions/checkout@v4
+        with:
+          repository: trustNOpeps/bourn
+          ref: main
+          path: bourn
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: bourn/package-lock.json
+
+      - name: Install dependencies
+        working-directory: bourn
+        run: npm ci --no-audit --no-fund
+
+      - name: Run unit tests
+        working-directory: bourn
+        run: npm test
+
+      - name: Build static demo without production authentication
+        working-directory: bourn
+        env:
+          DEMO_BASE_PATH: /trustNOpeps/bourn
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: npm run build:demo
+
+      - name: Validate generated files
+        run: |
+          test -s bourn/.demo-build/out/index.html
+          test -s bourn/.demo-build/out/plan/index.html
+          grep -q 'Explore' bourn/.demo-build/out/index.html
+          grep -q 'BOURN' bourn/.demo-build/out/index.html
+
+      - name: Publish only BOURN directory on gh-pages
+        working-directory: portfolio
+        run: |
+          git fetch origin gh-pages
+          git checkout -B gh-pages origin/gh-pages
+          rm -rf bourn
+          cp -a ../bourn/.demo-build/out bourn
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A bourn
+          if git diff --cached --quiet; then
+            echo "No changes to BOURN preview."
+          else
+            git commit -m "Publish updated BOURN static portfolio preview"
+            git push origin gh-pages
+          fi

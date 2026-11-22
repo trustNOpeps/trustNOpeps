@@ -5,6 +5,7 @@
   "type": "module",
   "description": "A local-first decision studio with transparent comparisons and scenario tests.",
   "scripts": {
+    "dev": "node server.mjs",
     "test": "node --test tests/*.test.js",
     "check": "node --check app.js && node --check core.js && npm test"
   }

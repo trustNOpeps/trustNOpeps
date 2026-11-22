@@ -26,3 +26,7 @@
  .panel select,.job-grid select,.job-grid textarea{font-size:16px;min-height:44px}
  .job-grid textarea{line-height:1.5}
 }
+
+/* Touch audit 2026-11-23: make small utility controls usable on real phones. */
+.source{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 0;border-bottom:1px solid #b9ed99;white-space:nowrap}
+.toolbar [data-speed]{min-height:44px;min-width:44px}

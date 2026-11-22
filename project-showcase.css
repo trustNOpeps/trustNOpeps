@@ -76,3 +76,17 @@
 .book-preview-card span{font:600 clamp(4px,1cqw,8px)/1.6 sans-serif;letter-spacing:.1em}
 .book-preview-card p{font:400 clamp(6px,1.8cqw,13px)/1.5 Georgia,serif;margin:0;color:#4b584b}
 .book-preview-card i{font:italic clamp(4px,1.1cqw,8px)/1.4 Georgia,serif}
+
+/* Compact-phone engineering illustration: prevent intrinsic grid sizing from clipping it. */
+@media(max-width:710px){
+ .showcase-chapter .project-list,.showcase-row,.project-entry.showcase-row{min-width:0;max-width:100%}
+ .showcase-row,.project-entry.showcase-row{width:100%;grid-template-columns:minmax(0,1fr)}
+ .showcase-visual{width:100%;min-width:0;max-width:100%}
+ .system-study{width:100%;max-width:290px;min-width:0}
+ .system-part{min-width:0;max-width:100%;overflow-wrap:anywhere}
+}
+@media(max-width:360px){
+ #project-mechatronics-lab .showcase-visual{padding:22px 12px 35px}
+ .system-part{padding:10px 13px}
+ .system-title{letter-spacing:.06em}
+}

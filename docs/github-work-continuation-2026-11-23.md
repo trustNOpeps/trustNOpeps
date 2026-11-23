@@ -40,3 +40,19 @@ Do not:
 - Use `overflow-x:hidden` as a substitute for responsive layout fixes.
 
 For further work, edit the smallest affected selector or script function and validate the *published version* after GitHub Pages deployment, with explicit CSS/JS cache versions, at 320, 390 and 1440px.
+
+## Latest follow-up: smoother Creative → Concepts scroll reveal
+
+**Owner feedback:** The Concepts building exhibit was correctly positioned but popped into view abruptly when scrolling down from the Creative book. The earlier hard visibility gate was a design regression.
+
+**Baseline, measured live on desktop 1440×900:** `scrollY=7438` hid the canvas, but `scrollY=7439` immediately revealed the full canvas at opacity 1. This was caused by `galleryWasHidden` + unconditional `visibility='visible'` and the direct camera reset on scene entry.
+
+**Scoped fix deployed 23 Nov 2026:**
+- `gh-pages/immersive-world.js`: Compute a reversible `smoothstep` reveal from the physical top of `#concepts` moving across approximately 48%→12% of viewport height, only when entering Concepts from the Creative showcase; give the camera a subtle depth/y offset that eases away as the 3D fades in.
+- `gh-pages/immersive-world.css`: Apply `--concept-reveal` as opacity only while `.world-entering-concepts` is present; no CSS opacity interpolation is layered on top of the scroll-scrub.
+- `gh-pages/index.html`: Cache-bust `immersive-world.js?v=concepts-scrub-1` and `immersive-world.css?v=concepts-scrub-1`.
+- GitHub Pages deployment [45095285494](https://github.com/trustNOpeps/trustNOpeps/actions/runs/45095285494): **success** at commit `6a4ea701fe4c314b243e8e1b71e9779eabf268e0`.
+
+**Post-deployment browser verification: PASS** after confirming both new asset URLs were loaded. At 1440×900, measured computed canvas opacity at `#concepts` top positions 430, 350, 260, 180 and 100px: **0.0002 → 0.1608 → 0.5476 → 0.8747 → 1.0**. Forward and reverse scroll transitions were smooth; no old Creative 3D behind the book. Hero, About and Contact retain their original full opacity 3D scenes. Mobile 320 and 390px: no horizontal overflow, working navigation and fitted Mechatronics graphic. No JavaScript runtime errors observed.
+
+**Design constraint:** Do not revert to hard visibility toggling or reintroduce retired gallery 3D sculptures. Keep the user's approved dark visual design and original 3D geometry and typography. Future fixes must use a narrow scope and test scroll transitions in both directions.

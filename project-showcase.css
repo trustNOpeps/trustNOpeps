@@ -76,3 +76,48 @@
 .book-preview-card span{font:600 clamp(4px,1cqw,8px)/1.6 sans-serif;letter-spacing:.1em}
 .book-preview-card p{font:400 clamp(6px,1.8cqw,13px)/1.5 Georgia,serif;margin:0;color:#4b584b}
 .book-preview-card i{font:italic clamp(4px,1.1cqw,8px)/1.4 Georgia,serif}
+
+
+/* Work-continuation QA: contain the Mechatronics system diagram on narrow
+   screens rather than masking a 427px-wide grid item with overflow:hidden. */
+@media (max-width: 710px) {
+  .showcase-chapter .content,
+  .showcase-chapter .project-list,
+  .showcase-chapter .showcase-row {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .showcase-chapter .project-list,
+  .showcase-creative {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .showcase-chapter .showcase-row {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #project-mechatronics-lab .showcase-visual {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-inline: clamp(12px, 4vw, 24px);
+  }
+  #project-mechatronics-lab .system-study {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+    width: min(290px, 100%);
+  }
+  #project-mechatronics-lab .system-title {
+    font-size: clamp(8px, 2.7vw, 10px);
+    letter-spacing: .08em;
+    overflow-wrap: anywhere;
+  }
+  #project-mechatronics-lab .system-part {
+    min-width: 0;
+    padding-inline: clamp(14px, 5vw, 20px);
+  }
+  #project-mechatronics-lab .system-part strong {
+    font-size: clamp(13px, 4vw, 16px);
+  }
+}

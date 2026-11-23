@@ -339,7 +339,7 @@
     const rail = document.querySelector('.progress-rail');
     const layouts = chapters.map(chapter => {
       const content = chapter.querySelector('.content');
-      return { content, copyOnRight:content.parentElement.classList.contains('to-right') };
+      return { content, gallery:chapter.classList.contains('showcase-chapter'), copyOnRight:content.parentElement.classList.contains('to-right') };
     });
     function onResize(){
       if (mobileExhibits.matches) return;
@@ -368,15 +368,20 @@
 
     function renderDesktopColumn(index, fraction) {
       const current = layouts[index];
-      const next = layouts[Math.min(index + 1, layouts.length - 1)];
+      const candidate = layouts[Math.min(index + 1, layouts.length - 1)];
+      const next = candidate.gallery ? current : candidate;
       const left = THREE.MathUtils.lerp(current.left, next.left, fraction);
       const right = THREE.MathUtils.lerp(current.right, next.right, fraction);
-      const width = Math.max(1, right - left);
+      const width = right - left;
+      if (current.gallery || width < 120) { viewportCanvas.style.visibility = 'hidden'; return; }
       const height = window.innerHeight;
       renderer.setScissorTest(false);
       renderer.clear();
       renderer.setViewport(left, 0, width, height);
-      renderer.setScissor(left, 0, width, height);
+      // Keep the Concepts exhibit inside its own chapter, below the book gallery.
+      const boundary = index > 0 && layouts[index - 1].gallery
+        ? clamp(chapters[index].getBoundingClientRect().top, 0, height) : 0;
+      renderer.setScissor(left, 0, width, height - boundary);
       renderer.setScissorTest(true);
       camera.aspect = width / height;
       // A 7.6-unit frame leaves a margin around the 6.4-unit display plinth.
@@ -388,22 +393,37 @@
     }
 
     let animationFrame = 0;
+    let galleryWasHidden = true;
     function loop(now){
       if (document.hidden || mobileExhibits.matches) return;
       animationFrame = requestAnimationFrame(loop);
       const dt=Math.min(.045,(now-lastTime)/1000||.016);
       lastTime=now;
+      // Galleries now use project previews; their old 3D exhibits are retired.
+      if (activeIndex >= 0 && layouts[activeIndex].gallery) {
+        viewportCanvas.style.visibility = 'hidden';
+        galleryWasHidden = true;
+        return;
+      }
+      const enteringFromGallery = galleryWasHidden;
+      if (enteringFromGallery) {
+        effectivePosition = activeIndex;
+        galleryWasHidden = false;
+      }
+      viewportCanvas.style.visibility = 'visible';
       effectivePosition+=(goalPosition-effectivePosition)*Math.min(1,dt*(reducedMotion?16:3.2));
+      if (activeIndex > 0 && layouts[activeIndex - 1].gallery && effectivePosition < activeIndex) effectivePosition = activeIndex;
       const idx=Math.min(worlds.length-1,Math.floor(effectivePosition));
       const frac=effectivePosition-idx;
       const interpolatedX=effectivePosition*spacing;
       const desiredPosition=new THREE.Vector3(interpolatedX+3.4+pointer.x*.23, 3.65+pointer.y*.15,11.6);
       const desiredTarget=new THREE.Vector3(interpolatedX,-.20,0);
+      if (enteringFromGallery) { cameraPos.copy(desiredPosition); cameraTarget.copy(desiredTarget); }
       cameraPos.lerp(desiredPosition,Math.min(1,dt*5.6));
       cameraTarget.lerp(desiredTarget,Math.min(1,dt*5.6));
       camera.position.copy(cameraPos);camera.lookAt(cameraTarget);
       for(let i=0;i<worlds.length;i++){
-        worlds[i].root.visible=Math.abs(effectivePosition-i)<.995;
+        worlds[i].root.visible=!layouts[i].gallery && Math.abs(effectivePosition-i)<.995;
         const distance=Math.abs(effectivePosition-i);
         const weight=Math.max(0,1-distance);
         worlds[i].art.rotation.y=(i%2?-.18:.13)+effectivePosition*.06+pointer.x*.012;

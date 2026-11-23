@@ -7,9 +7,7 @@
   const progress = document.getElementById('reading-progress');
   const sceneLabel = document.getElementById('scene-label');
   const sceneCount = document.getElementById('scene-count');
-  const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a, .mobile-navigation nav a, .mobile-chapter-points a')];
-  const mobileChapterCaption = document.getElementById('mobile-chapter-caption');
-  const mobileChapterLabels = ['OVERVIEW','ENGINEERING','DIGITAL','CREATIVE','CONCEPTS','ABOUT','CONTACT'];
+  const desktopLinks = [...document.querySelectorAll('.progress-rail a, .nav-links a, .mobile-navigation nav a')];
   const mobileMenu = document.querySelector('.mobile-navigation');
   const siteHeader = document.querySelector('.site-header');
   const sceneNames = ['STUDIO / OVERVIEW','ENGINEERING / 001','DIGITAL PLAYGROUND / 002','CREATIVE PRACTICE / 003','CONCEPT STUDIES / 004','ABOUT / 005','CONTACT / 006'];
@@ -19,21 +17,6 @@
   let goalPosition = 0;
   let sceneCallback = null;
   let scrollQueued = false;
-  // The Concepts artwork must not appear while the Creative gallery is
-  // still in view or while Three.js is interpolating between both models.
-  const conceptsIndex = chapters.findIndex(chapter => chapter.id === 'concepts');
-  let renderedScenePosition = 0;
-  function syncWorldVisibility() {
-    const galleryReading = chapters[activeIndex]?.classList.contains('showcase-chapter') || false;
-    const conceptsNotReady = conceptsIndex >= 0 && activeIndex === conceptsIndex && (
-      // Require the new chapter boundary to clear the fixed site header.
-      window.scrollY + (siteHeader?.offsetHeight || 77) + 12 < chapters[conceptsIndex].offsetTop ||
-      // The previous model stays visible until its distance exceeds .995.
-      // Do not fade the canvas in before the old model is fully gone.
-      renderedScenePosition < conceptsIndex - .003
-    );
-    document.body.classList.toggle('showcase-reading', galleryReading || conceptsNotReady);
-  }
   const clamp = (x,a,b) => Math.max(a, Math.min(b,x));
   const smooth = t => t*t*(3-2*t);
 
@@ -53,14 +36,12 @@
       activeIndex=nearest;
       sceneLabel.textContent=sceneNames[nearest];
       sceneCount.textContent=String(nearest+1).padStart(2,'0')+' / 07';
-      if (mobileChapterCaption) mobileChapterCaption.textContent = String(nearest+1).padStart(2,'0')+' / '+mobileChapterLabels[nearest];
       const currentId=chapters[nearest].id;
       desktopLinks.forEach(a=>{
         if(a.hash==='#'+currentId)a.setAttribute('aria-current','location');
         else a.removeAttribute('aria-current');
       });
     }
-    syncWorldVisibility();
     const denominator=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
     progress.style.transform='scaleX('+clamp(window.scrollY/denominator,0,1)+')';
     if(sceneCallback)sceneCallback(goalPosition);
@@ -358,11 +339,7 @@
     const rail = document.querySelector('.progress-rail');
     const layouts = chapters.map(chapter => {
       const content = chapter.querySelector('.content');
-      return {
-        content,
-        isShowcase:chapter.classList.contains('showcase-chapter'),
-        copyOnRight:content.parentElement.classList.contains('to-right')
-      };
+      return { content, copyOnRight:content.parentElement.classList.contains('to-right') };
     });
     function onResize(){
       if (mobileExhibits.matches) return;
@@ -372,17 +349,8 @@
       const rightEdge = railBounds.width ? railBounds.left : window.innerWidth;
       layouts.forEach(layout => {
         const copy = layout.content.getBoundingClientRect();
-        // Showcase copy spans the entire row. Using copy.right as the canvas
-        // left edge made right-left negative, producing a 1px viewport and
-        // an almost invisible object (observed at chapter boundaries).
-        if (layout.isShowcase) {
-          const reserve = Math.min(640, Math.max(380, window.innerWidth * .4));
-          layout.left = Math.max(24, rightEdge - reserve);
-          layout.right = rightEdge;
-        } else {
-          layout.left = layout.copyOnRight ? 0 : copy.right;
-          layout.right = layout.copyOnRight ? copy.left : rightEdge;
-        }
+        layout.left = layout.copyOnRight ? 0 : copy.right;
+        layout.right = layout.copyOnRight ? copy.left : rightEdge;
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
       renderer.setSize(window.innerWidth,window.innerHeight,false);
@@ -401,16 +369,9 @@
     function renderDesktopColumn(index, fraction) {
       const current = layouts[index];
       const next = layouts[Math.min(index + 1, layouts.length - 1)];
-      let left = THREE.MathUtils.lerp(current.left, next.left, fraction);
-      let right = THREE.MathUtils.lerp(current.right, next.right, fraction);
-      // Never allow a degenerate scissor or a nearly-zero perspective zoom.
-      if (right - left < 280) {
-        const width = Math.min(460, Math.max(300, window.innerWidth * .32));
-        const centre = clamp((left + right) / 2, width / 2, window.innerWidth - width / 2);
-        left = centre - width / 2;
-        right = centre + width / 2;
-      }
-      const width = right - left;
+      const left = THREE.MathUtils.lerp(current.left, next.left, fraction);
+      const right = THREE.MathUtils.lerp(current.right, next.right, fraction);
+      const width = Math.max(1, right - left);
       const height = window.innerHeight;
       renderer.setScissorTest(false);
       renderer.clear();
@@ -433,8 +394,6 @@
       const dt=Math.min(.045,(now-lastTime)/1000||.016);
       lastTime=now;
       effectivePosition+=(goalPosition-effectivePosition)*Math.min(1,dt*(reducedMotion?16:3.2));
-      renderedScenePosition = effectivePosition;
-      syncWorldVisibility();
       const idx=Math.min(worlds.length-1,Math.floor(effectivePosition));
       const frac=effectivePosition-idx;
       const interpolatedX=effectivePosition*spacing;

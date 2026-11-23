@@ -12,10 +12,6 @@ a{color:inherit}button{font:inherit}
 .world-stage{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 75% 46%,#1c292b 0%,#0b1116 60%,#070c11 100%);overflow:hidden}
 .world-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .8s ease}
 body.world-ready .world-stage canvas{opacity:1}
-/* The interactive world remains on Hero, Concepts, About and Contact.
-   Hide its canvas during full-width project galleries where the art viewport
-   has no legitimate column, with a smooth fade instead of tiny fragments. */
-body.world-ready.showcase-reading .world-stage canvas{opacity:0;transition-duration:.16s}
 .world-fallback{position:absolute;inset:0;display:grid;place-items:center;opacity:.65;transition:opacity .6s}
 body.world-ready .world-fallback{opacity:0}
 .fallback-object{width:min(55vmin,600px);aspect-ratio:1;position:absolute;left:53%;top:16%;transform:rotateX(62deg) rotateZ(-35deg);border:1px solid #607e75;border-radius:50%;box-shadow:0 0 0 35px rgba(91,118,106,.04),0 0 0 100px rgba(91,118,106,.025),inset 0 0 120px rgba(128,174,143,.14)}
@@ -361,20 +357,3 @@ body.world-ready .world-fallback{opacity:0}
 }
 
 .hero-focus{max-width:600px;border-top:1px solid #42524e;padding-top:22px;font:500 11px/2 ui-monospace,monospace;letter-spacing:.09em;color:#b9c7c0}.hero-focus span{color:var(--lime);padding:0 9px}
-
-/* Mobile chapter navigation, 2026-11-23 */
-.mobile-chapter-nav{display:none}
-@media(max-width:710px){
- .mobile-chapter-nav{display:block;position:fixed;z-index:58;left:50%;bottom:max(10px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(338px,calc(100vw - 16px));padding:8px 8px 5px;background:rgba(11,19,24,.95);border:1px solid rgba(196,240,107,.27);border-radius:15px;box-shadow:0 10px 32px rgba(0,0,0,.4);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
- .mobile-chapter-caption{display:block;padding:0 9px 1px;color:#e0e8dc;font:600 10px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;pointer-events:none}
- .mobile-chapter-points{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
- .mobile-chapter-points a{display:flex;align-items:center;justify-content:center;min-width:0;min-height:44px;text-decoration:none;touch-action:manipulation}
- .mobile-chapter-points a::before{content:"";width:7px;height:7px;border-radius:50%;background:#85968a;transition:width .18s,background .18s,border-radius .18s}
- .mobile-chapter-points a[aria-current="location"]::before{width:20px;height:6px;border-radius:5px;background:var(--lime)}
- .mobile-chapter-points a:focus-visible{outline:2px solid var(--lime);outline-offset:-3px;border-radius:7px}
- .chapter{padding-bottom:max(112px,calc(103px + env(safe-area-inset-bottom)))}
- .footer{padding-bottom:max(116px,calc(105px + env(safe-area-inset-bottom)))}
- .project-entry p,.creative-body p{font-size:13px;line-height:1.55}
- .project-entry .item-top,.creative-body small{font-size:10px}
-}
-@media(prefers-reduced-motion:reduce){.mobile-chapter-points a::before{transition:none}}

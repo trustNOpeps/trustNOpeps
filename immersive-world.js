@@ -19,6 +19,9 @@
   let scrollQueued = false;
   const clamp = (x,a,b) => Math.max(a, Math.min(b,x));
   const smooth = t => t*t*(3-2*t);
+  // Scroll-linked reveal for the first 3D scene after the full-width galleries.
+  const conceptsIndex = chapters.findIndex(chapter => chapter.id === 'concepts');
+  let conceptsReveal = 0;
 
   function readScroll() {
     scrollQueued = false;
@@ -32,6 +35,14 @@
       goalPosition = i - 1 + smooth(clamp((distance + transition) / (2 * transition), 0, 1));
     }
     const nearest=clamp(Math.round(goalPosition),0,chapters.length-1);
+    if (conceptsIndex >= 0) {
+      // Start fully hidden at the Creative -> Concepts scene change.
+      // Progress from 48% to 12% of viewport height as the user scrolls:
+      // the scene gently appears instead of abruptly popping into place.
+      const chapterTop = chapters[conceptsIndex].getBoundingClientRect().top;
+      const distance = Math.max(1, window.innerHeight * .36);
+      conceptsReveal = smooth(clamp((window.innerHeight * .48 - chapterTop) / distance, 0, 1));
+    }
     if (nearest!==activeIndex) {
       activeIndex=nearest;
       sceneLabel.textContent=sceneNames[nearest];
@@ -401,9 +412,22 @@
       lastTime=now;
       // Galleries now use project previews; their old 3D exhibits are retired.
       if (activeIndex >= 0 && layouts[activeIndex].gallery) {
+        viewportCanvas.classList.remove('world-entering-concepts');
+        viewportCanvas.style.removeProperty('--concept-reveal');
         viewportCanvas.style.visibility = 'hidden';
         galleryWasHidden = true;
         return;
+      }
+      // Unlike hard visibility switching, this scrubbed fade responds to
+      // actual scroll distance and reverses naturally when scrolling upward.
+      const revealingConcepts = activeIndex === conceptsIndex && conceptsIndex > 0
+        && layouts[conceptsIndex - 1].gallery;
+      if (revealingConcepts) {
+        viewportCanvas.style.setProperty('--concept-reveal', conceptsReveal.toFixed(4));
+        viewportCanvas.classList.add('world-entering-concepts');
+      } else {
+        viewportCanvas.classList.remove('world-entering-concepts');
+        viewportCanvas.style.removeProperty('--concept-reveal');
       }
       const enteringFromGallery = galleryWasHidden;
       if (enteringFromGallery) {
@@ -418,6 +442,11 @@
       const interpolatedX=effectivePosition*spacing;
       const desiredPosition=new THREE.Vector3(interpolatedX+3.4+pointer.x*.23, 3.65+pointer.y*.15,11.6);
       const desiredTarget=new THREE.Vector3(interpolatedX,-.20,0);
+      if (revealingConcepts) {
+        // Subtle camera ease-in preserves the original artwork and composition.
+        desiredPosition.z += (1 - conceptsReveal) * .9;
+        desiredPosition.y += (1 - conceptsReveal) * .16;
+      }
       if (enteringFromGallery) { cameraPos.copy(desiredPosition); cameraTarget.copy(desiredTarget); }
       cameraPos.lerp(desiredPosition,Math.min(1,dt*5.6));
       cameraTarget.lerp(desiredTarget,Math.min(1,dt*5.6));

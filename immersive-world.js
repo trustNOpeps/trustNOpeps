@@ -15,7 +15,7 @@
   const mobileExhibits = window.matchMedia('(max-width: 710px), (pointer: coarse) and (max-width: 1100px)');
   let activeIndex = -1;
   let goalPosition = 0;
-  let sceneCallback = null;
+  let wakeDesktop = null;
   let scrollQueued = false;
   const clamp = (x,a,b) => Math.max(a, Math.min(b,x));
   const smooth = t => t*t*(3-2*t);
@@ -55,7 +55,7 @@
     }
     const denominator=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
     progress.style.transform='scaleX('+clamp(window.scrollY/denominator,0,1)+')';
-    if(sceneCallback)sceneCallback(goalPosition);
+    wakeDesktop?.();
   }
   function enqueueRead(){
     if(!scrollQueued){scrollQueued=true;requestAnimationFrame(readScroll);}
@@ -91,7 +91,11 @@
       event.preventDefault();
       if (location.hash !== hash) history.pushState(null, '', hash);
       if (mobileMenu?.open) mobileMenu.open = false;
-      if (hash === '#main') document.getElementById('main')?.focus({ preventScroll: true });
+      const target = document.getElementById(hash.slice(1));
+      const heading = document.getElementById(target.getAttribute('aria-labelledby'));
+      const focusTarget = heading || target;
+      if (!focusTarget.hasAttribute('tabindex')) focusTarget.tabIndex = -1;
+      focusTarget.focus({ preventScroll: true });
     });
   });
   function restoreHashPosition() {
@@ -374,7 +378,6 @@
       pointer.x=clamp(e.clientX/window.innerWidth*2-1,-1,1);
       pointer.y=clamp(e.clientY/window.innerHeight*2-1,-1,1);
     },{passive:true});
-    sceneCallback=pos=>{goalPosition=pos};
     document.body.classList.add('world-ready');
 
     function renderDesktopColumn(index, fraction) {
@@ -405,9 +408,14 @@
 
     let animationFrame = 0;
     let galleryWasHidden = true;
+    wakeDesktop = () => {
+      if (!animationFrame && !document.hidden && !mobileExhibits.matches && !layouts[activeIndex]?.gallery) {
+        animationFrame = requestAnimationFrame(loop);
+      }
+    };
     function loop(now){
+      animationFrame = 0;
       if (document.hidden || mobileExhibits.matches) return;
-      animationFrame = requestAnimationFrame(loop);
       const dt=Math.min(.045,(now-lastTime)/1000||.016);
       lastTime=now;
       // Galleries now use project previews; their old 3D exhibits are retired.
@@ -463,11 +471,13 @@
         else mesh.rotation.z+=dt*speed;
       });}
       renderDesktopColumn(idx, frac);
+      animationFrame = requestAnimationFrame(loop);
     }
     // First render before entering the animation loop to avoid an empty canvas flash.
     cameraPos.set(3.4,3.65,11.6); cameraTarget.set(0,-.20,0);
     function resumeDesktop() {
       cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
       if (mobileExhibits.matches || document.hidden) return;
       onResize();
       lastTime = performance.now();

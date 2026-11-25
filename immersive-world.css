@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root{--ink:#0b1116;--paper:#eeeae2;--muted:#bac2bf;--soft:#91a29b;--lime:#c4f06b;--lav:#afa0dc;--ice:#a8d2c7;--line:rgba(221,233,222,.19);--glass:rgba(13,20,26,.79);color-scheme:dark;scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:110px;max-width:100%;overflow-x:clip}

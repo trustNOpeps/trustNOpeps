@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 import json
+import os
 import urllib.request
 
 OWNER = 'trustNOpeps'
@@ -11,9 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def public_repositories():
     repos = []
+    headers = {'Accept': 'application/vnd.github+json', 'User-Agent': 'haammkaki-profile'}
+    if token := os.environ.get('GITHUB_TOKEN'):
+        headers['Authorization'] = f'Bearer {token}'
     for page in range(1, 101):
         url = f'https://api.github.com/users/{OWNER}/repos?type=owner&per_page=100&page={page}'
-        request = urllib.request.Request(url, headers={'Accept': 'application/vnd.github+json', 'User-Agent': 'haammkaki-profile'})
+        request = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(request, timeout=30) as response:
             batch = json.load(response)
         if not isinstance(batch, list):

@@ -1,7 +1,7 @@
 # MachineScope — Machine Intelligence
 
 **Category:** Engineering / Machine Intelligence  
-**Status:** Public working browser application; source repository currently private.  
+**Status:** Public working browser application and public source repository.  
 **[Open live application](https://machinescope-hamka.girlslovre.chatgpt.site)** · **[Portfolio](https://trustnopeps.github.io/trustNOpeps/#project-machinescope)**
 
 ## Problem and workflow
@@ -20,4 +20,4 @@ This release is statistical anomaly detection, not a trained machine-learning mo
 Eleven parser/statistics tests passed during v1.0 delivery, including missing values, constant baselines and the six known demo anomalies. Desktop channel selection, baseline switching and demo reset were checked. Mobile application testing and browser file upload/download end-to-end testing were not completed in that delivery.
 
 ## Source and maintenance
-Canonical source: trustNOpeps/machinescope, branch main. The repository remains private pending GitHub account verification for the visibility change. The public application and this case study are available without repository access. No private customer or measured machine dataset is embedded.
+Canonical source: [trustNOpeps/machinescope](https://github.com/trustNOpeps/machinescope), branch main. Source visibility was verified public on 27 November 2026. The public application, source and this case study are available to portfolio visitors. No private customer or measured machine dataset is embedded.

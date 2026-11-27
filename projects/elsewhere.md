@@ -1,6 +1,7 @@
 # ELSEWHERE — Decision Atlas
 
-**Live:** https://elsewhere-decision-studio.vercel.app/  
+**GitHub Pages mirror:** https://trustnopeps.github.io/trustNOpeps/apps/elsewhere/  
+**Earlier Vercel URL (availability unverified):** https://elsewhere-decision-studio.vercel.app/  
 **Source:** [apps/elsewhere](../apps/elsewhere/)
 
 ## What it is
@@ -37,7 +38,7 @@ Nine Node unit tests passed. Playwright bilingual smoke checks passed on 1440, 3
 
 ## Implementation
 
-Dependency-free static HTML, CSS and JavaScript ES modules deployed to Vercel. The project is stored in the existing GitHub portfolio repository under `apps/elsewhere/` to avoid redundant repositories. Read the local [design notes](../apps/elsewhere/DESIGN_NOTES.md) for the typographic rationale, palette and references.
+Dependency-free static HTML, CSS and JavaScript ES modules. A GitHub Pages mirror uses the same static runtime; the earlier Vercel deployment is retained but its availability is unverified. Browser storage is origin-specific; export JSON from an accessible old origin before importing on a new one. The project is stored in the existing GitHub portfolio repository under `apps/elsewhere/` to avoid redundant repositories. Read the local [design notes](../apps/elsewhere/DESIGN_NOTES.md) for the typographic rationale, palette and references.
 
 ## Version
 

@@ -16,9 +16,8 @@ I worked on the page structure, category organisation, written content, visual d
 - Keep the request list accessible from the header so visitors can collect several requirements before asking for a quotation.
 - Review navigation, images, catalogue pages, and forms across screen sizes rather than treating responsiveness as a catalogue-only concern.
 
-## Status and limits
-This is a prototype project note, not a released software repository. The public portfolio does not include the implementation, a verified live demo, or evidence of production form delivery. End-to-end quotation handling, accessibility, and device testing must be verified before presenting the site as production-ready.
+## Status and limits — updated 27 November 2026
 
-No customer results, sales figures, or commercial engagement are claimed.
+A static-client implementation has been published to Cloudflare Pages. The private source documents a 40-product catalogue, local RFQ cart and a separately managed backend. A controlled test submission on 24 November was reported as stored successfully; email notification was not delivered. Attachment upload, real mailbox receipt, legal details, domain ownership and final handover remain unverified. This is not a production-readiness claim. No customer records, private source, credentials or commercial outcomes are published here.
 
 [Back to profile](https://github.com/trustNOpeps)

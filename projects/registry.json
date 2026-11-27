@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "updated": "2026-11-27",
+  "portfolio": "https://trustnopeps.github.io/trustNOpeps/",
+  "projects": [
+    {
+      "id": "mechlabs",
+      "url": "https://mechlabs-engineering.lovable.app/",
+      "source": "trustNOpeps/Mechlabs",
+      "status": "snapshot"
+    },
+    {
+      "id": "tensile-desk",
+      "url": "https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/",
+      "source": "trustNOpeps/Tensile-Desk",
+      "status": "educational"
+    },
+    {
+      "id": "mechatronics-lab",
+      "url": "https://github.com/trustNOpeps/Mechatronics-Lab",
+      "source": "trustNOpeps/Mechatronics-Lab",
+      "status": "simulation"
+    },
+    {
+      "id": "machinescope",
+      "url": "https://trustnopeps.github.io/trustNOpeps/apps/machinescope/",
+      "source": "trustNOpeps/machinescope",
+      "status": "statistical prototype"
+    },
+    {
+      "id": "fabframe",
+      "url": "https://trustnopeps.github.io/trustNOpeps/apps/fabframe/",
+      "source": "trustNOpeps/trustNOpeps:apps/fabframe",
+      "status": "preliminary CAD"
+    },
+    {
+      "id": "mech-os-shaft",
+      "url": "https://mech-os-shaft-studio-preview.vercel.app/",
+      "source": "trustNOpeps/Mechlabs:experiments/mech-os",
+      "status": "preliminary design"
+    },
+    {
+      "id": "apply-os",
+      "url": "https://apply-os-career.vercel.app/",
+      "source": null,
+      "status": "private source; manual tracking"
+    },
+    {
+      "id": "elsewhere",
+      "url": "https://trustnopeps.github.io/trustNOpeps/apps/elsewhere/",
+      "source": "trustNOpeps/trustNOpeps:apps/elsewhere",
+      "status": "static mirror"
+    },
+    {
+      "id": "bourn",
+      "url": "https://trustnopeps.github.io/trustNOpeps/bourn/",
+      "source": "trustNOpeps/bourn",
+      "status": "prototype"
+    },
+    {
+      "id": "vi-fieldnotes",
+      "url": "https://vi-fieldnotes.pages.dev/",
+      "source": "trustNOpeps/vi-fieldnotes",
+      "status": "publication"
+    },
+    {
+      "id": "tamuform-studio",
+      "url": "https://trustnopeps.github.io/trustNOpeps/tamuform/",
+      "source": null,
+      "status": "public fictional preview"
+    },
+    {
+      "id": "little-world",
+      "url": "https://trustnopeps.github.io/trustNOpeps/apps/little-world/",
+      "source": "trustNOpeps/Little-World",
+      "status": "simulation"
+    },
+    {
+      "id": "pixel-pad",
+      "url": "https://trustnopeps.github.io/trustNOpeps/apps/pixel-desk/",
+      "source": "trustNOpeps/Pixel-Desk",
+      "status": "browser editor"
+    },
+    {
+      "id": "request-desk",
+      "url": "https://trustnopeps.github.io/trustNOpeps/apps/request-desk/",
+      "source": "trustNOpeps/Request-Desk",
+      "status": "draft utility"
+    },
+    {
+      "id": "after-wanting",
+      "url": "https://trustnopeps.github.io/trustNOpeps/showroom/",
+      "source": "trustNOpeps/trustNOpeps",
+      "status": "concept"
+    },
+    {
+      "id": "book",
+      "url": "https://trustnopeps.github.io/trustNOpeps/book/",
+      "source": "trustNOpeps/trustNOpeps",
+      "status": "preview"
+    },
+    {
+      "id": "arah-supplies",
+      "url": "https://github.com/trustNOpeps/trustNOpeps/blob/main/projects/procurement-website.md",
+      "source": null,
+      "status": "case study; handover incomplete"
+    }
+  ]
+}

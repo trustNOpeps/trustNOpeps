@@ -2,7 +2,7 @@
 
 # Engineering, software and creative work
 
-I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in Bali. I build browser tools for engineering calculations, experiment with interactive spaces and develop clothing concepts through AFTER WANTING.
+I'm haammkaki, a mechanical engineering undergraduate at Universitas Udayana in Bali. I build computational engineering tools, applied AI workflows and independent digital products, with documented methods and limitations. Creative practice includes AFTER WANTING.
 
 **[Portfolio](https://trustnopeps.github.io/trustNOpeps/)** · [LinkedIn](https://www.linkedin.com/in/muhamad-hamka/en/)
 
@@ -24,9 +24,18 @@ Machine Intelligence: browser-local sensor CSV analysis, signal plots, RMS and t
 **[FABFRAME](https://trustnopeps.github.io/trustNOpeps/apps/fabframe/)** · [Code](apps/fabframe/) · [Case study](projects/fabframe.md)  
 Parametric CAD frame studio with cut schedules, nominal mass, stock allocation and FreeCAD/STEP exports. Includes learning exercises; no structural load rating.
 
-### 02 / Digital
+**[MECH.OS — Shaft Studio](https://mech-os-shaft-studio-preview.vercel.app/)** · [Code](https://github.com/trustNOpeps/Mechlabs/tree/main/experiments/mech-os) · [Case study](projects/mech-os-shaft.md)  
+Preliminary solid round shaft design: static stress, deflection, rotatable mesh and local engineering exports. Not fabrication approval.
 
-**[ELSEWHERE](https://elsewhere-decision-studio.vercel.app/)** · [Code](apps/elsewhere/)  
+### 02 / Applied AI & digital products
+
+**[APPLY.OS](https://apply-os-career.vercel.app/)** · [AI Matching Lab](https://apply-os-career.vercel.app/matching/) · [Case study](projects/apply-os.md)  
+Browser-local application tracking and optional multilingual Sentence-BERT matching; manual eligibility checks, not automatic applications. Source private.
+
+**ARAH Supplies** · [Case study](projects/procurement-website.md)  
+Procurement catalogue and RFQ workflow; email delivery and final client handover are outstanding.
+
+**[ELSEWHERE](https://trustnopeps.github.io/trustNOpeps/apps/elsewhere/)** · [Code](apps/elsewhere/)  
 A decision atlas for comparing options, looking at trade-offs and testing how conclusions change with different priorities.
 
 **[BOURN](https://trustnopeps.github.io/trustNOpeps/bourn/)** · [Code](https://github.com/trustNOpeps/bourn)  

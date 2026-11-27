@@ -24,4 +24,4 @@ Static checks confirmed: 11 showcase rows; all original main links retained; no 
 
 ## MachineScope addition — 27 November 2026
 
-MachineScope appears in Engineering / Machine Intelligence with the existing system-study visual component. Its visual explains the workflow and is not a screenshot. Live app and public case study links are included; source repository visibility is awaiting GitHub account verification. Existing chapter design and JavaScript are unchanged. Showcase rows now total 12. Static checks confirm unique IDs, sequential numbered project rows, correct Engineering placement and preservation of all existing link destinations.
+MachineScope appears in Engineering / Machine Intelligence with the existing system-study visual component. Its visual explains the workflow and is not a screenshot. Live app, public source repository and public case study links are included; source visibility was verified public. Existing chapter design and JavaScript are unchanged. Showcase rows now total 12. Static checks confirm unique IDs, sequential numbered project rows, correct Engineering placement and preservation of all existing link destinations.

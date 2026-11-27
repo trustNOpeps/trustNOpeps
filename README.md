@@ -18,7 +18,7 @@ An engineering workbench for stress, strain and material comparison. Educational
 **[Tensile Desk](https://trustnopeps.github.io/trustNOpeps/apps/tensile-desk/)** · [Code](https://github.com/trustNOpeps/Tensile-Desk)  
 Stress and strain calculations from force and extension, with curves and CSV export. Example measurements are synthetic.
 
-**[MachineScope](https://machinescope-hamka.girlslovre.chatgpt.site)** · [Code](https://github.com/trustNOpeps/machinescope) · [Method & case study](projects/machinescope.md)  
+**[MachineScope](https://trustnopeps.github.io/trustNOpeps/apps/machinescope/)** · [Code](https://github.com/trustNOpeps/machinescope) · [Method & case study](projects/machinescope.md)  
 Machine Intelligence: browser-local sensor CSV analysis, signal plots, RMS and transparent median/MAD anomaly detection. Synthetic demo; statistical indications, not trained AI or fault diagnosis.
 
 ### 02 / Digital

@@ -2,7 +2,7 @@
 
 **Category:** Engineering / Machine Intelligence  
 **Status:** Public working browser application and public source repository.  
-**[Open live application](https://machinescope-hamka.girlslovre.chatgpt.site)** · **[Portfolio](https://trustnopeps.github.io/trustNOpeps/#project-machinescope)**
+**[Open live application](https://trustnopeps.github.io/trustNOpeps/apps/machinescope/)** · **[Portfolio](https://trustnopeps.github.io/trustNOpeps/#project-machinescope)**
 
 ## Problem and workflow
 Sensor CSVs are easier to review when data quality, trends and unusual readings are visible together. MachineScope imports comma-delimited CSV, lets the user select a numeric channel and baseline, plots the signal, and exports a JSON report or CSV anomaly register. Processing stays in browser memory; refreshing clears imported readings.

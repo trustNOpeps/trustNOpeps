@@ -21,3 +21,7 @@ Refresh screenshots when project interfaces change. Keep the actual viewport rat
 qa/showcase.html provides a noindex same-origin iframe to check widths 320, 390, 768, and 1140 using `?width=390&project=project-bourn`. It reports document overflow, image loading failures, and showcase count. Main project links stay normal HTML links and work without showcase JavaScript.
 
 Static checks confirmed: 11 showcase rows; all original main links retained; no duplicate IDs; local preview images exist; no hero project shelf; immersive-world.js syntax unchanged and valid.
+
+## MachineScope addition — 27 November 2026
+
+MachineScope appears in Engineering / Machine Intelligence with the existing system-study visual component. Its visual explains the workflow and is not a screenshot. Live app and public case study links are included; source repository visibility is awaiting GitHub account verification. Existing chapter design and JavaScript are unchanged. Showcase rows now total 12. Static checks confirm unique IDs, sequential numbered project rows, correct Engineering placement and preservation of all existing link destinations.

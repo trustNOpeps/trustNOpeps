@@ -21,6 +21,9 @@ Stress and strain calculations from force and extension, with curves and CSV exp
 **[MachineScope](https://trustnopeps.github.io/trustNOpeps/apps/machinescope/)** · [Code](https://github.com/trustNOpeps/machinescope) · [Method & case study](projects/machinescope.md)  
 Machine Intelligence: browser-local sensor CSV analysis, signal plots, RMS and transparent median/MAD anomaly detection. Synthetic demo; statistical indications, not trained AI or fault diagnosis.
 
+**[FABFRAME](https://trustnopeps.github.io/trustNOpeps/apps/fabframe/)** · [Code](apps/fabframe/) · [Case study](projects/fabframe.md)  
+Parametric CAD frame studio with cut schedules, nominal mass, stock allocation and FreeCAD/STEP exports. Includes learning exercises; no structural load rating.
+
 ### 02 / Digital
 
 **[ELSEWHERE](https://elsewhere-decision-studio.vercel.app/)** · [Code](apps/elsewhere/)  

@@ -1,0 +1,21 @@
+name: PumpOps engineering QA
+on:
+  push:
+    paths:
+      - 'apps/pumpops/**'
+      - 'tests/pumpops.test.cjs'
+      - '.github/workflows/pumpops-ci.yml'
+  pull_request:
+    paths:
+      - 'apps/pumpops/**'
+      - 'tests/pumpops.test.cjs'
+      - '.github/workflows/pumpops-ci.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/pumpops.test.cjs

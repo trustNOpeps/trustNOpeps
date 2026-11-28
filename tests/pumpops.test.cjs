@@ -1,0 +1,20 @@
+// Tests the calculation function extracted from the shipped HTML (no duplicate formula).
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const vm = require("node:vm");
+const html = fs.readFileSync("apps/pumpops/index.html","utf8");
+const match = html.match(/function compute\(v\)\{[\s\S]*?\}\nfunction recalc/);
+assert.ok(match, "compute() must be present in the distributed app");
+const compute = vm.runInNewContext("(" + match[0].slice(0, - "\nfunction recalc".length) + ")", {});
+const near = (actual, expected, tol=1e-6) => assert.ok(Math.abs(actual-expected)<tol, actual+" != "+expected);
+const base={flow:36,head:10,density:1000,eff:100,motor:100,target:100,targetmotor:100,hours:1000,tariff:1000,capex:1000000,life:5,discount:0,extra:0};
+let r=compute(base);
+near(r.hyd,0.980665);near(r.base,0.980665);near(r.next,0.980665);near(r.baseCost,980665);near(r.annual,0);near(r.npv,-1000000);assert.equal(r.payback,null);
+r=compute({...base,target:100,targetmotor:100,extra:100000,capex:200000,life:3});
+near(r.annual,100000);near(r.payback,2);near(r.npv,100000);
+r=compute({...base,eff:50,motor:100,target:100,targetmotor:100,capex:100000,discount:10,life:2});
+near(r.base,1.96133);near(r.next,0.980665);near(r.kwh,980.665);near(r.annual,980665);
+near(r.npv,-100000+980665/(1.1)+980665/(1.1*1.1),0.00001);
+r=compute({...base,eff:100,motor:100,target:50,targetmotor:100,extra:0});
+assert.ok(r.annual<0);assert.equal(r.payback,null);
+console.log("PASS PumpOps: hydraulic power, energy, zero-rate NPV, discounted NPV, payback and negative savings");

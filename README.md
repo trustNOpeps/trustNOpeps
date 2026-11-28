@@ -12,6 +12,9 @@ My projects sit somewhere between engineering, useful software and visual experi
 
 ### 01 / Engineering
 
+**[PumpOps — Pump Energy & Retrofit Studio](https://trustnopeps.github.io/trustNOpeps/apps/pumpops/)** · [Code](apps/pumpops/) · [Method & case study](projects/pumpops.md)  
+Industrial centrifugal pump energy screening with transparent hydraulic power, annual operating costs, NPV, payback and client-ready CSV/print exports. Same-duty-point comparison; not a manufacturer-curve or VFD simulator.
+
 **[MechLabs](https://mechlabs-engineering.lovable.app/)** · [Code](https://github.com/trustNOpeps/Mechlabs)  
 An engineering workbench for stress, strain and material comparison. Educational, not certified analysis software.
 

@@ -1,15 +1,21 @@
-name: PumpOps engineering QA
+name: PumpOps engineering and browser QA
 on:
   push:
+    branches: [main]
     paths:
       - 'apps/pumpops/**'
       - 'tests/pumpops.test.cjs'
+      - 'scripts/pumpops_browser_qa.py'
       - '.github/workflows/pumpops-ci.yml'
   pull_request:
     paths:
       - 'apps/pumpops/**'
       - 'tests/pumpops.test.cjs'
+      - 'scripts/pumpops_browser_qa.py'
       - '.github/workflows/pumpops-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,3 +25,20 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/pumpops.test.cjs
+  live-browser:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python -m pip install --disable-pip-version-check playwright==1.56.0
+          if ! command -v google-chrome >/dev/null 2>&1 && ! command -v chromium >/dev/null 2>&1; then
+            python -m playwright install --with-deps chromium
+          fi
+      - run: python scripts/pumpops_browser_qa.py https://trustnopeps.github.io/trustNOpeps/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pumpops-browser-evidence
+          path: pumpops-*.png

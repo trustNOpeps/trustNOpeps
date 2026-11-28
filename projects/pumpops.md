@@ -36,7 +36,14 @@ Potential users: pump maintenance SMEs, energy consultants and engineering stude
 ## Sources
 - U.S. Department of Energy, [Pump Systems](https://www.energy.gov/cmei/ito/pump-systems).
 - U.S. DOE, [Improving Pumping System Performance: A Sourcebook for Industry](https://www.energy.gov/sites/prod/files/2014/05/f16/pump.pdf).
-- UNIDO, [Manual for Industrial Pump Systems Assessment and Optimization](https://www.unido.org/publications/ot/9659202/pdf).
+- Oak Ridge National Laboratory, [MEASUR pumping system assessments](https://industrialresources.ornl.gov/measur/suite/docs/group__pumping__system__assessments) (workflow reference, not a claim of equivalent performance).
+- International Society of Automation, [High-Performance HMI](https://www-prod.isa.org/web/acom/article/the-high-performance-hmi) (neutral hierarchy and meaningful color; no ISA compliance claimed).
 
 ## QA
 The calculations and limitations are documented for auditability. Verify with representative measured motor kW before using the results in a client proposal. The public demo is educational / preliminary and should not be used for pump selection or life-safety decisions.
+
+## Revision 2 — engineering workbench
+- Original HTML/CSS and SVG schematic; no generated images, third-party UI templates or copied source.
+- Neutral industrial palette, grouped inputs, tabular numerical comparison, zero-baseline bar graph and three-point tariff sensitivity (±20%).
+- Invalid inputs immediately clear results and disable export/print. CSV text beginning with spreadsheet formula indicators is escaped. Financial annuity calculation uses log1p/expm1 for small discount rates.
+- Public browser QA: [GitHub Actions](https://github.com/trustNOpeps/trustNOpeps/actions/workflows/pumpops-ci.yml), with Chromium desktop/tablet/mobile viewports, download inspection, print handler, and portfolio link verification. Check run status before claiming acceptance.
